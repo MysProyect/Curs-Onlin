@@ -67,7 +67,7 @@
 		@endif
 		</div>
 </div>
-<div class="input-group {{ request()->routeIs('inscribirse') ? 'd-lg-none' : ''}}">
+<!-- <div class="input-group  {{ !(request()->routeIs('cursos') )? 'd-lg-none' : ''}}">
  	<div class="form-outline">
  		<form class="">
 	    <input type="search" id="form1" class="form-control" placeholder="Search" />	    
@@ -78,7 +78,7 @@
 		</svg>
 	</button>
   </form>  
-</div>
+</div> -->
 
 
 
