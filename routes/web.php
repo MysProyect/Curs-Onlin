@@ -9,16 +9,10 @@ use Livewire\InscriptionComp;
 
 // use App\Incription;
 // use App\User;
-//use App\Profession;
+// use App\Profession;
 // use App\Curso;
 
 
-// Route::get('/prof','Controller@pdf');
-//Route::get('/chec','Controller@chec');
-
-Route::get('/menu', function () {
-    return view('menu');
-});
 
 Route::get('/js', function () {
     return view('jsc');
@@ -37,9 +31,6 @@ Route::get('/nosotros', function () {
 
 
 
-//Route::get('/asoc', function () {
-	//return view('asoc');
-//})->name('ASOC-livew');
 Route::get('/aulas', function() {
 	return view('Menu.AV.aulas');
 })->name('AV-livew');
@@ -65,8 +56,6 @@ Route::get('/cursos', function () {
 
 
 
-//Route::post('/cursos', MenuCursosInscripcion::class, 'comment');
-//Route::post('/cursos', 'CursController@comment')->name('comment');
 Route::post('/cursos', 'CommentController@store')->name('comment');
 
 Route::get('/inscribirse/{id?}','InscripcionController@index')->name('inscribirse');   
@@ -80,12 +69,6 @@ Route::post('/inscribirse', 'InscripcionController@save')->name('save');
 
 
 Auth::routes();
-
-// Route::get('/auth/register', function(){
-// 	return view('auth/register');
-// })->name('register'); 
-
-
 
 
 

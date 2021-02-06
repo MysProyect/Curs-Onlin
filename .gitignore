@@ -11,30 +11,28 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-/resources/views/layouts/AppAuth
-/resources/views/layouts/app2
+# resources/views/layouts/AppAuth
+# resources/views/layouts/app2
 
-/resources/views/Menu/Cursos_Insc_comm/cursos2
-/resources/views/Menu/Cursos_Insc_comm/notas
-/resources/views/Menu/Cursos_Insc_comm/create
-/resources/views/Admin/Inscrip/pdf
-/resources/views/insc
-/resources/views/layout
-/resources/views/layouts/applogin
+# resources/views/Menu/Cursos_Insc_comm/cursos2
+# resources/views/Menu/Cursos_Insc_comm/notas
+# resources/views/Menu/Cursos_Insc_comm/create
+# resources/views/insc
+# resources/views/layout
 
-resources/views/layout
-resources/views/asoc
-resources/views/pdf-prof
-resources/views/jsc
-resources/views/attr-livewire
+# resources/views/layout
+# resources/views/asoc
+# resources/views/pdf-prof
+# resources/views/jsc
+# resources/views/attr-livewire
 
-/public/css/normalize.css
+# public/css/normalize.css
 
-/public/js/conf.js
-/public/js/SelcDinam.js
-/public/js/SelcDinamiAG.js
+# public/js/conf.js
+# public/js/SelcDinam.js
+# public/js/SelcDinamiAG.js
 
 
-/app/Http/Controllers/Livewire/App/Menu
+# app/Http/Controllers/Livewire/App/Menu
 
 
