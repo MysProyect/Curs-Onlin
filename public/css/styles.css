@@ -33,7 +33,7 @@ li { text-decoration: none; }
 .nota-curs{margin-left: 20%; margin-right: 1%; font: oblique bold 120% cursive;font-size: 1rem;}
 
 .notas{font-size:0.7rem; color:red; margin-top:25px; margin-right:1%;}
-
+.title-op{color:#BFBFBF; font-size: 2rem;}
 
 @media screen and (max-width:800px) {
 	header {width: 100%; top:0;   left:0; text-decoration: none; }  
@@ -43,8 +43,10 @@ li { text-decoration: none; }
 	.desc{ font-size: 0.8rem;}
 	.nota-curs{font-size: 0.5rem;  width: 250px;   white-space: nowrap;    text-overflow: ellipsis;     overflow: hidden;}
 
-.title{	font-size: 0.5rem; 	}
+	.title{	font-size: 0.5rem; 	}
+	.title-op{color:#BFBFBF; font-size: 1rem;}
 }
+.text-bold{font-weight: bold;}
 
 
 .img-curs{padding:0; width: 40%;}
@@ -138,7 +140,10 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); margin-top:2%;}
 .img-cursoVue{ width:400px; height:280px;}
 .img-logoVue{ width:200px; height:150px;}
 .img-act{ width:50px; height:50px;}
+@media screen and (max-width:800px) {
+	.info{ font-size:0.5rem;}
 
+}
 .info{ font-size:1.5rem;background:#C1DFE9; padding:2%; border-radius: 20px;}
 
  .input-nom{font-size: 1rem; padding-top:1%; width:100%; border-radiu:5%;}

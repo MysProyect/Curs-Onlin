@@ -12,10 +12,9 @@ use Auth;
 class ParticipantsComponent extends Component
 {
 	
-	 use WithPagination;
+	use WithPagination;
 	  
 	public $part_id, $cedula, $name, $last_name, $id_curso, $meth_pago, $pago, $email, $telef, $NroWp, $id_part;
-	
 	public $view = 'create';
 	public $searchPart = '';
 	public $part, $mensaje;
@@ -120,12 +119,13 @@ class ParticipantsComponent extends Component
 		$this->cedula = '';
 		$this->name = '';			
 		$this->last_name = '';
-		$this->id_curso = '';
-		$this->Met_pago = '';
-		$this->pago = '';
+		// $this->id_curso = '';
+		// $this->Met_pago = '';
+		// $this->pago = '';
 		$this->email = '';
 		$this->telef = '';
 		$this->NroWp = '';
+		$this->profession_id='';
 		$this->view = 'create';		
 	}
     

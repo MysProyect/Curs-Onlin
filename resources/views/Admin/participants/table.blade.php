@@ -1,14 +1,13 @@
 <div>
 
-                 @if (session('mensaje'))
-					<div class="alert alert-success">             
-						{{ session('mensaje') }}
-					</div>
-				 @endif
-			 <br>
-                
-	<input type="text" class="search-input"  wire:model="searchPart"  placeholder="Buscar" >           
-	                
+    @if (session('mensaje'))
+		<div class="alert alert-success">             
+			{{ session('mensaje') }}
+		</div>
+	@endif
+@if($parts->count())
+	<br><br><br>
+	<input type="text" class="search-input"  wire:model="searchPart"  placeholder="Buscar" >    
 	<table class="table">   		
 		<thead class="thead-dark"> 			
 		<tr align="center">        			
@@ -17,13 +16,12 @@
 		</tr>
 		</thead>
 		<tbody> 
-	    @if($parts->count())
-			<?php $cont = 1; ?>	
+	   <?php $cont = 1; ?>	
 		@foreach($parts as $part)    		
 		<tr @if($cont % 2 == 0) style="background: #ADD8E6" @endif >
 			<td>{{ ucfirst(trans($part->name)) }} {{ ucfirst(trans($part->last_name)) }}</td>
 			<td align="center">
-<!-- 				<img src="{{asset ('images/icons/editar.png')}}" wire:click="edit({{ $part->id }})" class="img-act"> -->
+<!-- 	<img src="{{asset ('images/icons/editar.png')}}" wire:click="edit({{ $part->id }})" class="img-act"> -->
 				<button wire:click="edit({{ $part->id }})" class="btn btn-info">editar | ver</button>
                  
 <!--
@@ -34,13 +32,14 @@
 		</tr>
 		 <?php $cont= $cont + 1; ?>
 		@endforeach
-        @else
-			<h1>No hay registros</h1>
-		@endif
-			</tbody>
-		
+      </tbody>
+      </table>
+@else
+<br><br>
+	<label>No hay registros</label>
+@endif	
 
-		</table>
+		
      <div style="color:blue;">
 			{{ $parts->links() }}
      </div> 

@@ -14,14 +14,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-       
+       //user de prueba
 	         DB::table('users')->insert([
-								'username' => 'admin',
-								'email' => 'developmentsoft2020@gmail.com',	
-                               // 'email_verified_at' => now(),
-								'privileges' => '1',							
-								'password' => Hash::make('123123123'),
-                               // 'remember_token' => Str::random(10),
+					'username' => 'admin',
+					'email' => 'developmentsoft2020@gmail.com',	
+                    // 'email_verified_at' => now(),
+					'privileges' => '1',							
+					'password' => Hash::make('123123123'),
+                     // 'remember_token' => Str::random(10),
 								
 			]);
     }

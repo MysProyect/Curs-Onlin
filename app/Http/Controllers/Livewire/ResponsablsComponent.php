@@ -134,6 +134,7 @@ class ResponsablsComponent extends Component
 		$this->telef = '';
 		$this->NroWp = '';
 		$this->profile='';
+		$this->profession_id='';
 		$this->view = 'create';		
 	}
 	

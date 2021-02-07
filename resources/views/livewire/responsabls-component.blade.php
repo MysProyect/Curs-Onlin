@@ -1,5 +1,5 @@
 <div  style="display:flex; margin-right:2%; margin-left: 3%;">
-	<div style="margin-right:2%;" class="">
+    <div style="margin-right:2%; width: 50%;">
 		@include("Admin.responsabls.$view") 
 	</div>
 	
