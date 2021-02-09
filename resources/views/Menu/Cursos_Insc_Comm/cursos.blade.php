@@ -5,7 +5,21 @@
 				<div class="alert alert-success">             
 					<label>{{ session('mensaje') }}  </label>
 				</div>
-			@endif  
+			@endif 
+@if(empty($cursos))
+  <div style="display: flex;" align="center" >
+    <div class="title" style=" padding-left: 10%;" >
+      <b>Cursos </b>
+    </div>
+  <div align="center">
+    <label class="display-5">Esta hoja que se abre lleva impresa tu nombre y el mío, con la
+    intención podamos surcar sin líneas no delineadas pero si contenidas.
+    Más que un material para ser visualizado y revisado, nos motiva la
+    circunstancia de la utilidad que puedas obtener del mismo. Hazlo tuyo,
+    y siéntelo con la fuerza que brinda el camino para que le transites sin
+    temor alguno.</label>
+  </div>
+</div> 
 @foreach( $cursos as $curso)
 <div class="listCurs" > 
 		<p class="display-5 text-primary text-center text-uppercase" >{{ $curso->title}}</p>				   
@@ -149,7 +163,9 @@
 
  @endforeach
    <label>{{ $cursos->links()}}</label> 	
-	
+@else
+  <label>No courses published</label>
+@endif
 </div>
   
 

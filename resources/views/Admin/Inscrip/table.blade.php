@@ -5,6 +5,7 @@
 						{{ session('mensaje') }}
 					</div>
 				 @endif
+	@if(empty($cursos))
 	<table class="table">   		
 		<thead class="thead-dark"> 			
 		<tr align="center">   
@@ -37,5 +38,7 @@
 	 <div style="color:blue;">
 			{{ $cursos->links() }}
      </div>
-     
+  @else
+  	<label>No hay inscritos</label>   
+  @endif
  </div>

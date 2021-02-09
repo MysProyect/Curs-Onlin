@@ -18,6 +18,11 @@ class Responsabl extends Model
 
     // public function curs()
     // {
+    //     return $this->hasMany(Curso::class);
+    // }
+
+    // public function curs()
+    // {
     //     return $this->belognsToMany(Incription::class);
     // }
 }

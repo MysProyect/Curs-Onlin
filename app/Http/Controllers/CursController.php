@@ -10,7 +10,7 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 
 use Auth;
 use App;
-use App\Comment;
+// use App\Comment;
 
 //desde Admin
 class CursController extends Controller
@@ -23,13 +23,20 @@ class CursController extends Controller
          $cursos = App\Curso::orderBy('id','DESC')->paginate(4);
 		return view('Admin.cursos.index',compact('cursos'));
     }
-          
+    
+    public function show($id) {    
+        $resp = App\Responsabl::all();
+		$ver = App\Curso::findOrFail($id);
+		return view('Admin.cursos.detaill',compact('ver','resp'));
+    }      
 
     public function create()
     {
         $resp = App\Responsabl::all();
 		return view('Admin.cursos/new',compact('resp'));		
     }
+
+
 
 
     public function store(Request $request){
@@ -81,18 +88,6 @@ class CursController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-    public function show($id)
-    {
-        //
-    }
 
     public function edit($id)
     {

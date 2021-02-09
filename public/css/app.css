@@ -448,10 +448,20 @@ h6,
   font-weight: 300;
   line-height: 1.2;
 }
+.display-5 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
 @media screen and (max-width:800px) {
 
 .display-4 {
   font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+.display-5 {
+  font-size: 0.5rem;
   font-weight: 300;
   line-height: 1.2;
 }
@@ -3764,6 +3774,7 @@ input[type=button].btn-block {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
+  margin-top: 12%;
 }
 
 .input-group > .form-control,
@@ -3776,6 +3787,7 @@ input[type=button].btn-block {
   min-width: 0;
   margin-bottom: 0;
 }
+
 
 .input-group > .form-control + .form-control,
 .input-group > .form-control + .custom-select,

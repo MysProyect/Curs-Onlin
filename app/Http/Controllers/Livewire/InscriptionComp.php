@@ -37,7 +37,7 @@ class InscriptionComp extends Component
    public function render()
     {
         return view('livewire.inscription-comp',[
-        	'cursos' => Curso::withCount(['inscs'])->simplepaginate(10) 
+        	'cursos' => Curso::published()->withCount(['inscs'])->simplepaginate(10) 
     	]);
 
 

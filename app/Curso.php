@@ -30,6 +30,14 @@ class Curso extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function scopePublished($query){
+        return $query->where('statud', true);
+    }
+
+    // public function resps()
+    // {
+    //     return $this->hasMany(Responsabls::class);
+    // }
     
 
 

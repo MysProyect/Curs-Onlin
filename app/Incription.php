@@ -20,6 +20,10 @@ class Incription extends Model
 			return $this->belongsTo(Participant::class);
 		}
 
+    	public function insc()
+    	{
+        	 return $this->belongsTo(Curso::class);
+    	}
 		
 		// $users = Incription::where('conf', 1)->get();
 

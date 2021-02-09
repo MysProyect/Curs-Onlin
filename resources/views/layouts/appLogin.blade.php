@@ -26,33 +26,15 @@
 		
 
 
-<div  style=" margin-top:13%; heidht:100%;">		
-				           
-		  <div align="right" style="margin-right:10px;">
-			@if (Auth::user())
-				<a href="{{ route('welcome')}}"  style="color: #0000FF; font-size:16px;" data-toggle="dropdown" role="button" aria-expanded="false">
-				<?php echo  (strtoupper (Auth::user()->username) )?></a>
-				
-					@if ((Auth::user()->privileges) === 1)
-					<div style="font-size:14px;">
-						<a href="{{ route('AdmUser') }}" class="">
-						<img src="{{ asset('images/icons/ajustes.png') }}" width="30" height="35">  Adm > Usuarios | Cursos</a> 
-					  </div>
-				   @endif	
-				   
-				<ul class="dropdown-menu" role="menu"><!--dejo abierto 'ul' -->
-				<li>
-					<a href="{{ route('logout') }}" class="salir" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Seccion</a>
-					<form id="logout-form" action="{{ route('logout') }} " method="POST">{{ csrf_field() }}  </form>
-				</li>				
-			  @else 
-				<a href="{{ route('login') }}"  style="color:#FFA500;"><img src="images/icons/acceso.png">Acceder</a>
-			  @endif
-		 </div>	
+<div  class="input-group">		
+	</div>
+      	<a href="{{ route('welcome') }}" >
+        <img src="{{asset('images/icons/home.png')}}" width="80" ></a>
+	</div>  	           
 		 
-		 <div>
-			@yield('content')       
-		 </div>
+	<div>
+		@yield('content')       
+	</div>
 	     
 			
     

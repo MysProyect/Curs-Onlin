@@ -8,30 +8,27 @@
 	<p >Courses | Participants | Responsible | Inscription | Virtual Class | User | Reports</p>
 	
            
-<div class="toll" style="margin-top:5%;">	
+<div class="input-group" style="margin-top:5%; margin-left: 5%; margin-right: 5%;">	
 
-				<!-- RESPONSABLS -->
-	 <div class="toll-enl-2">
-	      <a href="{{ route('resp-livew')}}" title="Responsabls">
-			  <img src="{{asset('images/resp.png')}}" width="150" height="300" ><br>
-			  Responsibles
-		  </a>	
+<!-- RESPONSABLS -->
+	 <div class="tool-enl" title="Responsabls">
+	    <a href="{{ route('resp-livew')}}" >
+			<img src="{{asset('images/resp.png')}}" width="200" height="300" ><br>
+			Responsibles
+		</a>	
 	 </div>
 	  
-				<!-- PARTICIPANTS -->
-	
-   <div class="toll-enl-2">
-		<a href="{{ route('part-livew') }}">
-			<img src="{{asset('images/participants.jpg')}}" width="400" height="300" style=""><br>
+<!-- PARTICIPANTS -->	
+   <div class="toll-enl">
+		<a href="{{ route('part-livew') }}" title="Participants">
+			<img src="{{asset('images/participants.jpg')}}" width="400" height="300" style="opacity: 0.3"><br>
 			Participants
 		</a>
 	</div>	
 
-
-
-	<!-- USERS -->
-	<div class="toll-enl-2"> 
-			<a href="{{ route('AdmUser') }}">
+<!-- USERS -->
+	<div class="toll-enl"> 
+			<a href="{{ route('AdmUser') }}" title="Usuarios">
 			<img src="{{asset('images/loguear.jpeg')}}" width="400" height="300" style="opacity: 0.3"><br>
 			Users
 		</a>                           	  
@@ -40,42 +37,30 @@
 </div>
 
 
-<div class="toll" style="margin-top:5%;">
+<div class="input-group" style="margin-top:5%; margin-left: 2%; margin-right: 2%;">
 <!-- CURSOS -->
-	<div  class="toll-enl" >
-		<a href="{{ route('cursos') }}" style="font-size:24px;"> 
-		<img src="{{ asset('images/cursos-online.jpeg') }}"  width="400" height="300" style="opacity:0.5;"> <br>
-		 Courses
+	<div  class="toll-enl" title="Cursos" >
+		<a href="{{ route('cursos') }}"> 
+		<img src="{{ asset('images/cursos-online.jpeg') }}"  class="tool-img"> <br>
+		 <span class="display-4">Courses</span>
 		</a>
 	</div>
-<!-- IINSCRIPTION-->
-	
-   <div class="toll-enl-2">
+
+<!-- INSCRIPTION-->	
+   <div class="toll-enl" title="valid Inscription">
 		<a href="{{ route('insc-auth') }}">
-			<img src="{{asset('images/reg.jpg')}}" width="400" height="300" style="opacity:0.8;"><br>
-			Inscription
+			<img src="{{ asset('images/list-inscrip.png')}}" class="tool-img-2"><br>
+			<span>Inscription<br>Valid/imprimir</span>
 		</a>
 	</div>
 
 <!-- Virtual Class  -->
-<div class="toll-enl-2">
+	<div class="toll-enl" title="entrar al Aula Virtual">
 		<a href="{{ route('class')}}"> 
-			<img src="{{ asset('images/aula-virtual.png')}}" class="" width="400" height="300" title="entrar al Aula Virtual"><br>
+			<img src="{{ asset('images/aula-virtual.png')}}" class="tool-img"  ><br>
+			<span>Aula Virtual</span>
 		</a> 
-	</div> 
-
-</div>
-
-
-
-<div class="toll" style="margin-top:5%;">
-
-
-<!-- Virtual Class  -->
-<div class="toll-enl-2">
-		<a href="{{ route('AV-livew')}}"> 
-			<img src="{{ asset('images/list-inscrip.png')}}" class=""  title="ver registro de inscripcion"><br>
-		</a> 
+	
 	</div> 
 
 </div>

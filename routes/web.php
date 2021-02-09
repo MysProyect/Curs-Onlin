@@ -86,6 +86,7 @@ Route::post('/auth/register', 'Auth\RegisterController@saveUser')->name('saveUse
 Route::post('/auth/login', 'Auth\RegisterController@create')->name('createUser');
 
 Route::get('/admin-cursos','CursController@index')->name('cursos');
+Route::get('/detaill-curso/{id}', 'CursController@show')->name('detaill');
 Route::get('/new-curso', 'CursController@create')->name('Newcurso');
 Route::post('/new-curso','CursController@store')->name('SaveCurso');
 Route::get('/edit-curs/{id?}', 'CursController@edit')->name('EditCurs');
@@ -125,6 +126,8 @@ Route::middleware('auth:web')->group(function () {
 	
 
 	Route::get('/Admin.inscription', InscriptionComp::class,'destroy');
+
+
 
 	Route::get('/Admin.inscription/{id}', 'PdfController@ConfPDF')->name('ConfPDF');
     

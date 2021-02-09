@@ -3,9 +3,9 @@
 @section('content')	         
 <div>  
     <div style="display: flex; margin-right:5%;">
-		<div>
-			<img src="storage/images/logo.png" width="300" height="400" />
-         </div>
+		
+			<img src="storage/logo.png" class="logo" />
+         
 		<div align="center" >
 			<strong  class="h1 text-primary">Convencidos que los mejores tiempos </strong><br>
 			<small class="tite2" align="center">¡son estos que vivimos! </small>  
@@ -14,7 +14,7 @@
 				quietud necesaria para cuestionar el cómo lo estás entendiendo, lo que significa o representa para ti. Si das sentido al hogar, no sólo como distribución espacial, sino
 					como el calor emanado del roce energizante de la interacción de los cuerpos que en ella habitan, 
 				<details>	
-					<summary><b>mas...</b></summary>
+					<summary><i>mas...</i></summary>
 					y que da forma y constitución a lo que eres. Entonces, se convierte en un inmenso reto para nosotros intentar compartir contigo lo que somos a través del cristal. Traspasar ese umbral de la pantalla para acariciar pensamiento y
 					alma…
 				</details> 
@@ -29,7 +29,6 @@
 		físico, mental y virtual- transversado sensible y racionalmente; insufle carga
 		exponencial de energía, materializada en la distinción artesanal propia de lo que
 		eres, en la sabia conquista de la magia de ser tú. 
-
 	</p>
 	<p class="tite3" style="margin-top: 0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El horizonte lejano o visión, lo concebimos ampliando nuestros sentidos
 más allá de la esfera de lo cognoscible. Lo que implica que Astudillo’s Group

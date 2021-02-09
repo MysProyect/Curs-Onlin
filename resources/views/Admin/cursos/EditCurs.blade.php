@@ -2,7 +2,7 @@
 @section('title','- Cursos')
 @section('content')
 	
-	 <div class="title"><b> Actualizar Curso</b></div><br>
+	 <div class="title text-center"><b> Actualizar Curso</b></div><br>
 
 		@if ($errors->has('login'))
 			<span class="help-block">
@@ -10,23 +10,23 @@
 			</span>
 		@endif  
   
-<div class="col-md-12">
-  <div class="card">
-	<div class="card-body">		              
+<div class="container">	              
 	<form class="form-horizontal" method="POST" action="{{ route('UpCurso', $edit->id) }}" name="formulario" enctype="multipart/form-data" onsubmit="return confirm('¿Wish Update?');" id="formulario">
 	@method('PUT')
     @csrf
 		@error('title')
 			<span class="alert alert-danger">indicate a course title</span>
 		@enderror  
-		<div  class="">			
-			<label class="display-6 text-primary">Title a course:</label>
-			<input type="text" name="title" value="{{ $edit->title }}" class="text-success form-control bold" autofocus >		
+		<div  class="form-group">			
+			<label class="display-5 text-primary">Title a course:</label>
+			<input type="text" name="title" value="{{ $edit->title }}" class="text-success form-control bold form-control " autofocus >		
 		</div>
 				
-		<label class="text-muted">Description:</labe>
-			<textarea name="description" placeholder="Description / Intent or purpose of the course"  rows="5"  value="{{ old('description') }}" style="width: 100%; font-size: 1rem;">{{$edit->description}}
+		<div class="form-group">
+			<label class="">Description:</labe>
+			<textarea name="description"  class="form-control"  value="{{ old('description') }}" cols="150" rows="5">{{$edit->description}}
 			</textarea>
+		</div>
 			
 						 
 			@if($edit->img == '')
@@ -34,9 +34,14 @@
 				<input type="file" name="img" value="" id="miArchivo" accept="image/png, .jpeg, .jpg, image/gif"> 
 			@else
 				<div style="display:flex; padding-left:2%;">	
-					<label style="margin-top:5%;">¿change image?</label>
-					<input type="file" name="img" value="" id="miArchivo" style="color: transparent; margin-top:5%;" accept="image/png, .jpeg, .jpg, image/gif">   
-					<img src=" {{ Storage::url("$edit->img")}}" alt="Imagen no encontada" class="img-curso"/>	
+					<div style="margin-top:5%;">¿change image?
+					<input type="file" name="img" value="" id="miArchivo" style="color: transparent;" accept="image/png, .jpeg, .jpg, image/gif"> 
+				</div>  
+				<div>
+					<small>
+						<img src=" {{ Storage::url("$edit->img")}}" alt="Imagen no encontada"/>	
+					</small>
+				</div>
 				</div>
 			@endif
 		 
@@ -98,13 +103,13 @@
           </div>
 
 	</form>
-	</div>	
-	</div>
+
 			
 
 </div>	        
+
+@endsection
+
 <script src="{{ asset('js/SelcDinam.js') }}"></script>  
 <script src="{{ asset('js/public.js') }}"></script> 
 <script src="{{ asset('js/forms.js') }}"></script> 
-
-@endsection

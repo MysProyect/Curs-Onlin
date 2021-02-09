@@ -25,8 +25,12 @@ class MenuCursosInscripcion extends Component
     public function render()
     {    
 		return view('livewire.menu-cursos-inscripcion',[
-          'cursos'=>Curso::where('statud', '=', 1)->orderBy('id','desc')->simplepaginate(4) 
+          'cursos'=>Curso::published()->orderBy('id','desc')->simplepaginate(4) 
 		]);
+
+		// return view('livewire.menu-cursos-inscripcion',[
+  //         'cursos'=>Curso::where('statud', '=', 1)->orderBy('id','desc')->simplepaginate(4) 
+		// ]);
     }
     
 

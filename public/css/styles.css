@@ -17,7 +17,7 @@ li { text-decoration: none; }
   text-align: center;
   color: white;
   position: fixed;} */
- .group-menu{margin-top: 13%;} 
+
 
 /*.inputAuth{padding:30; font-size:20px; font-weight: bold;}*/
 .auth{ font-size:1rem; display:flex;}
@@ -25,18 +25,18 @@ li { text-decoration: none; }
 .cont-auth-home{ display:flex;width: 100%; margin-top:1%; }
 
 
- 
-.desc{ font-size: 1.5rem; padding: 2%; margin-left:5%; margin-right:10%; text-align: center;} 
 		   
-.desc-curs{ font-size: 1.5rem; padding: 2%; margin-left:5%; text-align: center;}	   
-.desc-curs-no{ font-size: 3rem; padding: 2%; margin-left:5%;  text-align: center;}
+.desc-curs{ font-size: 0.8rem;}	   
 .nota-curs{margin-left: 20%; margin-right: 1%; font: oblique bold 120% cursive;font-size: 1rem;}
 
 .notas{font-size:0.7rem; color:red; margin-top:25px; margin-right:1%;}
 .title-op{color:#BFBFBF; font-size: 2rem;}
-
+.logo{width:250%; height:80%; opacity: 0.5;}
 @media screen and (max-width:800px) {
 	header {width: 100%; top:0;   left:0; text-decoration: none; }  
+	.auth{ font-size:0.5rem;}
+	.user-auth{ color: red;}
+	.logo{width:60%; height:40%;}
 	.header {height:5rem; position: fixed;}
 	.group-menu{margin-top: 15%;}
 	.auth{ font-size:0.5rem; display:flex;}
@@ -46,6 +46,10 @@ li { text-decoration: none; }
 	.title{	font-size: 0.5rem; 	}
 	.title-op{color:#BFBFBF; font-size: 1rem;}
 }
+
+.
+.tam-img{width:500px; height:50px;}
+
 .text-bold{font-weight: bold;}
 
 
@@ -122,28 +126,28 @@ li { text-decoration: none; }
 	margin-top:3%; 	
 	font-weight: bold; }
 			
-.form_edit{  border: white 8px outset; margin-left:1%;  padding:3%;	margin-right:15%;	margin-top:3%; 	font-weight: bold; }		
 footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); margin-top:2%;}
+.form_edit{  border: white 8px outset; margin-left:1%;  padding:3%;	margin-right:15%;	margin-top:3%; 	font-weight: bold; }		
 #footer{height: 8rem; 	bottom: 0; 	color: white;  	padding:0.5%; }		
 
 
-		
+small img{
+	width: 80%;
+	height: 70%;
+}		
 
 		
 .irAtras{	margin-right:5%; width: 90px; height: 100px;}	
 .irHome{width: 120px; height: 120px;}
-.img-left{ width: 100%; height: 400px; }	
-.img-bt-new{  width:130px; height:100px;}
-.img-bt-user{  width:50px; height:60px;}
-.img-curso{ width:300px; height:250px; }
-.img-AddNew{ width:130px; height:150px; margin-left:5%;}
-.img-cursoVue{ width:400px; height:280px;}
-.img-logoVue{ width:200px; height:150px;}
+.img-left{ width: 100%; height: 400px;}
 .img-act{ width:50px; height:50px;}
-@media screen and (max-width:800px) {
-	.info{ font-size:0.5rem;}
+.img-AddNew{ width:130px; height:150px; margin-left:5%;}
+.img-user{width: 15%;}
+.img-user-2{width: 18%;}
+/*.img-cursoVue{ width:400px; height:280px;}
+.img-logoVue{ width:200px; height:150px;}
+*/
 
-}
 .info{ font-size:1.5rem;background:#C1DFE9; padding:2%; border-radius: 20px;}
 
  .input-nom{font-size: 1rem; padding-top:1%; width:100%; border-radiu:5%;}
@@ -186,11 +190,15 @@ tr td:last-child{
 .text-inp{ font-size:1rem; padding:4%;}
 
 .title{ font-family: fantasy; 
-		font-size: 3rem;   
+		font-size: 3rem; 
+		font-weight: bold;  
 		color: #000066; 
-		width: 100%;  
-		text-align: center;
 		letter-spacing: 2pt;}
+
+@media screen and (max-width:800px) {
+	.info{ font-size:0.5rem;}
+	.title{ font-size: 1rem;}
+}
 
 
 
@@ -205,12 +213,20 @@ tr td:last-child{
 
 .tite2{
 	color:#FF7A00; 
-	font-size: 36px; 
+	font-size: 2rem; 
 	font-family: fantasy;}	
 .tite3{
 	font-size: 1.3rem; 
 	margin: 5%;
 }
+@media screen and (max-width:800px) {
+.tite2{ font-size: 0.8rem; }	
+.tite3{	font-size: 0.8rem; }
+}
+
+
+
+
 .title-op{ color:#BFBFBF; font-size: 1.5rem;}		
 .title-div {border-top:2px solid; border-color:#BFBFBF; width:100%;}
 .tex-bt:hover{ 
@@ -219,12 +235,21 @@ tr td:last-child{
 	font-size:1rem;; }
 	
 .toll{ 
+	text-align: center;
 	display:flex; 
 	width: 100%;  
-	margin:0; 
+	padding: 5%; 
 	top:0; }
-.toll-enl{ font-size:1rem; text-align:center;}
-.toll-enl-2{ font-size:2rem; text-align:center;margin-left:5%;}
+.tool-img{
+	opacity:0.8;
+	width: 300px;
+}
+.tool-img-2{
+	width: 300px;
+	height: 350px;
+}
+.toll-enl{ font-size:1rem; text-align:center; margin-left: 5%; margin-right: 5%;}
+.toll-enl-2{ font-size:1rem; text-align:center;margin-left:5%;}
 
 
 .tool-liv{	width: 100%; margin-right: 2%; margin-left: 2%;}

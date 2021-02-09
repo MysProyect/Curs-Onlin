@@ -8,7 +8,7 @@
 			<nav>
 				<ul>
 					<li class=" dropdown-item {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}}">
-						<a href="{{ route('welcome') }}"><img src="{{asset('images/icons/home.png')}}" width="70" height="60"></a>
+						<a href="{{ route('welcome') }}"><img src="{{asset('images/icons/home.png')}}" width="80" height="60"></a>
 					</li>
 					<li class="TextMenu  {{ request()->routeIs('nosotros') ? 'active' : ''}}">
 						<a href="{{ route('nosotros') }}"><span class="icon-suitcase {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}}"></span>Nosotros</a>
@@ -21,18 +21,21 @@
 
 
 
-					<li class="nav-item dropdown">
-						<a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span><img src="{{asset('images/icons/idea.jpeg')}}" class="icon-book"></span>
+					<li class="nav-item">						  
+						<a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<span><img src="{{asset('images/icons/idea.jpeg')}}" class="icon-book"></span>
 							IDEAS
 						</a>
-
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<!-- 	<optgroup class="" label="Poetry">
+          					 <a href="">Reflexiones</a>
+         				</optgroup> -->
+				<!-- 		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				          <a class="dropdown-item" href="#"style="padding-left: 5%;" >Articulos</a><br>
 				          <a class="dropdown-item" href="#" style="padding-left: 5%;" >Libros</a>
 				          <div class="dropdown-divider"></div>
 				          <a class="dropdown-item" href="#" style="padding-left: 5%;" >Publicaciones</a>
 				          <a class="dropdown-item" href="#" style="padding-left: 5%;" >Relexiones</a>
-				        </div>
+				        </div> -->
 					</li>			
 
 

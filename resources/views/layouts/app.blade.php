@@ -38,12 +38,9 @@
 </div>
 
 
-<div class="group-menu input-group">
-
-	<div>
-		@livewire('app-menu')
-	</div>
-		@if (Auth::user())
+<div class="input-group">	
+		@livewire('app-menu')&nbsp;&nbsp;&nbsp;&nbsp;	
+	@if (Auth::user())
 		<div class="auth"> 
 		    <a href="{{ url('/logout') }}"  class="user-auth" data-toggle="dropdown" role="button" aria-expanded="false"> 
 				<?php echo  (strtoupper (Auth::user()->username) )?>
@@ -60,11 +57,11 @@
 			<form id="logout-form" action="{{ route('logout') }} " method="POST">{{ csrf_field() }}  
 			</form> 
 			</li>
-		@else 
-			<a href="{{ route('login') }}"  style="color:#0000FF;"><img src="{{asset('images/icons/acceso.png')}}">
-				Acceder
-			</a>			   		    	
-		@endif
+			@else 
+				<a href="{{ route('login') }}" class="user_auth"><img src="{{asset('images/icons/acceso.png')}}">
+					Acceder
+				</a>			   		    	
+			@endif
 		</div>
 </div>
 <!-- <div class="input-group  {{ !(request()->routeIs('cursos') )? 'd-lg-none' : ''}}">

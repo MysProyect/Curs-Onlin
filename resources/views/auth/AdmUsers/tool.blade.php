@@ -19,12 +19,14 @@
 				{{ session('mensaje') }}
 			</div>
 		 @endif
-		 <label style="" align="center">
-			<a href="{{ route('create') }}">
-				<img src="{{ asset('images/icons/bt-new.jpg') }}" class="img-bt-new">
-				<img src="{{asset('images/loguear.jpeg')}}" class="img-bt-user"> 					
-			</a> 				
-		</label> 		
+		<div align="center">
+			<a href="{{ route('create') }}"  title="Nuevo"><img src="{{asset('images/icons/bt-new.jpg')}}" class="img-user">
+					
+			</a>
+			<img src="{{asset('images/loguear.jpeg')}}" class="img-user-2"> 
+		</div >
+
+
 		<table class="table table-striped" align="center">
 				<thead class="thead-dark">
 					<tr>      
