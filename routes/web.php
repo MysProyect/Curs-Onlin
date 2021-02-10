@@ -14,13 +14,6 @@ use Livewire\InscriptionComp;
 
 
 
-Route::get('/js', function () {
-    return view('jsc');
-});
-
-
-
-
 Route::get('/', function () {
     return view('Menu.home');
 })->name('welcome');
@@ -39,6 +32,7 @@ Route::get('/aulas', function() {
 Route::get('/ideas', function () {
     return view('Menu.ideas.ideas');
 })->name('ideas');	
+
 Route::get('/tienda', function () {
     return view('Menu.tienda');
 })->name('tienda');
@@ -56,7 +50,7 @@ Route::get('/cursos', function () {
 
 
 
-Route::post('/cursos', 'CommentController@store')->name('comment');
+Route::post('/cursos', 'CommentController@store')->name('comment'); //comments de curso
 
 Route::get('/inscribirse/{id?}','InscripcionController@index')->name('inscribirse');   
 Route::post('/inscribirse', 'InscripcionController@save')->name('save');
@@ -65,16 +59,7 @@ Route::post('/inscribirse', 'InscripcionController@save')->name('save');
 
 
 //---------USER
-	
-
-
 Auth::routes();
-
-
-
-
-
-
 
 // RUTAS PRITEGIDAS (ADM)
 
@@ -102,14 +87,11 @@ Route::middleware('auth:web')->group(function () {
 
     // // Route::get('/Admin.responsabls', ResponsablsComponent::class)->name('resp-livew');
     // Route::get('/Admin.participants', ParticipantsComponent::class)->name('part-livew');
-	//VIEW ADMIN
-	
 
+//VIEW ADMIN
 	Route::get('/Admin-class', function() {
 		return view('Admin.Class.aulas');
 	})->name('class');
-
-	
 
     Route::get('/Responsabls',function(){
 		return view('Admin.responsabls/index');
@@ -127,52 +109,6 @@ Route::middleware('auth:web')->group(function () {
 
 	Route::get('/Admin.inscription', InscriptionComp::class,'destroy');
 
-
-
 	Route::get('/Admin.inscription/{id}', 'PdfController@ConfPDF')->name('ConfPDF');
     
 });
-
-
-
-
-
-
-
-	// Route::get('/pdf',function(){
-	// 	//$reg = App\Incription::with('curs')->get();		
-	// 	return view('Admin.Inscrip.pdf-valid');
-	// });
-
-// RUTAS SIN LOGIN
-//Ruta vuejs   
-//Route::apiResource('/cursos', 'VueCursosControlle');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-
-
-
-
-
-// Route::get('/orm', function(){
-// 	$curso = Curso::find(1);
-
-// 	$curso->comments;
-// 	return $curso;
-
-// });
