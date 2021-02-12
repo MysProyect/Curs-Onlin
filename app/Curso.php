@@ -31,7 +31,7 @@ class Curso extends Model
     }
 
     public function scopePublished($query){
-        return $query->where('statud', true);
+        return $query->where('statud', 1);
     }
 
     // public function resps()

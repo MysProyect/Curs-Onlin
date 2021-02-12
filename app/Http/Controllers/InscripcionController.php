@@ -7,15 +7,16 @@ use App;
 use Auth;
 
 
-//integrar meths a comp-livew 'MenuCursosInscComm'
+//controller integrado a comp-livew 'MenuCursosInscription'
 class InscripcionController extends Controller
 {
     public function index(Request $request){
 			$curso = App\Curso::findOrFail($request->id); 
 			if ($curso){
-				return view('Menu/Cursos_Insc_Comm/inscribirse',compact('curso'));
+				return view('Menu/Cursos_Insc_Comm/inscribirse-lav',compact('curso'));
 			}
 	}
+	
 	
 	
 	public function save(Request $request){		   

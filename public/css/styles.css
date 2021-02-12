@@ -134,7 +134,13 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); margin-top:2%;}
 small img{
 	width: 80%;
 	height: 70%;
-}		
+}
+
+.img-insc{
+	width:420px;
+	height: 250px;
+}
+			
 
 		
 .irAtras{	margin-right:5%; width: 90px; height: 100px;}	
@@ -165,7 +171,10 @@ small img{
 	.link-priv:hover{ color:#FFA500; text-decoration:none; }
 
 .auth-name{ color: #E9C80C; font-size:1rem; }
-	
+.Add-Resp a{ 
+	font-size:1.3rem;
+	font-weight:bold; 
+	color:#FF0000;  }	
 .listCurs{  
 	height:auto; 
 	border-top:2px solid;
@@ -261,11 +270,8 @@ tr td:last-child{
 	font-size:1.3rem;
 	padding-left:2%; 
 	padding-right:5%;}
-.Add-Resp a{ 
-	font-size:1.3rem;
-	font-weight:bold; 
-	color:#FF0000;  }
 
+.refere{padding:1%;font-size:1.5rem; }
 .salir{ 
 	color:red;
 	font-size:1.3rem;}

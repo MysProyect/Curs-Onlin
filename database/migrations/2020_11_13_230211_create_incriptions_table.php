@@ -18,8 +18,10 @@ class CreateIncriptionsTable extends Migration
             $table->bigIncrements('id');              
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->unsignedBigInteger('part_id')->nullable();
-            $table->boolean('conf')->nullable();
+            $table->boolean('conf')->default('0');
             $table->integer('user_conf')->nullable();
+            $table->integer('user_created')->nullable();
+            $table->integer('user_updated')->nullable();
 
             $table->foreign('curso_id')->references('id')->on('cursos')
             ->onUpdate('cascade')

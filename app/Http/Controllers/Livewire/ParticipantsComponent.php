@@ -36,6 +36,12 @@ class ParticipantsComponent extends Component
     public function verif(){    		  
 		   $part = Participant::where('cedula','=',$this->cedula)->first();
 		   if ($part)  {
+		   		$this->name = $part->name;
+		   		$this->last_name = $part->last_name;			    
+		   		$this->telef = $part->telef;
+		   		$this->email = $part->email;
+		   		$this->NroWp = $part->NroWp;
+			
 			    $this->edit($part->id);  
 			    $this->view = 'edit';
 			    return back()->with('mensaje','Datos Registrados');	

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Participant extends Model
 {
-    protected $fillable = [ 'cedula','name','last_name', 'email', 'telef', 'NroWp', 'user_updated','user_created'  ];
+    protected $fillable = [ 'cedula','name','last_name', 'email', 'telef', 'NroWp', 'user_created', 'user_updated' ];
 
     // public function profe()
     // {

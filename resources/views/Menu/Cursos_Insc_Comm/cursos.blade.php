@@ -1,28 +1,28 @@
 <!-- VIEW CURSOS & COMMENT-->
 
 <div>
-         @if (session('mensaje'))
-				<div class="alert alert-success">             
-					<label>{{ session('mensaje') }}  </label>
-				</div>
-			@endif 
-@if(empty($cursos))
+       
   <div style="display: flex;" align="center" >
     <div class="title" style=" padding-left: 10%;" >
       <b>Cursos </b>
     </div>
-  <div align="center">
-    <label class="display-5">Esta hoja que se abre lleva impresa tu nombre y el mío, con la
+  <div align="center" style="margin-left: 30%;">
+    <label class="display-6"><i>Esta hoja que se abre lleva impresa tu nombre y el mío, con la
     intención podamos surcar sin líneas no delineadas pero si contenidas.
     Más que un material para ser visualizado y revisado, nos motiva la
     circunstancia de la utilidad que puedas obtener del mismo. Hazlo tuyo,
     y siéntelo con la fuerza que brinda el camino para que le transites sin
-    temor alguno.</label>
+    temor alguno.</i></label>
   </div>
 </div> 
-@foreach( $cursos as $curso)
-<div class="listCurs" > 
-		<p class="display-5 text-primary text-center text-uppercase" >{{ $curso->title}}</p>				   
+  @if (session('mensaje'))
+    <div class="alert alert-success">             
+        <label>{{ session('mensaje') }}  </label>
+    </div>
+  @endif 
+  @foreach( $cursos as $curso)
+  <div class="listCurs" > 
+  		<p class="display-5 text-primary text-center text-uppercase" >{{ $curso->title}}</p>				   
 	    <div style="display:flex;">
 
 
@@ -39,10 +39,10 @@
 					<small class="text-muted"> <?php echo substr($curso->description, 0, 200); ?> </small>
                    
     			<details>
-					<summary style="font-size: 1rem;"><b>mas...</b></summary>
+					   <summary style="font-size: 1rem;"><b>mas...</b></summary>
 					   <small class="text-muted"><?php echo substr($curso->description, 200);?></small>
                     @if($curso->duracion)
-						<small class="text-primary" > - duration: {{$curso->duracion}}   </small>
+					   <small class="text-primary" > - duration: {{$curso->duracion}}   </small>
                     @endif
 				</details>
 				@else
@@ -51,15 +51,22 @@
 			</div>
 
 
-      <div align="right" class="img-curs">
-				<img src="{{ Storage::url("$curso->img") }}" alt="imagen no disponible" />  
+      <div align="right" >
+				<img src="{{ Storage::url("$curso->img") }}" alt="imagen no disponible" class="img-curs"/>  
       </div>
 
 
     	</div>
-	    	<div align="center">
-           		<a href="{{ route('inscribirse', $curso->id )}}"  class="btn btn-success" >Participar | inscribirse</a>
-	    	</div>
+    
+    <div align="center">
+      <button wire:click="insc({{ $curso->id }})" class="btn btn-success">Participar | inscribirse</button>
+    </div>
+
+    
+
+	   <!--  	<div align="center">
+          <a href="{{route('inscribirse', $curso->id) }}">Participar | inscribirse</a>
+	    	</div> -->
 			  
 
     <!--VER COMMENTS-->
@@ -163,53 +170,8 @@
 
  @endforeach
    <label>{{ $cursos->links()}}</label> 	
-@else
-  <label>No courses published</label>
-@endif
 </div>
-  
-
-
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-<div class="container bootstrap snippets bootdey">
-<div class="col-sm-6">
-    <!-- Begin tab comment and popular posts -->
-    <div class="box-info full">
-        <!-- Tab comments and popular posts -->
-    
-    
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <!-- Pane comments -->
-          <div class="tab-pane active animated fadeInRight" id="comments">
-            <!-- Begin scroll wrappper -->
-            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget">
-          
-
-            </div>
-            <div class="slimScrollBar" style="width: 3px; position: absolute; top: 11px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; height: 209.5734126984127px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
-           <!--  <div class="box-footer">
-            <p><a href="#fakelink"><i class="fa fa-share"></i> See all comments</a></p>
-            </div> -->
-          </div><!-- End div .tab-pane -->
-          
-          <!-- Pane popular posts -->
-          <div class="tab-pane animated fadeInRight" id="popular">
-            <!-- Begin scroll wrappper -->
-            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 325px;"><div class="scroll-widget" style="overflow: hidden; width: auto; height: 325px;">
-              
-
-            </div>
-            <div class="slimScrollBar" style="width: 3px; position: absolute; top: 0px; opacity: 0.4; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; background: rgb(134, 134, 134);"></div><div class="slimScrollRail" style="width: 3px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.3; z-index: 90; left: 1px; background: rgb(51, 51, 51);"></div></div><!-- End div .scroll-widget -->
-          <!--   <div class="box-footer">
-                  <p><a href="#fakelink"><i class="fa fa-share"></i> See all posts</a></p>
-            </div> -->
-          </div><!-- End div .tab-pane -->
-        </div><!-- End div .tab-content -->
-    </div><!-- End div .box-info .full -->
-    <!-- End tab comment and popular posts -->
-    </div>    
-</div>                            
+                         
 
 
 

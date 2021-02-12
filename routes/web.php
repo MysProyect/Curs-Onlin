@@ -38,8 +38,8 @@ Route::get('/tienda', function () {
 })->name('tienda');
 
 
-//integrar rutas al componente MenuCursos-Inscripcion add commentarios
-Route::get('/cursos', function () {   
+//integrar rutas al componente MenuCursosInscripcion add commentarios
+Route::get('/cursos/{id?}', function () {   
     return view('Menu.Cursos_Insc_Comm.index');
 })->name('cursos.index');
 
@@ -47,11 +47,10 @@ Route::get('/cursos', function () {
 
 // Route::resource('/cursos', 'MenuCursosInscripcion')->name('cursos.index');
 
+Route::post('/cursos', 'CommentController@store')->name('comment');
 
 
-
-Route::post('/cursos', 'CommentController@store')->name('comment'); //comments de curso
-
+//rutar integradas al comp-livewire MenuCursosInscripcion
 Route::get('/inscribirse/{id?}','InscripcionController@index')->name('inscribirse');   
 Route::post('/inscribirse', 'InscripcionController@save')->name('save');
 
@@ -109,6 +108,40 @@ Route::middleware('auth:web')->group(function () {
 
 	Route::get('/Admin.inscription', InscriptionComp::class,'destroy');
 
+
+
 	Route::get('/Admin.inscription/{id}', 'PdfController@ConfPDF')->name('ConfPDF');
     
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+// Route::get('/orm', function(){
+// 	$curso = Curso::find(1);
+
+// 	$curso->comments;
+// 	return $curso;
+
+// });

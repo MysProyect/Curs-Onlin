@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->string('comments');
+            $table->string('comment');
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->foreign('curso_id')->references('id')->on('cursos')
             ->onDelete('set null')

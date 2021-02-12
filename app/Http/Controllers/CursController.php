@@ -11,8 +11,7 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Auth;
 use App;
 // use App\Comment;
-
-//desde Admin
+// Desde Admin
 class CursController extends Controller
 {
 		 public function construct(){
@@ -82,7 +81,7 @@ class CursController extends Controller
 				 } 
 			}
 		}		 	  
-		return redirect()->route('cursos')->with('mensaje','New Curso Agregado');
+		return redirect()->route('cursos.index')->with('mensaje','New Curso Agregado');
     }
 
 
@@ -148,9 +147,9 @@ class CursController extends Controller
 					  $New->save();
 				 } 
 			}				  			
-		return redirect()->route('cursos')->with('mensaje','Curso Actualizado');
+		return redirect()->route('curso.index')->with('mensaje','Curso Actualizado');
 		}		
-	return redirect()->route('cursos');
+	return redirect()->route('curso.index');
 	}
 
 

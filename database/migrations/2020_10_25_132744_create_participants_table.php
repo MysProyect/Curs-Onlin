@@ -16,7 +16,7 @@ class CreateParticipantsTable extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->integer('cedula');
+            $table->integer('cedula')->required();
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();                        
             $table->string('email')->nullable();

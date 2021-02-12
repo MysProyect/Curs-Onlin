@@ -87,14 +87,12 @@
        <div style="">
        @if($edit->statud== 1)			
 			<label id="msj"  class="plublic text-primary">Published</label><br>
-			¿change?
-			<input type="radio" id="public" name="statud" value="0"  onclick="Public()">Si &nbsp;&nbsp;
-			<input type="radio" id="public" name="statud"  value="1" onclick="Public()">No			
+			Dejar de Publicar  &nbsp;&nbsp;&nbsp;<input type="radio" id="public" name="statud" value="0"  onclick="Public()"><!-- &nbsp;&nbsp; -->
+			<!-- <input type="radio" id="public" name="statud"  value="1" onclick="Public()">No	 -->		
 	   @else
     	    <label id="msj"  class="publicNo text-danger" >¡No Published!</label><br>
-    	    ¿change?
-			<input type="radio" id="public" name="statud" value="1"  onclick="Public()" >Si  &nbsp;&nbsp;&nbsp;
-			<input type="radio" id="public" name="statud"  value="0" onclick="Public()">No 
+    	    Published  &nbsp;&nbsp;&nbsp;<input type="radio" id="public" name="statud" value="1"  onclick="Public()" > <!-- &nbsp;&nbsp;&nbsp;
+			<input type="radio" id="public" name="statud"  value="0" onclick="Public()">No  -->
 	   @endif
 		</div>
            <div align="center">	
@@ -104,7 +102,14 @@
 
 	</form>
 
-			
+<!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <label class="btn btn-info">
+        <input type="radio" name="gender" value="hombre" autocomplete="off"> Hombre
+    </label>
+    <label class="btn btn-info active">
+        <input type="radio" name="gender" value="mujer" autocomplete="off"> Mujer
+    </label>
+</div>	 -->
 
 </div>	        
 

@@ -17,14 +17,14 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->unique();
+            $table->string('title')->unique()->required();
             $table->text('description')->nullable();    
             $table->integer('user_created');
             $table->integer('user_updated')->nullable();
             $table->string('duracion')->nullable();  
             $table->string('img')->nullable(); 
             $table->string('cant_resps')->nullable();          
-            $table->integer('statud')->nullable(); //0 culminado, 1 activo, 2 pendiente
+            $table->integer('statud')->default('0'); //0 culminado, 1 activo, 2 pendiente
             $table->timestamps();
         });
     }
