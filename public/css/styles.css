@@ -53,10 +53,11 @@ li { text-decoration: none; }
 .text-bold{font-weight: bold;}
 
 
-.img-curs{padding:0; width: 40%;}
+.img-curs{padding:0; width: 100%; height: auto;}
 
-
-
+@media screen and (max-width:800px) {
+	.img-curs{padding:0; width: 40%; height: 20%}
+}
 		   
 .bar-right{ 
 	 width:30%;  

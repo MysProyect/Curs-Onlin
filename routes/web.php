@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Livewire\ResponsablsComponent;
 use Livewire\ParticipantsComponent;
-use Livewire\MenuCursosInscripcion;
+use Livewire\MenuCursosInscComments;
 use Livewire\InscriptionComp;
 
 // use App\Incription;
@@ -38,21 +38,18 @@ Route::get('/tienda', function () {
 })->name('tienda');
 
 
-//integrar rutas al componente MenuCursosInscripcion add commentarios
+//integradas rutas al componente MenuCursosInscComments 
 Route::get('/cursos/{id?}', function () {   
     return view('Menu.Cursos_Insc_Comm.index');
 })->name('cursos.index');
 
+// Route::get('/cursos/{id?}', MenuCursosInscComments::class)->name('cursos.index');
 
 
-// Route::resource('/cursos', 'MenuCursosInscripcion')->name('cursos.index');
-
-Route::post('/cursos', 'CommentController@store')->name('comment');
 
 
-//rutar integradas al comp-livewire MenuCursosInscripcion
-Route::get('/inscribirse/{id?}','InscripcionController@index')->name('inscribirse');   
-Route::post('/inscribirse', 'InscripcionController@save')->name('save');
+
+
 
 
 

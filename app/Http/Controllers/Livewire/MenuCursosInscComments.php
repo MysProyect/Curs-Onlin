@@ -13,15 +13,15 @@ use Auth;
 
 
 
-class MenuCursosInscripcion extends Component
+class MenuCursosInscComments extends Component
 {
 	use WithPagination;
 	 
 	//public $cedula, $name;
 	
-	public $curso, $curso_id, $viewinsc=0;
+	public $curso, $curso_id, $viewinsc=0, $viewcomment;
 	public $cedula, $name, $last_name, $email, $telef, $NroWp, $meth_pago, $pago; //
-	public $comments, $namecomment, $comment,$emailcomment;
+	public $comments, $comment,$emailCom, $nameCom, $view;
 	// public $part, $part_id,$CursoPartInsc;
 
 	function mount(){
@@ -31,7 +31,7 @@ class MenuCursosInscripcion extends Component
 
     public function render()
     {    
-		return view('livewire.menu-cursos-inscripcion',[
+		return view('livewire.menu-cursos-insc-comments',[
           'cursos'=>Curso::published()->orderBy('id','desc')->simplepaginate(4) 
 		]);
 
@@ -60,15 +60,6 @@ class MenuCursosInscripcion extends Component
 			} 			
 	}
 
-
-
-
-
-
-
-
-
-
 	public function saveinsc(){
 	// $this->curso_id;//$this->curso_id'';
 		$this->validate([
@@ -81,7 +72,6 @@ class MenuCursosInscripcion extends Component
 		 ]);
 		$part = Participant::where('cedula','=',$this->cedula)->first();
 		if (!$part){
-			$this->part = Auth::user()->id;
 			$part = Participant::create([
 			'cedula' => $this->cedula,
 			'name' => $this->name,	
@@ -130,10 +120,7 @@ class MenuCursosInscripcion extends Component
 			// 'meth_pago' => $this->meth_pago,
 			// 'pago' => $this->pago 		
 			// ]);
-			// if(Auth::user()){
-			// 	$pago->user_created = Auth::user()->id;
-			// 	$pago->save();		
-			// }
+
 			 //RELACION CON ELOQUENT 
 			 $pago = $insc->pago()->create([
 				'incription_id' => $insc->id,
@@ -149,41 +136,36 @@ class MenuCursosInscripcion extends Component
 		}
 		$this->viewinsc = 0;
 		return back()->with('mensaje','WELCOME TO THE COURSE');
+
+		request () -> session () -> flash ('mensaje','WELCOME, ya se encuentra registrado');
+        return  redirect ()->to( '/cursos' );	
 		
 	}
-
-
-
-
-
-
 	
-	
-  //   public function comment()
- 	// {
- 	 
- 	// 	$this->validate([ 'name' => 'required', 'email' => 'required|email', 'comment' => 'required']);	
- 		                                      
-		// $SaveCom = Comment::create([
-		// 'name' => $this->name,
-		// 'email' => $this->email,	
-		// 'comment' => $this->comment,
-		// 'curso_id' => $this->curso_id	
-		// ]);
-		// $this->default();
-		 // return redirect()->route('MenuCursos');
-		
- 		
- 	// }
+ 	public function comment($id){
+  		$curso = Curso::find($id);
+  		$this->curso_id = $curso->id;
+ 		$this->viewcomment = 3; 		
+ 	}
 
+ 	public function savecomment(){
 
+ 		$this->validate([ 'nameCom' => 'required', 'emailCom' => 'required|email', 'comment' => 'required']);
+ 		$SaveCom = Comment::create([
+		'name' => $this->nameCom,
+		'email' => $this->emailCom,	
+		'comment' => $this->comment,
+		'curso_id' => $this->curso_id	
+		]);
+		$this->default();
+		$this->viewcomment = '';
+		// return $this->render(); 
+		//return redirect()->to('/cursos');
 
-
-
-
-
-
-
+		request () -> session () -> flash ('comment','Comentario añadido');
+        return  redirect ()->to( '/cursos' );	
+			
+ 	}
 
 
 	public function default(){
@@ -197,6 +179,9 @@ class MenuCursosInscripcion extends Component
 		$this->email = '';
 		$this->telef = '';
 		$this->NroWp = '';	
+		$this->nameCom = '';
+		$this->emailCom = '';
+		$this->comment = '';
 	}
 
 	public function close(){
