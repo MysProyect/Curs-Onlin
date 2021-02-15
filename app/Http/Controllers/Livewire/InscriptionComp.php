@@ -27,27 +27,34 @@ class InscriptionComp extends Component
 
 	public $title, $curso_id, $description, $duracion;
 	public $ver, $valid;
-	public $inscs, $parts, $insc_id=[], $Marc;
+	public $All_inscs, $parts, $insc_id=[], $Marc;
 	public $CursSelec;
 	//public $inscSelec, $confir;
 
-	
+	protected $paginationTheme = 'bootstrap';
 
 
    public function render()
     {
+     //    return view('livewire.inscription-comp',[
+     //    	'cursos' => Curso::published()->withCount(['inscs'])->simplepaginate(10) 
+    	// ]);
         return view('livewire.inscription-comp',[
-        	'cursos' => Curso::published()->withCount(['inscs'])->simplepaginate(10) 
-    	]);
-
+  		    'cursos'=>Curso::where('statud', '=', 1)->withCount(['inscs'])->orderBy('id','desc')->paginate(15) 
+		]);
 
     }
 
 	  function mount(){
 		$inscs = Incription::all();
-    	$this->inscs = $inscs;
+    	$this->All_inscs = $inscs;
+
+
     	$parts = Participant::all();
-    	$this->parts = $parts;		
+    	$this->parts = $parts;	
+
+  //   	$count_parts = Incription::withCount(['part_id'])->get();
+		// $this->count_parts=$count_parts;	
 	}
 	  
 
@@ -71,14 +78,12 @@ class InscriptionComp extends Component
 
 
 
-	public function conf($id) { //Save confir 
-
-		//$this->confir=$this->conf;
-		// $CursSelec = Incription::where('curso_id',$CursSelec);
+	public function saveconf($id) { //Save confir 
+		// $CursSelec = Incription::where('conf',$CursSelec);
+		// $this->CursSelec=$CursSelec;
 		
-    	 $cont_insc = Count($this->insc_id);
-
-    	$this->CursSelec = $CursSelec;
+		$cont_insc = Count($this->insc_id);
+		// 	$this->CursSelec = $CursSelec;
 
     	// $this->insc=$this->insc_id;
       for($i=0; $i<$cont_insc; $i++){
@@ -93,10 +98,12 @@ class InscriptionComp extends Component
 			}
 		
             //$this->inscSelec = $inscSelec;	
-           
-       }
-       $this->valid = 1;
-    	return back()->with('conf','confirmado');	
+    	// return back()->with('conf','confirmado');	
+			$this->valid = 1;
+
+    	request () -> session () -> flash ('conf','confirmado');
+    	//return  redirect ()->to( '/admin-inscription' );
+    	}
 	}
 
 
@@ -130,8 +137,11 @@ class InscriptionComp extends Component
 
 	 public function destroy($id){	 
 		$insc= Incription::destroy($id); 
-		$this->valid = 1;
-    	 return back()->with('alert','Borrado de la lista');
+    	// return back()->with('conf','confirmado');	
+
+    	request () -> session () -> flash ('alert','Eliminado');
+        //return  redirect ()->to( '/admin-inscription' );
+    	//return back()->with('alert','Borrado de la lista');
 
 	}
 	

@@ -22,11 +22,11 @@ class PdfController extends Controller
 
       //echo $id;
 		$curso = App\Curso::find($id);
-		$inscs = App\Incription::where('curso_id', '=', $id)->get();
+		$All_inscs = App\Incription::where('curso_id', '=', $id)->get();
 		$parts = App\Participant::all();
 	// echo   $curso, $inscs, $parts;
       // return view('Admin.Inscrip.pdf-valid', compact('curso','inscs','parts'));
-	 	$pdf = PDF::loadView('Admin.Inscrip.pdf-valid', compact('curso','inscs','parts'));
+	 	$pdf = PDF::loadView('Admin.Inscrip.pdf-valid', compact('curso','All_inscs','parts'));
   		return $pdf->download('listado-de-inscriptos.pdf');
     }
 

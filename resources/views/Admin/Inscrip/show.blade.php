@@ -11,7 +11,7 @@
 
     <label>Participants <i class="text-success">confirmados</i>, <i class="text-muted">no confirnados</i></label><br><br>
     @foreach($parts as $part)
-       @foreach($inscs as $index=>$insc)
+       @foreach($All_inscs as $index=>$insc)
         
           @if(($part->id == $insc->part_id) && ($CursSelec->id == $insc->curso_id))
            

@@ -17,11 +17,11 @@ class MenuCursosInscComments extends Component
 {
 	use WithPagination;
 	 
-	//public $cedula, $name;
+	protected $paginationTheme = 'bootstrap';
 	
 	public $curso, $curso_id, $viewinsc=0, $viewcomment;
-	public $cedula, $name, $last_name, $email, $telef, $NroWp, $meth_pago, $pago; //
-	public $comments, $comment,$emailCom, $nameCom, $view;
+	public $cedula, $name, $last_name, $email, $telef, $NroWp, $meth_pago, $pago; //insc
+	public $comments, $comment,$emailCom, $nameCom;
 	// public $part, $part_id,$CursoPartInsc;
 
 	function mount(){
@@ -32,7 +32,7 @@ class MenuCursosInscComments extends Component
     public function render()
     {    
 		return view('livewire.menu-cursos-insc-comments',[
-          'cursos'=>Curso::published()->orderBy('id','desc')->simplepaginate(4) 
+          'cursos'=>Curso::published()->orderBy('id','desc')->paginate(4) 
 		]);
 
 		// return view('livewire.menu-cursos-inscripcion',[
@@ -135,7 +135,7 @@ class MenuCursosInscComments extends Component
 			$this->default();
 		}
 		$this->viewinsc = 0;
-		return back()->with('mensaje','WELCOME TO THE COURSE');
+		//return back()->with('mensaje','WELCOME TO THE COURSE');
 
 		request () -> session () -> flash ('mensaje','WELCOME, ya se encuentra registrado');
         return  redirect ()->to( '/cursos' );	

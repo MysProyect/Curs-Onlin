@@ -18,7 +18,7 @@
 		</tr>
 	</head>
 	<tbody>
-		@foreach($inscs as $insc)
+		@foreach($All_inscs as $insc)
 		<tr>
 		@if ($insc->conf == 1)
 
@@ -28,9 +28,9 @@
 			@endif
 		@endforeach
 		@endif
-		@endforeach
 
 		</tr>
+		@endforeach
 	</tbody>
 </table>
 </body>

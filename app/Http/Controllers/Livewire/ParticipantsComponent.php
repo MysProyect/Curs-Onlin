@@ -20,6 +20,23 @@ class ParticipantsComponent extends Component
 	public $part, $mensaje;
 	public $InscCurs, $InscPart;
 	
+    
+
+	protected $paginationTheme = 'bootstrap';
+
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+
+
+
+
+
+
+
     public function render()
     {
 		$cursos= Curso::all();
@@ -28,7 +45,7 @@ class ParticipantsComponent extends Component
 		{
 			$sub_query->where('name','like', '%'.$this->searchPart.'%')
 			->orWhere('last_name','like', '%'.$this->searchPart.'%');
-			})->orderBy('id','desc')->simplepaginate(10) 
+			})->orderBy('id','desc')->paginate(15) 
 		]);
 		
 		

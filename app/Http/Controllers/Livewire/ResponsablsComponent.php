@@ -10,7 +10,9 @@ use Auth;
 //Desd Admin   
 class ResponsablsComponent extends Component
 {
-	 use WithPagination;
+	use WithPagination;
+
+	protected $paginationTheme = 'bootstrap';
 	
 	public $resp_id, $cedula, $name, $last_name, $email, $telef, $NroWp, $profession_id='';
 	public $view = 'create';

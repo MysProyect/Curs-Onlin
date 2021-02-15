@@ -4,8 +4,8 @@
  <label>Listado de aspirantes al curso</label><br><br>
 
     @if (session('alert'))
-          <div class="alert alert-danger">             
-            {{ session('alert') }}
+          <div class="alert alert-danger">   
+             {{ session('alert') }}
           </div>
     @endif
        @if (session('conf'))
@@ -16,40 +16,41 @@
       
     <?php $cont=1; ?>
     <?php $si=''; ?>
-    <ul>
       @foreach($parts as $part)
-       @foreach($inscs as $index=>$insc)
+       @foreach($All_inscs as $index=>$insc)
         
           @if(($part->id == $insc->part_id) && ($CursSelec->id == $insc->curso_id))
              <?php $si=1; ?>
+            <div class="contenedor-div">
             @if($insc->conf == 1)
-                <li class="text-success">                    
-                    <input type="checkbox" name="conf[]" wire:model="insc_id" 
-                    wire:click="conf({{ $insc->id }})" id="conf" value="{{$insc->id}}" style="visibility: hidden;">
-                       {{$part->name}}{{$part->last_name}}
-                      <img src="{{asset('images/icons/checked.jpg')}}" width="30"></label>
-                      &nbsp; &nbsp;  <input type="button" value="x" wire:click="destroy({{ $insc->id }})" class="" >
-                  </li>  
+                  <div  class="form-group text-success" style="border-bottom-color: red 1px;">  
+                                  
+                      <input type="checkbox" name="conf[]" wire:model="insc_id" 
+                      wire:click="saveconf({{ $insc->id }})" id="conf" value="{{$insc->id}}" >
+                       {{$part->name}} {{$part->last_name}}                    
+                       <img src="{{asset('images/icons/checked.jpg')}}" width="30">
+                       
+                     <input type="button" value="x" wire:click="destroy({{ $insc->id }})" class="btn btn-danger" style=" float: right;">
+                  </div> 
+               
           
             @else
-                <li class="">              
-                    <input type="checkbox"  name="conf[]" wire:model="insc_id" 
-                    wire:click="conf({{ $insc->id }})" id="conf" value="{{$insc->id}}" onclick="conf()">
-                    {{$part->name}}{{$part->last_name}}
-                    &nbsp; &nbsp;  <input type="button" value="x" wire:click="destroy({{ $insc->id }})" class="" >
-                </li>
-            @endif
+                <div class="form-group" style="border-top:2px solid; border-color:#BFBFBF; ">   
 
+                    <input type="checkbox"  name="conf[]" wire:model="insc_id" 
+                    wire:click="saveconf({{ $insc->id }})" id="conf" value="{{$insc->id}}" onclick="conf()">
+                    {{$part->name}} {{$part->last_name}}
+
+                    <input type="button" value="x" wire:click="destroy({{ $insc->id }})" class="btn btn-warning" style=" float: right;">
+                </div> 
+
+            @endif
+            </div>
           @endif
 
         @endforeach
       @endforeach
 
-
-  
-
-   
-      </ul>
     <input type="text" wire:model="CursSelec" name="curso" style="visibility: hidden;" value="{{$CursSelec->id}}">
     @if($si==1)
      <a href="{{route('ConfPDF',$CursSelec->id)}}" class="btn btn-success">Imprimir lista</a>
@@ -82,6 +83,7 @@ checkbox.addEventListener( 'change', function() {
     }
 });
 </script> -->
+
 
 </div>
 

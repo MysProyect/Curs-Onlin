@@ -74,20 +74,13 @@ Route::get('/edit-curs/{id?}', 'CursController@edit')->name('EditCurs');
 Route::put('/edit-curs/{id}','CursController@update')->name('UpCurso');
 
 
-//rutas livewire Protegidas
+//rutas livewire Protegidas (ADMIN)
 Route::middleware('auth:web')->group(function () {
 
     Route::get('/privileged-user', function(){
 		return view('Admin.tool');
 	})->name('Admin');
 
-    // // Route::get('/Admin.responsabls', ResponsablsComponent::class)->name('resp-livew');
-    // Route::get('/Admin.participants', ParticipantsComponent::class)->name('part-livew');
-
-//VIEW ADMIN
-	Route::get('/Admin-class', function() {
-		return view('Admin.Class.aulas');
-	})->name('class');
 
     Route::get('/Responsabls',function(){
 		return view('Admin.responsabls/index');
@@ -96,6 +89,14 @@ Route::middleware('auth:web')->group(function () {
 	Route::get('/Participants',function(){	
 		return view('Admin.participants.index');
 	})->name('part-livew');
+    // // Route::get('/Admin.responsabls', ResponsablsComponent::class)->name('resp-livew');
+    // Route::get('/Admin.participants', ParticipantsComponent::class)->name('part-livew');
+
+
+	Route::get('/Admin-class', function() {
+		return view('Admin.Class.aulas');
+	})->name('class');
+
 	
 	Route::get('/admin-inscription',function(){
 		//$reg = App\Incription::with('curs')->get();		
@@ -104,8 +105,6 @@ Route::middleware('auth:web')->group(function () {
 	
 
 	Route::get('/Admin.inscription', InscriptionComp::class,'destroy');
-
-
 
 	Route::get('/Admin.inscription/{id}', 'PdfController@ConfPDF')->name('ConfPDF');
     

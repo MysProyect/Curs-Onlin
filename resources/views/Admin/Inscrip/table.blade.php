@@ -5,7 +5,7 @@
 						{{ session('mensaje') }}
 					</div>
 				 @endif
-	@if(empty($cursos))
+	@if(asset($cursos))
 	<table class="table">   		
 		<thead class="thead-dark"> 			
 		<tr align="center">   
@@ -14,8 +14,8 @@
 				<th><img src="{{asset ('images/icons/show.png')}}" width="50"></th>
 			</tr>
 		</thead>
-		@foreach($cursos as $curso) 
-		<tbody>			
+		<tbody>	
+		@foreach($cursos as $curso) 		
 			<tr>
 				<td class="text-primary text-center text-uppercase" style="height: auto;width: 60%;">
 					{{$curso->title}}
@@ -29,10 +29,10 @@
 				<td align="center" class="ver-insc">
 					<img src="{{asset ('images/icons/ver.png')}}" wire:click="ver({{ $curso->id }})" class="all-scroll" width="30" title="ver">		
 				</td>
-
-			</tr>			
+			</tr>	
+		@endforeach		
 		</tbody>
-		@endforeach
+		
 	</table>
 
 	 <div style="color:blue;">
