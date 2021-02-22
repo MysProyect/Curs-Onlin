@@ -13,9 +13,9 @@ use Livewire\InscriptionComp;
 // use App\Profession;
 // use App\Curso;
 
-Route::get('/menu', function () {
-    return view('menu');
-})->name('menu');
+// Route::get('/menu', function () {
+//     return view('menu');
+// })->name('menu');
 
 
 Route::get('/', function () {
