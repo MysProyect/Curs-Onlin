@@ -7,11 +7,15 @@ use Livewire\ParticipantsComponent;
 use Livewire\MenuCursosInscComments;
 use Livewire\InscriptionComp;
 
+//use Illuminate\Support\Str;
 // use App\Incription;
 // use App\User;
 // use App\Profession;
 // use App\Curso;
 
+Route::get('/menu', function () {
+    return view('menu');
+})->name('menu');
 
 
 Route::get('/', function () {
@@ -48,7 +52,10 @@ Route::get('/cursos/{id?}', function () {
 
 
 
-
+// Route::get('/key',function(){
+// 	$key = Str::random(32);
+// 	return $key;
+// });
 
 
 

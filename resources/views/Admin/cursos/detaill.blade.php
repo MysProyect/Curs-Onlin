@@ -7,10 +7,10 @@
 		<small><b>{{$ver->title}}</b></small>
 	</div>
 	<div align="center">	
-		<img src=" {{ Storage::url("$ver->img")}}" alt="Imagen no encontada" class="img-curso"/>
+		<img src=" {{ Storage::url("$ver->img")}}" alt="Imagen no encontada" class="img-curs-2"/>
 	</div>
 	<div>
-  		<label style="padding: 5%; padding-top: 2%; text-align: center;">{{$ver->description}}</label>
+  		<label class="display-6 text-center">{{$ver->description}}</label>
   	</div>
  	<div align="center">
 	    @if($ver->duracion)

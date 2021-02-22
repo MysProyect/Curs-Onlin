@@ -16,11 +16,11 @@ use Auth;
 class MenuCursosInscComments extends Component
 {
 	use WithPagination;
-	 
 	protected $paginationTheme = 'bootstrap';
+	//public $cedula, $name;
 	
-	public $curso, $curso_id, $viewinsc=0, $viewcomment;
-	public $cedula, $name, $last_name, $email, $telef, $NroWp, $meth_pago, $pago; //insc
+	public $curso, $curso_id, $view = 0, $viewcomment;
+	public $cedula, $name, $last_name, $email, $telef, $NroWp, $meth_pago, $pago; //
 	public $comments, $comment,$emailCom, $nameCom;
 	// public $part, $part_id,$CursoPartInsc;
 
@@ -42,7 +42,7 @@ class MenuCursosInscComments extends Component
     
     public function insc($id){
 		$curso = Curso::find($id);		
-			$this->viewinsc = 1;
+			$this->view = 1;
 			$this->curso = $curso;
 			$this->curso_id = $curso->id;
 	}
@@ -134,11 +134,8 @@ class MenuCursosInscComments extends Component
 
 			$this->default();
 		}
-		$this->viewinsc = 0;
-		//return back()->with('mensaje','WELCOME TO THE COURSE');
-
-		request () -> session () -> flash ('mensaje','WELCOME, ya se encuentra registrado');
-        return  redirect ()->to( '/cursos' );	
+		$this->view = 0;
+		return back()->with('mensaje','WELCOME TO THE COURSE');
 		
 	}
 	
@@ -160,10 +157,7 @@ class MenuCursosInscComments extends Component
 		$this->default();
 		$this->viewcomment = '';
 		// return $this->render(); 
-		//return redirect()->to('/cursos');
-
-		request () -> session () -> flash ('comment','Comentario añadido');
-        return  redirect ()->to( '/cursos' );	
+		// return back()->with('comment','comentario añadido');	
 			
  	}
 
@@ -185,7 +179,7 @@ class MenuCursosInscComments extends Component
 	}
 
 	public function close(){
-		$this->viewinsc = 0;
+		$this->view = 0;
 	}
 
 

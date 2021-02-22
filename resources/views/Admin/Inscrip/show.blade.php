@@ -8,8 +8,9 @@
 		
 
 	  <h1 class="display-7 text-primary text-center"> {{$CursSelec->title}}</h1>
+    <br>
 
-    <label>Participants <i class="text-success">confirmados</i>, <i class="text-muted">no confirnados</i></label><br><br>
+    <label> <i class="text-success">confirmados</i>, <i class="text-muted">no confirnados</i></label><br><br>
     @foreach($parts as $part)
        @foreach($All_inscs as $index=>$insc)
         

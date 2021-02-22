@@ -134,6 +134,7 @@ class CursController extends Controller
 				$New->resp_id = $request->resp; 				
 				$New->save();
 			}
+			
 			if ($request->cant_resps == 2){
 				$request->validate([ 'resp' => 'required']); 
 				$resp=$request->resp;
@@ -147,9 +148,9 @@ class CursController extends Controller
 					  $New->save();
 				 } 
 			}				  			
-		return redirect()->route('curso.index')->with('mensaje','Curso Actualizado');
+		return redirect()->route('cursos')->with('mensaje','Curso Actualizado');
 		}		
-	return redirect()->route('curso.index');
+	return redirect()->route('cursos');
 	}
 
 

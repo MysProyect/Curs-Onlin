@@ -8,7 +8,7 @@
          
 		<div align="center" >
 			<strong  class="h1 text-primary">Convencidos que los mejores tiempos </strong><br>
-			<small class="tite2" align="center">¡son estos que vivimos! </small>  
+			<small class="h3 text-success" align="center">¡son estos que vivimos! </small>  
 			 <div class="tite3">
 			 	Es probable que hayas pasado por infinidad de hogares sin generar la
 				quietud necesaria para cuestionar el cómo lo estás entendiendo, lo que significa o representa para ti. Si das sentido al hogar, no sólo como distribución espacial, sino

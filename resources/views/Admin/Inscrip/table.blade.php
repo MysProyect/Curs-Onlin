@@ -10,20 +10,21 @@
 		<thead class="thead-dark"> 			
 		<tr align="center">   
 				<th>Course</th>
-				<th>Participants Nª</th>
+				<th>Valid/Exp</th>
 				<th><img src="{{asset ('images/icons/show.png')}}" width="50"></th>
 			</tr>
 		</thead>
 		<tbody>	
 		@foreach($cursos as $curso) 		
 			<tr>
-				<td class="text-primary text-center text-uppercase" style="height: auto;width: 60%;">
+				<td class="text-primary text-center text-uppercase display-5" style="height: auto;">
 					{{$curso->title}}
 				</td>
 
-				<td class="display-5 text-center" style="display: flex;">{{$curso->inscs_count}}
+				<td class="display-5 alert-danger" style="display: flex;">
+					<div>{{$curso->inscs_count}}
 					<img src="{{asset ('images/icons/nosotros-cont.png')}}" wire:click="ConfIns({{ $curso->id }})" class="all-scroll" width="80" height="50" title="confirmar inscripción">
-					
+					</div>
 				</td>					
 	
 				<td align="center" class="ver-insc">

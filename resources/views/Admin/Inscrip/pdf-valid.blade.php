@@ -8,11 +8,11 @@
 <body>
 
 
-<h2 style="color:blue;">Cursos: {{$curso->title}}</h2>
+<h2 style="color:blue;">{{$curso->title}}</h2>
 
 <h1 align="center">Listado de Inscritos</h1>
-<table style="border-color: black; border: 1px solid;">
-	<head>
+<table style="text-align: center; width: 100%;">
+	<head style="background: black; color: yellow;">
 		<tr>
 			<th>Nombre y Apellido</th>
 		</tr>

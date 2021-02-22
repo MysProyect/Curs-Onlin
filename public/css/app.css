@@ -51,7 +51,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }*/
 
-article,
+/*article,
 aside,
 figcaption,
 figure,
@@ -62,7 +62,7 @@ main,
 nav,
 section {
   display: block;
-}
+}*/
 
 /*body {
   margin: 0;
@@ -453,6 +453,11 @@ h6,
   font-weight: 300;
   line-height: 1.2;
 }
+.display-7 {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
 @media screen and (max-width:800px) {
 
 .display-4 {
@@ -461,10 +466,10 @@ h6,
   line-height: 1.2;
 }
 .display-5 {
-  font-size: 0.5rem;
-  font-weight: 300;
-  line-height: 1.2;
+  font-size: 1rem;
 }
+
+.display-7{display:none;}
 }
 
 
@@ -592,6 +597,10 @@ pre code {
 .pre-scrollable {
   max-height: 340px;
   overflow-y: scroll;
+}
+
+.container{
+  display: flex;
 }
 
 .container,
@@ -3777,6 +3786,10 @@ input[type=button].btn-block {
   margin-top: 12%;
 }
 
+@media screen and (max-width:800px) {
+  .input-group {  display: block; }
+}
+
 .input-group > .form-control,
 .input-group > .form-control-plaintext,
 .input-group > .custom-select,
@@ -4433,14 +4446,17 @@ input[type=button].btn-block {
   list-style: none;
 }
 
-.nav-link {
+.nav-link.active {
   display: block;
   padding: 0.5rem 1rem;
+  color: red;
+
 }
 
 .nav-link:hover,
 .nav-link:focus {
   text-decoration: none;
+  color:  #e85c23;
 }
 
 .nav-link.disabled {
@@ -4481,6 +4497,7 @@ input[type=button].btn-block {
   border-color: #dee2e6 #dee2e6 #f8fafc;
 }
 
+
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
   border-top-left-radius: 0;
@@ -4496,7 +4513,10 @@ input[type=button].btn-block {
   color: #fff;
   background-color: #3490dc;
 }
-
+/*
+.active{
+  color:red;
+}*/
 .nav-fill > .nav-link,
 .nav-fill .nav-item {
   flex: 1 1 auto;
@@ -4525,6 +4545,8 @@ input[type=button].btn-block {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1rem;
+  left: 0;
+  right: 0;
 }
 
 .navbar .container,
@@ -4860,7 +4882,8 @@ input[type=button].btn-block {
 
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: #c88010;
+  /*color: rgba(0, 0, 0, 0.9);*/
 }
 
 .navbar-light .navbar-nav .nav-link {

@@ -41,13 +41,18 @@
  </div>
 
 
-
 <footer>
-	<div id="footer" align="center"> @ (2020) todos los derechos reservados
-		<a href="" ><img src="{{asset('images/icons/Facebook.png')}}" width="80" height="60" style="float:right; margin-left:20px; opacity:0.5; "></a>
-		<a href="" ><img src="{{asset('images/icons/Twitter.png')}}" width="80" height="60" style="float:right; margin-left:20px;opacity:0.5;"></a>
-		<a href=""><img src="{{asset('images/icons/Messeger.png')}}" width="80" height="60" style="float:right; margin-left:20px; opacity:0.5;"></a>
-	</div>
+  <div align="center">
+    <label>
+        @ (2020) todos los derechos reservados<br><br>developmentsoft2020@gmail.com
+    </label>
+
+    <label style="" >
+        <a href="" ><img src="{{asset('images/icons/Facebook.png')}}" class="img-footer" ></a>
+        <a href="" ><img src="{{asset('images/icons/Twitter.png')}}" class="img-footer"></a>
+        <a href=""><img src="{{asset('images/icons/Messeger.png')}}" class="img-footer"></a>
+    </label>
+</div>
 </footer>
 	
 	

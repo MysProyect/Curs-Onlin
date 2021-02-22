@@ -22,29 +22,29 @@
 		@else 
 		@foreach($cursos as $item)	
 	        <div class="listCurs">  							
-				<div class="form-group" align="center">
+				<div class="form-group" align="center" style="width: 100%;">
 					<label class="display-4">
 						<a href="{{ route('detaill', $item) }}" title="Ver detalles" >
 							<?php echo (strtoupper($item->title)) ?>
 						</a> 
 					</label>
 					<div class="img-curs">
-					<small>
-						<img src=" {{ Storage::url("$item->img")}}" alt="Imagen No disponible" align="right" title="imagen del curso">
-					</small> 
-				</div>
-				<div>
+						<small>
+							<img src=" {{ Storage::url("$item->img")}}" alt="Imagen No disponible" align="right" title="imagen del curso" class="img-curs">
+						</small> 
+					</div>
+			
 				@if (!empty($item->description))
 					 <?php $tam = strlen($item->description); ?>
 					@if ($tam <= 200)                
-					<small class="text-muted">{{$item->description}}</small>
+					<small class="text-muted display-6">{{$item->description}}</small>
                		@elseif ($tam > 200)
-					<small class="text-muted"> <?php echo substr($item->description, 0, 200); ?>... </small>
+					<small class="text-muted display-6"> <?php echo substr($item->description, 0, 200); ?>... </small>
 					@endif
 				@else
 				    <p>Descripcion No disponible</p>
 				@endif
-				</div>
+			</div>
 		        @if($item->duracion)
                         <small class="text-primary">{{$item->duracion}} de duration</small>
                 @endif

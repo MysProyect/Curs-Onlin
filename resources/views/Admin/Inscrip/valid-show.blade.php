@@ -1,6 +1,8 @@
 <div>
-  
- <h1 class="display-6 text-primary text-center">{{$CursSelec->title}}</h1>        
+  <div align="center">
+      <img src="{{asset('images/reg.jpg')}}" width="200" height="100">  
+       <h1 class="display-6 text-primary text-center">{{$CursSelec->title}}</h1>     
+  </div>   
  <label>Listado de aspirantes al curso</label><br><br>
 
     @if (session('alert'))
@@ -24,11 +26,13 @@
             <div class="contenedor-div">
             @if($insc->conf == 1)
                   <div  class="form-group text-success" style="border-bottom-color: red 1px;">  
-                                  
-                      <input type="checkbox" name="conf[]" wire:model="insc_id" 
-                      wire:click="saveconf({{ $insc->id }})" id="conf" value="{{$insc->id}}" >
-                       {{$part->name}} {{$part->last_name}}                    
-                       <img src="{{asset('images/icons/checked.jpg')}}" width="30">
+                      <label>
+                         {{$part->name}} {{$part->last_name}}   <img src="{{asset('images/icons/checked.jpg')}}" width="30">
+                      </label>         
+                    <!--   <input type="checkbox" name="conf[]" wire:model="insc_id" 
+                      wire:click="saveconf({{ $insc->id }})" id="conf" value="{{$insc->id}}" > -->
+                                          
+                      
                        
                      <input type="button" value="x" wire:click="destroy({{ $insc->id }})" class="btn btn-danger" style=" float: right;">
                   </div> 

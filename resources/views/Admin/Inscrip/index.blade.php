@@ -6,7 +6,7 @@
 	   
 	
 <div class="">
-	<h1 class="title" ><b>Inscription's</b></h1> 
+	<h1 class="display-5" ><b>Inscription's</b></h1> 
 	
     <div >@livewire('inscription-comp')</div>
         

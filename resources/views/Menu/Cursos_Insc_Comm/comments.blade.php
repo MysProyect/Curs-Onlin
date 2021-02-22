@@ -1,5 +1,5 @@
 <div>
-	 <div class="container">
+	 <div >
         <br><br>
            	<div align="center" class="text-primary"><b>New Comments</b></div>
      

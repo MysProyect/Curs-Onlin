@@ -7,7 +7,7 @@
  
     <div class="fadeIn first">
 		<h1>Logearse</h1>
-      <img src="{{asset('images/loguear.jpeg')}}" id="icon">
+      <img src="{{asset('images/loguear.jpeg')}}"  class="icon" id="icon">
     </div>
     <div class="tool"> 
          <!-- Login Form -->
@@ -15,7 +15,7 @@
           {{ csrf_field() }} 
 		  <div style="padding:2%;">
 			<input type="login" id="login" class="fadeIn second form-control"  name="login" value="{{ old('login') }}" placeholder="E-Mail o Usuario" style="padding:30px; font-size:20px; font-weight: bold;"  required autofocus>
-			<br> <input type="password" id="password" class="fadeIn third " name="password" placeholder="Password" style="padding:15px; font-size:20px; font-weight: bold;" required>
+			<br> <input type="password" id="password" class="form-control" name="password" placeholder="Password" style="padding:15px; font-size:20px; font-weight: bold;" required>
 		 </div>
 		<DIV>
 			 <button type="submit" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
@@ -269,11 +269,11 @@ input[type=text]:placeholder {
   animation-delay: 0.6s;
 }
 
-.fadeIn.third {
+/*.fadeIn.third { //class input password
   -webkit-animation-delay: 0.8s;
   -moz-animation-delay: 0.8s;
   animation-delay: 0.8s;
-}
+}*/
 
 .fadeIn.fourth {
   -webkit-animation-delay: 1s;
@@ -315,5 +315,11 @@ input[type=text]:placeholder {
 .op{
 		padding-right:10px;
 	}
+
+
+  @media screen and (max-width:800px) {
+    #icon {  width:20%;  }
+    h1{ font-size: 0.5rem; }
+}
 
 </style>
