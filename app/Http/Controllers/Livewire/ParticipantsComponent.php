@@ -32,11 +32,6 @@ class ParticipantsComponent extends Component
 
 
 
-
-
-
-
-
     public function render()
     {
 		$cursos= Curso::all();
@@ -61,7 +56,8 @@ class ParticipantsComponent extends Component
 			
 			    $this->edit($part->id);  
 			    $this->view = 'edit';
-			    return back()->with('mensaje','Datos Registrados');	
+			    //return back()->with('mensaje','Datos Registrados');
+			    request () -> session () -> flash ('mensaje','Datos Registrados');	
 			} 			
 	}
 	  

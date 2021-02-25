@@ -19,7 +19,10 @@ class Participant extends Model
           return $this->belongsTo(Profession::class);
     }
 
-
+     public function aulas()
+    {
+        return $this->hasMany(Aula::class);
+    }
 
     public function inscs()
     {

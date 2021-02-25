@@ -28,9 +28,9 @@ Route::get('/nosotros', function () {
 
 
 
-Route::get('/aulas', function() {
-	return view('Menu.AV.aulas');
-})->name('AV-livew');
+Route::get('/aula-virtual', function() {
+	return view('Menu.Aulas.index');
+})->name('aulas');
 
 
 Route::get('/ideas', function () {

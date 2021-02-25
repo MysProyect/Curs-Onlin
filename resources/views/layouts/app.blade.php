@@ -177,7 +177,7 @@
 	</div>
 	<div class="container-right" > 
 		<div>
-			<a href="{{ route('AV-livew')}}"> 
+			<a href="{{ route('aulas')}}"> 
 				<img src="{{ asset('images/av2.jpeg')}}" class="img-left" title="entrar al Aula Virtual">
 			</a> 
 		    <br><br>

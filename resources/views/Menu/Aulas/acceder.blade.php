@@ -1,44 +1,49 @@
-@extends('layouts.appLogin')
-@section('title','- Login')
-@section('content')
-  
+ 
  <div class="wrapper fadeInDown">
   <div id="formContent">
  
     <div class="fadeIn first">
-		<h1>Logearse</h1>
-      <img src="{{asset('images/loguear.jpeg')}}"  class="icon" id="icon">
+		<h1>Entrar al Aula Virtual</h1>
+		<p class="display-6"> curso: {{$curso->title}}</p>
+      <img src="{{asset('images/icons/acceder.jpg')}}"  class="icon" id="icon">
     </div>
     <div class="tool"> 
-         <!-- Login Form -->
-       <form class="" method="POST" action="{{ route('login') }}">
-          {{ csrf_field() }} 
+  
 		  <div style="padding:2%;">
-			<input type="login" id="login" class="fadeIn second form-control display-4"  name="login" value="{{ old('login') }}" placeholder="E-Mail o Usuario" style="padding:8%;"  required autofocus>
-			<br> <input type="password" id="password" class="form-control display-4" name="password" placeholder="Password" style="padding:5%;" required>
+        <input type="login" id="login" wire:model="usuario" class="fadeIn second form-control display-4"  name="login" value="{{ old('usuario') }}" placeholder="E-Mail o Usuario" required autofocus>
+        @error('usuario')
+          <label class="alert-danger">Usuario Obligatorio</label>
+        @enderror
+			<br> <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>
+        @if ($errors->has('password'))
+          <span class="help-block">
+            <strong>{{ $errors->first('password') }}</strong>
+          </span>
+        @endif
 		 </div>
 		<DIV>
-			 <button type="submit" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
+			 <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
 		</DIV>
 		  <div align="right"><a style="font-size: 1rem;" href="{{ route('password.request') }}">
 				Olvido su Password? </a>
-		   </div>
-    </form>
+		  </div>
+      <br>
+       <label class="alert-danger text-center">{{$failAuth}}</label>
+       <br>
+<!-- 
+{{$usuario}}
+{{$password}}
 
-    <!-- Remind Passowrd -->
-   
-			@if ($errors->has('login')) 
+   		@if ($errors->has('usuario')) 
 			<div class="alert alert-danger" role="alert">
-				{{ $errors->first('login') }}
+				{{ $errors->first('usuario') }}
 			@elseif($errors->has('password'))
 				{ $errors->first('password') }}
 			@endif  		
-			</div>
+			</div> -->
 
   </div>
  
-@endsection
-
 
 
 

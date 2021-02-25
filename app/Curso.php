@@ -24,6 +24,10 @@ class Curso extends Model
          return $this->hasMany(Incription::class);
     }
 
+       public function aulas()
+    {
+        return $this->hasMany(Aula::class);
+    }
 
     public function comments()
     {

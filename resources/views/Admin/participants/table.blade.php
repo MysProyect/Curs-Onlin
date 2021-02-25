@@ -6,7 +6,7 @@
 		</div>
 	@endif
 @if($parts->count())
-	<br><br><br>
+	<br>
 	<input type="text" class="search-input"  wire:model="searchPart"  placeholder="Buscar" >    
 	<table class="table">   		
 		<thead class="thead-dark"> 			
