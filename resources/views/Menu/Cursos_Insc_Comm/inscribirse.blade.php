@@ -1,6 +1,6 @@
 <div>
-	<div class="reg">
-		<h1 class="display-5 text-primary text-center text-uppercase" align="center">{{ $curso->title}}</h1>
+	<div class="container" align="center">
+		<h1 class="display-5 text-primary text-center text-uppercase" >{{ $curso->title}}</h1>
 		<img src="{{asset('images/reg.jpg')}}" class="img-insc">
 	</div>
 			

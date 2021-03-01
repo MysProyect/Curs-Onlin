@@ -4,22 +4,15 @@
  
     <div class="fadeIn first">
 		<h1>Entrar al Aula Virtual</h1>
-		<p class="display-6"> curso: {{$curso->title}}</p>
+		<p class="display-6 text-primary"> <b>curso:</b> {{$curso->title}}</p>
       <img src="{{asset('images/icons/acceder.jpg')}}"  class="icon" id="icon">
     </div>
     <div class="tool"> 
   
 		  <div style="padding:2%;">
         <input type="login" id="login" wire:model="usuario" class="fadeIn second form-control display-4"  name="login" value="{{ old('usuario') }}" placeholder="E-Mail o Usuario" required autofocus>
-        @error('usuario')
-          <label class="alert-danger">Usuario Obligatorio</label>
-        @enderror
 			<br> <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>
-        @if ($errors->has('password'))
-          <span class="help-block">
-            <strong>{{ $errors->first('password') }}</strong>
-          </span>
-        @endif
+     
 		 </div>
 		<DIV>
 			 <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>

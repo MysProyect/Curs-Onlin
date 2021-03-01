@@ -11,6 +11,8 @@
 			</span>
 		@endif    
 	
+
+
 	<div  class="container">		              
 		<form class="form-horizontal" method="POST" action="{{ route('SaveCurso') }}" name="formulario" id="formulario" enctype="multipart/form-data" onsubmit="return confirm('¿confirmar si desea guardar?');">
 			{{ csrf_field() }}
@@ -24,25 +26,24 @@
 			 		 @enderror
 			</div>
 			<div class="form-group">
-				&nbsp;&nbsp; <label>Descripcion:</label>
+				<label class="text-center">Descripcion:</label>
 				<textarea  name="description" placeholder="Description / Intent or purpose of the course" value="{{ old('description') }}">
 				</textarea>
-			</div>	
-			<div>
-				Abjuntar Imagen<input type="file" name="img" accept="image/png, .jpeg, .jpg, image/gif"/>
-			  @error('img')
-					<span class="alert alert-danger">{{ $message }}</span>
-			  @enderror
-			</div>
-			<br>
 			
-			<div style="display:flex;font-weight:bold;">		
-				<div class="resp" onclick="SelecDinam()" id="Resp">
-					Facilitador(es):		
-					<input type="radio" id="Resp" name="cant_resps" value="1" >Uno? 
+				Abjuntar Imagen<input type="file" name="img" accept="image/png, .jpeg, .jpg, image/gif"/>
+				  @error('img')
+					<span class="alert alert-danger">{{ $message }}</span>
+			  	  @enderror
+			</div>
+		
+			
+			<div  class="form-group">		
+				<div class="display-5" onclick="SelecDinam()" id="Resp">					
+					<label class="title-op">Facilitador(es):</label>&nbsp;&nbsp;
+					<input type="radio" id="Resp" name="cant_resps" value="1" >Uno? &nbsp;
 					<input type="radio" id="Resp" name="cant_resps"  value="2">varios?					
 				</div>	
-					<div  align="center" class="Add-Resp" >
+				<div  align="right" class="display-6" >
 					Si responsable No esta en la lista de <a href="{{ route('resp-livew')}}" title="Responsibls">click aqui</a>
 
 				</div>
@@ -69,14 +70,17 @@
         
 		<div class="form-group text-success">
 			<h1> Duraccion<input type="text" name="duracion" size="10" placeholder="Ejem: 10 hrs">  </h1> 
-        </div> <br><br><br>
+        </div> <br><br>
         <div class="form-group">  
 			Publicar<input type="radio" id="public" name="statud" value="1" onclick="Public()">Si 
+			<span style="display: none;" id="msj">				
+			</span>
 			<input type="radio" id="public" name="statud"  value="0" onclick="Public()" >No
 		</div>
          
          <input type="submit" name="btnsave" class=" tex-bt btn btn-primary btn-block" value="Guardar"/>
-         <input type="reset" value="Cancelar" class="btn btn-danger bt-canc" >
+         <input type="reset" value="Limpiar" class="btn btn-warning " >
+         <a href="{{ route('cursos') }}"> <input type="button" value="Cancelar" class="btn btn-danger" ></a>
  
 	</form>
 </div>

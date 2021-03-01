@@ -1,6 +1,8 @@
 <div>
      
-     @include('Menu.menu')
+     @include('Menu.menu') 
+
+     <!-- INACTIVO -->
      
     
 </div>

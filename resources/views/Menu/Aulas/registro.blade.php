@@ -1,7 +1,7 @@
 <div class="" style="width: 50%; margin-left: 20%; margin-right: 20%;margin-top: 3%; borde:1px solid">
 <!-- 	<img src="{{asset('images/reg.jpg')}}" /> -->
 	<div class="form-group text-center">
-		<input type="text" wire:model="cedula"  class="form-control" placeholder="Ingrese cedula de Identidad" autofocus required  onkeyUp="return ValNumero(this);" wire:change="verif({{ $curso_id }})"/>
+		<input type="text" wire:model="cedula"  class="display-5" placeholder="Ingrese cedula de Identidad" autofocus required  onkeyUp="return ValNumero(this);" wire:change="verif({{ $curso_id }})"/>
 		@error('cedula')
 			<label class="alert-danger">Cedula Obligatoria</label>
 		@enderror

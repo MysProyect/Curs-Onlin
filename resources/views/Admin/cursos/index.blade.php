@@ -16,7 +16,7 @@
 			      </div >
 			    
 			 	    
-	<div  class="">
+	<div  class="container">
 		@if(empty($cursos))	
 			<h1>No hay Cursos Registrados</h1>
 		@else 
@@ -46,7 +46,7 @@
 				@endif
 			</div>
 		        @if($item->duracion)
-                        <small class="text-primary">{{$item->duracion}} de duration</small>
+                        <small class="text-primary display-5">{{$item->duracion}} de duration</small>
                 @endif
                 <br><br>
 				<div  align="center">
@@ -54,9 +54,9 @@
 					<img src="{{ asset('images/icons/editar.png') }}" class="edit" align="center">Editar</a>
 				</div>  
 				@if($item->statud ==1)
-					<label class="text-success">Published</label>
+					<label class="text-success display-4">Published</label>
 				@else
-					<label class="text-muted">Sin publicard</label>
+					<label class="text-danger display-4">Sin publicard</label>
 				@endif
 				</div>
 

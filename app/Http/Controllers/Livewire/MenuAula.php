@@ -129,10 +129,7 @@ class MenuAula extends Component
 
 	}
 	public function Acceder(){	
-		// $this->reg = '';
-		// $this->acceder = '';
 		$login = $this->usuario;
-
 		$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'usuario';
 
 		// if($data == 'usuario'){
@@ -148,12 +145,12 @@ class MenuAula extends Component
 			$visita = AulaVisita::create([
 				'aula_id' => $auth->id
 			]);
-//MANTENER SECCION INICIADA
-			$this->auth = $auth->id;
-			$this->aula='BIENVENIDO';
+
+			$this->auth = $auth;
+			$this->aula = true;
 		}else{
 
-			$this->failAuth='Fallo Autenticacion, verifique';
+			$this->failAuth='Fallo Autenticación, verifique';
 		}
 		
 		//return [ $field => $login,	'password' => $this->password	];

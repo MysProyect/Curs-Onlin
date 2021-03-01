@@ -1,11 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 @section('title','- Bienvenidos')
 @section('content')
-<div class="container">
-	<br>
-     <div class="title"><h1>Administrar Class Virtual</h1></div>
-     @livewire('aula-component')
+<div>
+	
+     @livewire('aula-admin-component')
 
 </div>  
+
+
 
 @endsection

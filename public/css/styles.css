@@ -2,7 +2,7 @@ li { text-decoration: none; }
 @media screen and (max-width:800px) {
 	li { text-decoration: none; } 
 } 
-
+html{overflow: auto;}
 header {width: 100%; top:0;   left:0; text-decoration: none; } 
 
 video { 
@@ -59,80 +59,68 @@ video {
 
 /*FOOTER*/
 footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-top:2%; height: 8rem;
-	 display: flex; flex-direction: column-reverse; font-size: 1.5rem;>
+	 display: flex; margin-top: 10%; font-size: 1.5rem;>
 }
-@media screen and (max-width:800px) {
-	footer{background-color: blue; font-size: 1rem;}
-	.img-footer{ width: 15%; }
-}
+	@media screen and (max-width:800px) {
+		footer, .img-footer{display: none;}
+		}
 
-/*IMAGES*/
-.img-left{width:100%; height:30%;}
-.img-insc{	width:20%; height: 30%;}
-.img-tool-admin{  width:90%; height: auto }
-.img-tool-admin-2{  width:100%; height: 80%; }
 .img-curs{ width: 50%; height:auto; border-radius: 10%;}
-.img-curs-2{ width: 70%; height: 80%;}
-.img-si{width:20%; height: 10%;}
-	   
-		.irAtras{	margin-right:5%; width: 90px; height: 100px;}	
-		.irHome{width: 120px; height: 120px;}
-		.img-act{ width:50px; height:50px;}
-		.img-AddNew{ width:130px; height:150px; margin-left:5%;}
-		.img-user{width: 15%;}
-		.img-user-2{width: 18%;}
-		/*.img-cursoVue{ width:400px; height:280px;}
-		.img-logoVue{ width:200px; height:150px;}
-		*/
-.auth{ font-size:1rem; display:flex;}
-.user-auth{ color: #0000FF;}	
-.cont-auth-home{ display:flex;width: 100%; margin-top:1%; }
-
-
+.img-curs-detaill img{ width: 60%;}
+.img-pago{	background-image: url(../images/Fpagos.png); width: 50%; }
+.img-left{width:100%; height:30%;}
+.img-left-2{width:60%; height:30%; float: center;}
+.img-tool-admin{  width:95%; height: 100%; }
 @media screen and (max-width:800px) {
- 	.img-left{width:100%; height:30%;}
+ 	.img-pago{	 width: 10%;}
  	.img-insc{	width:10%; height:10%; }
- 	.img-tool-admin{  width:50%; height: 80%; }
- 	.img-tool-admin-2{  width:50%; height: 80%; }
 }
+.irAtras{	margin-right:5%; width: 20%;}
+.listCurs{  
+	height:auto; 
+	border-top:2px solid;
+	border-color:#BFBFBF;
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px; 
+	margin-top:1%;
+	padding:1%;
+	width: 100%;
+	}
+.logo{width:250%; height:80%; opacity: 0.5;}
+.logo-2{width:100%; height:100%; }
 
-/*VIEW TOOL-ADMIN*/
-.toll-enl{ font-size:1rem; text-align:center; margin-left: 5%; margin-right: 5%; margin-top: 2%;}
-.toll-enl-2{ font-size:1rem; text-align:center;margin-left:5%; margin-top: 2%;}
-/*VIEW HOME*/
-@media screen and (max-width:800px) {
-	
-}
+		@media screen and (max-width:800px) {
+			.logo{width:20%; height:20%;}
+			.logo-2{width:100%; height:60%; }
+		}
+.marg-tool{margin-top:5%; margin-left: 2%; margin-right: 2%}
+.info{ font-size:1.5rem;background:#C1DFE9; padding:2%; border-radius: 20px;}
 
-
-/*VIEW MENU */
-	/* cursos*/
+.salir{ color:red;	font-size:1.3rem; text-align: right; }
 @media screen and (max-width:800px) {
 		.search-cur, .nota-none{display: none;}
 }
 
-	/*nosotros*/
-.saludo{color:#0000FF; font-size:2rem;}
-.nosot{font-size:1.5rem; font-style:oblique; margin-left:5%; margin-right: 5%; text-align:justify; }
-@media screen and (max-width:800px) {
-	.saludo{font-size:1rem;}
-	.nosot{font-size:0.5rem;  }
-}
- /* inscribirse*/
-.reg{ display: inline-flex; padding: 0; margin:0; }
-.img-pago{	background-image: url(../images/Fpagos.png); width: 50%; }
+.title{ font-family: fantasy; 
+		font-size: 3rem; 
+		font-weight: bold;  
+		color: #000066; 
+		letter-spacing: 2pt;}
+
+.title-op{color:#BFBFBF; font-size: 1.5rem;}
 
 @media screen and (max-width:800px) {
-	.img-pago{	 width: 10%;
-	}
+	.none{ display: none; }
+	.info{ font-size:0.5rem;}
+
 }
 
+.tool-enl{ font-size:1rem; text-align:center; margin-left: 5%; margin-right: 5%; margin-top: 2%;}
 
 
-/*.img-priv{ width:20px; height:15px;}*/
 
-.publicNo{ display:block; margin-right:5%; color: #FF0000; font-size:1.5rem;}	
-.publicSi{display:block; margin-right:5%; color: #008000;}
+.text-bold{font-weight: bold;}
+
 
 table, th, td {  border: 1px solid black; font-size:1.5rem; }
 tr td:last-child{
@@ -155,36 +143,38 @@ tr td:last-child{
 
 
 
-.form_edit{  border: white 8px outset; margin-left:1%;  padding:3%;	margin-right:15%;	margin-top:3%; 	font-weight: bold; }		
-
-		   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 .notas{font-size:0.7rem; color:red; margin-top:10%; margin-right:1%;}
-.title-op{color:#BFBFBF; font-size: 2rem;}
-.logo{width:250%; height:80%; opacity: 0.5;}
-.logo-2{width:100%; height:80%; opacity: 0.5;}
 
 @media screen and (max-width:800px) {
 	.auth{ font-size:0.5rem;}
 	.user-auth{ color: red;}
-	.logo{width:20%; height:20%;}
 	.header {height:5rem; position: fixed;}
 	.group-menu{margin-top: 15%;}
 	.auth{ font-size:0.5rem; display:flex;}
 	.desc{ font-size: 0.8rem;}
 	.nota-curs{font-size: 0.5rem;  width: 25%;   white-space: nowrap;    text-overflow: ellipsis;     overflow: hidden;}
-	.title{	font-size: 0.5rem; 	}
-	.title-op{color:#BFBFBF; font-size: 1rem;}
 }
 
 .
 .tam-img{width:500px; height:50px;}
-
-.text-bold{font-weight: bold;}
-
-
-.nota-curs{margin-left: 20%; margin-right: 1%; font: oblique bold 120% cursive;font-size: 1rem;}
 
 
 
@@ -194,13 +184,13 @@ tr td:last-child{
 /*@media screen and (max-width:800px) {
 	.img-curs{ width: 40%; height: 20%}
 }*/
-		   
+		   */
              
 	 
 	 
 		/* BOTTUN */
-.bt-save{ width:100%;margin-top:10%;;}
-.bt-canc{ margin-top:5px;}
+/*.bt-save{ width:100%;margin-top:10%;;}
+.bt-canc{ margin-top:5px;}*/
 
 
 /*
@@ -216,7 +206,7 @@ tr td:last-child{
 	
 
 
-
+/*
 .all-scroll{cursor:all-scroll;}"
  .dur-cur{ font-size:1.5rem; font-weight: bold; }            
 .edit{ 
@@ -252,13 +242,12 @@ small img{
 }
 
 
-.info{ font-size:1.5rem;background:#C1DFE9; padding:2%; border-radius: 20px;}
 
  .input-nom{font-size: 1rem; padding-top:1%; width:100%; border-radiu:5%;}
 .login{ width:5000px; 	margin-top: 2%; 	float:center;	}
-.link-auth{	display:flex; margin-left:80%; font-size:2rem; }
+.link-auth{	display:flex; margin-left:80%; font-size:2rem; }*/
 /* acceso con privilegios----*/ 
-.link-priv{		
+/*.link-priv{		
 	border-top-right-radius: 20px;
 	border-bottom-left-radius: 20px;
 	margin-left:5px;
@@ -269,27 +258,15 @@ small img{
 	.link-priv:hover{ color:#FFA500; text-decoration:none; }
 
 .auth-name{ color: #E9C80C; font-size:1rem; }
-.Add-Resp a{ 
-	font-size:1.3rem;
-	font-weight:bold; 
-	color:#FF0000;  }	
-.listCurs{  
-	height:auto; 
-	border-top:2px solid;
-	border-color:#BFBFBF;
-	border-top-right-radius: 20px;
-	border-top-left-radius: 20px; 
-	margin-top:1%;
-	padding:1%;
-	width: 100%;
-	}
+	
+
 	
 .listCursVue{ }	
 	
 
-.text-inp{ font-size:1rem; padding:4%;}
+.text-inp{ font-size:1rem; padding:4%;}*/
 
-.title{ font-family: fantasy; 
+/*.title{ font-family: fantasy; 
 		font-size: 3rem; 
 		font-weight: bold;  
 		color: #000066; 
@@ -298,13 +275,10 @@ small img{
 @media screen and (max-width:800px) {
 	.info{ font-size:0.5rem;}
 	.title{ font-size: 1rem;}
-}
+}*/
 
-
-
-/*.title-curs{color:#2D2D84; font-size:3rem;}*/
-.desc-curs{font-size:2rem;}
-
+/*.desc-curs{font-size:2rem;}*/
+/*
 .title-2{ font-family: fantasy; 
 		font-size: 1.5rem;
 		color: #003466;   
@@ -318,22 +292,22 @@ small img{
 .tite3{
 	font-size: 1.3rem; 
 	margin: 5%;
-}
-@media screen and (max-width:800px) {
+}*/
+/*@media screen and (max-width:800px) {
 .tite2{ font-size: 0.8rem; }	
 .tite3{	font-size: 0.8rem; }
-}
+}*/
 
 
 
 
-.title-op{ color:#BFBFBF; font-size: 1.5rem;}		
+/*.title-op{ color:#BFBFBF; font-size: 1.5rem;}	
 .title-div {border-top:2px solid; border-color:#BFBFBF; width:100%;}
 .tex-bt:hover{ 
 	color: yellow;  
 	text-decoration: none; 
 	font-size:1rem;; }
-	
+	*/
 /*.toll{ 
 	text-align: center;
 	display:flex; 
@@ -346,8 +320,8 @@ small img{
 }
 .tool-img-2{
 	width: 300px;
-*/	height: 350px;
-}
+	height: 350px;
+}*/
 
 
 
@@ -355,16 +329,10 @@ small img{
 
 .tool-table{width: 100%; margin-right:2%;}	
 	
-.resp{ 
-	display:flex;
-	font-size:1.3rem;
-	padding-left:2%; 
-	padding-right:5%;}
+
 
 .refere{padding:1%;font-size:1.5rem; }
-.salir{ 
-	color:red;
-	font-size:1.3rem;}
+
 .search-input{ font-weight: bold; font-size:1.5rem; width:100%;}
 
 .ver-insc{height: auto; width: 10%; flex-direction: 5%;}

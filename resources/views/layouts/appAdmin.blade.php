@@ -87,28 +87,39 @@
   </div>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <div class="auth"> 
-@if (Auth::user())
-    <a href="{{ url('/logout') }}"  class="user-auth" data-toggle="dropdown" role="button" aria-expanded="false"> 
-		<?php echo  (strtoupper (Auth::user()->username) )?>
-	</a>				
-	@if ((Auth::user()->privileges) === 1)
-		<a href="{{ route('Admin') }}" class="">
-			<img src="{{ asset('images/icons/ajustes.png') }}" width="30" height="35" >  Usuario Administrar
-		</a>			    
-	@endif
-	<ul class="dropdown-menu" role="menu">dejo abierto 'ul' 				
-	<li> 
-	  	<a href="{{ route('logout') }}" class="salir" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Salir">Cerrar Seccion
-	   	</a>
-		<form id="logout-form" action="{{ route('logout') }} " method="POST">{{ csrf_field() }}  
-		</form> 
-	</li>
-@else 
-	<a href="{{ route('login') }}" class="user_auth"><img src="{{asset('images/icons/acceso.png')}}" >
-		Acceder
-	</a>			   		    	
-@endif
-</div>
+      @if (Auth::user())
+          <a href="{{ url('/logout') }}"  class="user-auth" data-toggle="dropdown" role="button" aria-expanded="false"> 
+          
+        </a>        
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">   
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a href="{{ route('Admin') }}" class="">
+              <?php echo  (strtoupper (Auth::user()->username) )?>
+              <img src="{{ asset('images/icons/ajustes.png') }}" width="30" height="35" >
+              @if ((Auth::user()->privileges) === 1)
+                Usuario Administrar
+              @endif
+      </a>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+           <li role="presentation" class="dropdown-header text-danger">
+
+              <a href="{{ route('logout') }}" class="text-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Salir">Cerrar Seccion
+            </a>
+          <form id="logout-form" action="{{ route('logout') }} " method="POST">
+            {{ csrf_field() }}  
+          </form> 
+          </li>
+      </ul>
+  </li>
+  </ul>
+    @else 
+      <a href="{{ route('login') }}" class="user_auth"><img src="{{asset('images/icons/acceso.png')}}" width="30" height="35">
+          Acceder
+      </a>                  
+    @endif
+  </div>
 
 </nav>
 </div>

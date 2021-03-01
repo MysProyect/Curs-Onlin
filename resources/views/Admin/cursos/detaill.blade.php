@@ -3,14 +3,13 @@
 @section('content')
 
 <div class="listCurs">     
-	<div class="title">
-		<small><b>{{$ver->title}}</b></small>
+	<div class="display-4 text-primary text-center img-curs-detaill" style="width: 80%;">
+		<small><b>{{$ver->title}}</b></small><br>	
+		<img src=" {{ Storage::url("$ver->img")}}" alt="Imagen no encontada" />
 	</div>
-	<div align="center">	
-		<img src=" {{ Storage::url("$ver->img")}}" alt="Imagen no encontada" class="img-curs-2"/>
-	</div>
-	<div>
-  		<label class="display-6 text-center">{{$ver->description}}</label>
+	<div class="display-6">
+		<b>Descripcion: </b>
+  		<label class="text-center" style="margin-left: 10%; margin-right: 15%; margin-top: 0;">{{$ver->description}}</label>
   	</div>
  	<div align="center">
 	    @if($ver->duracion)
@@ -18,9 +17,9 @@
 	    @endif
 	    <br><br>
 	    @if($ver->statud ==1)
-			<label class="text-success">Published</label>
+			<label class="display-5 text-success">Published</label>
 		@else
-			<label class="text-muted">Sin publicard</label>
+			<label class="display-5 text-danger">Sin publicard</label>
 		@endif
   	</div>
 </div>
