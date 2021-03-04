@@ -21,7 +21,7 @@ class CreateCursosTable extends Migration
             $table->text('description')->nullable();    
             $table->integer('user_created');
             $table->integer('user_updated')->nullable();
-            $table->string('duracion')->nullable();  
+            $table->string('duracion')->nullable();
             $table->string('img')->nullable(); 
             $table->string('cant_resps')->nullable();          
             $table->integer('statud')->default('0'); //0 culminado, 1 activo, 2 pendiente

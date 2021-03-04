@@ -41,8 +41,7 @@
 	</header> 
 </div>
 
-
-<div class="input-group"> 
+<div class="menu-alt"> 
 <nav class="navbar navbar-expand-lg navbar-light ">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -97,23 +96,24 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
 </div>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<div class="auth"> 
-			@if (Auth::user())
-			    <a href="{{ url('/logout') }}"  class="user-auth" data-toggle="dropdown" role="button" aria-expanded="false"> 
-					
-				</a>				
-			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">   
-    <li class="nav-item dropdown">
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="auth" style="display: flex;"> 
+	@if (Auth::user())
+	<a href="{{ url('/logout') }}"  class="user-auth" data-toggle="dropdown" role="button" aria-expanded="false"> 
+	</a>				
+	<ul class="navbar-nav mr-auto mt-2 mt-lg-0">   
+    	<li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <a href="{{ route('Admin') }}" class="">
-            	<?php echo  (strtoupper (Auth::user()->username) )?>
-            	<img src="{{ asset('images/icons/ajustes.png') }}" width="30" height="35" >
+        	<?php echo  (strtoupper (Auth::user()->username) )?>
+        </a>
+        <a href="{{ route('Admin') }}" class="">
+            	
+           	<img src="{{ asset('images/icons/ajustes.png') }}" width="30" height="35" >
             	@if ((Auth::user()->privileges) === 1)
             	  Usuario Administrar
             	@endif
-			</a>
-        </a>
+		</a>
+        
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
            <li role="presentation" class="dropdown-header text-danger">
 
@@ -126,12 +126,13 @@
 	    </ul>
 	</li>
 	</ul>
-		@else 
-			<a href="{{ route('login') }}" class="user_auth"><img src="{{asset('images/icons/acceso.png')}}" width="30" height="35">
+			@else 
+				<a href="{{ route('login') }}" class="user_auth"><img src="{{asset('images/icons/acceso.png')}}" width="30" height="35">
 					Acceder
-			</a>			   		    	
-		@endif
-	</div>
+				</a>			   		    	
+			@endif
+			</div>
+
 
 </nav>
 </div>

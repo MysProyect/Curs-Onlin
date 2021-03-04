@@ -1,3 +1,8 @@
-<div class="container">
-     <div class="title">Administrar Class Virtual</div>
+<div class="container" style="margin-top: 2%; padding: 2%;">
+
+
+	@include('Admin.Class.class')
+
+
+
 </div>

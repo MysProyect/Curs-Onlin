@@ -20,6 +20,12 @@ class ResponsablsComponent extends Component
 	public $resp, $mensaje;
 	public $professions;
 
+	public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    
 	function mount(){
 		$professions=Profession::all();
 			$this->professions=$professions;

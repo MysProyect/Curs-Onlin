@@ -16,9 +16,9 @@ class RegisterController extends BaseController
 
     // function imprimir(){
 
-    // 	$nombre= 'Mario';
-    // 	$pdf = \PDF::loadView('pdf',compact('nombre'));
-    // 	return $pdf->download('pdf.pdf');
+    //  $nombre= 'Mario';
+    //  $pdf = \PDF::loadView('pdf',compact('nombre'));
+    //  return $pdf->download('pdf.pdf');
     // }
 
 
@@ -28,27 +28,27 @@ class RegisterController extends BaseController
   }
 
 
-	public function index(){
-		 $users = App\User::paginate(10);
-		return view('auth/AdmUsers/tool',compact('users'));
-	}
+    public function index(){
+         $users = App\User::paginate(10);
+        return view('auth/AdmUsers/tool',compact('users'));
+    }
 
-	public function ver($id){
-	 	$user = App\User::findOrFail($id);
-		return view('auth/AdmUsers/detalle',compact('user'));
-	}
+    public function ver($id){
+        $user = App\User::findOrFail($id);
+        return view('auth/AdmUsers/detalle',compact('user'));
+    }
 
-	public function create(){
-		return view('auth/register');
-	}
-
-
+    public function create(){
+        return view('auth/register');
+    }
 
 
-	public function saveUser(Request $request){
+
+
+    public function saveUser(Request $request){
 
         
-		$request->validate([
+        $request->validate([
         'username' => 'required|min:5|max:10|unique:users',
         'privileges' => 'required',
         'email' => 'required|email|unique:users',
@@ -63,10 +63,10 @@ class RegisterController extends BaseController
         $NewUser->email = $request->email;
         $NewUser->password = bcrypt($request->password);
         $NewUser->id_user_created = $request->id_user_created;
-		$NewUser->save();
-		
-		 return redirect()->route('AdmUser')->with('mensaje','Usuario Registrado !!!');
-	}
+        $NewUser->save();
+        
+         return redirect()->route('AdmUser')->with('mensaje','Usuario Registrado !!!');
+    }
 
 
 

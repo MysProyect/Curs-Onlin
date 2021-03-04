@@ -6,7 +6,7 @@
 
     <div class="title"><b> Registrar Usuario</b></div><br>
 		
-<div class="toll">
+<div class="container">
 	<div class="form_new"> 
 		
 		<form class="form-horizontal" method="POST" action="{{ route('saveUser') }}" name="formulario" id="formulario">
@@ -25,23 +25,22 @@
 				
 				
           <!--USERNAME - PRIVILEGES-->
-			        <div style=" width:100%; display:flex;">
-						
-						<label for="username" class="" align="center"><b  style="font-size:24px; color:#7A551E;" >Nombre de Usuario</b>   <br>           
-							<input id="username" type="text" class="" name="username" value="{{ old('username') }}"    style="font-size:20px; color:#7A331E;">
-						</label>
-                        @if ($errors->has('username'))
-                            <span class="help-block">
-                            <strong>{{ $errors->first('username') }}</strong>
-                            </span>
-                        @endif  
-						<br>
-						<span align="center" class="text-center notas" style="">
-							 Debe contener: entre 5-10 caractes Alfa-numericos<br>						
-						</span>
-                            
-                  
-                            <div for="privileges" class=""><b   style="font-size:24px; color:#7A551E; widht:100%;" align >Privilegios</b><br>
+			        <div class=" form-group">
+							<label for="username" class="display-6" align="center"><b  style="color:#7A551E;" >Nombre de Usuario</b>  	
+							</label>
+							><br>
+							<input id="username" type="text" class="" name="username" value="{{ old('username') }}"    style="font-size:20px; color:#7A331E;"><span align="center" class="text-center text-danger display-8">
+								 debe contener: entre 5-10 caractes Alfa-numericos
+								</span
+	                        @if ($errors->has('username'))
+	                            <span class="help-block">
+	                            <strong>{{ $errors->first('username') }}</strong>
+	                            </span>
+	                        @endif  
+					</div>
+                    <div class="form-group">
+                    	<label for="privileges" class="display-6"><b style="color:#7A551E; " align >Privilegios</b>
+                    	</label>
                                <select name="privileges" id="privileges" class="form-control"    style="font-size:20px; color:#7A331E; width:100%;">
                                 <option value=""> Seleccione</option>
                                 <option value="3"> Invitado</option>
@@ -81,7 +80,7 @@
 <!-- password - CONFIRME password-->
 			   <div class="form-group">
 				  <label>Password &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				  	<span class="notas"><i>
+				  	<span class="text-danger display-8"><i>
 						debe contener: entre 5-10 caractes Alfa-numericos</i>					
 					</span>	
 				</label>

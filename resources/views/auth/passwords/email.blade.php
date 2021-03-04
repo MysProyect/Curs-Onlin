@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Recuperar Acceso</title>
-
-
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/stilos_app.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/stilos.css') }}" rel="stylesheet">
-</head>
+@section('content')
 <div class="container">
-	<br><br>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h1>{{ __('Reset Password') }}</h1></div>
+                <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -61,5 +44,4 @@
         </div>
     </div>
 </div>
-</body>
-</html>
+@endsection

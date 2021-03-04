@@ -26,7 +26,7 @@ class Curso extends Model
 
        public function aulas()
     {
-        return $this->hasMany(Aula::class);
+        return $this->hasMany(UserAula::class);
     }
 
     public function comments()

@@ -155,9 +155,10 @@ class MenuCursosInscComments extends Component
 		'curso_id' => $this->curso_id	
 		]);
 		$this->default();
+		$this->mount();
 		$this->viewcomment = '';
 		// return $this->render(); 
-		// return back()->with('comment','comentario añadido');	
+		return back()->with('comment','Nuevo comentario añadido');	
 			
  	}
 

@@ -2,10 +2,11 @@
 @section('title','- Section Admin')
 @section('content')
 
-<div class="title" >
-	<small>Welcome Section Admin</small>
-</div>
+<div align="center">
+	<small class="title">Welcome Section Admin</small>
 	<p >Courses | Participants | Responsible | Inscription | Virtual Class | User | Reports</p>
+</div>
+	
 	
            
 <div class="input-group marg-tool">	

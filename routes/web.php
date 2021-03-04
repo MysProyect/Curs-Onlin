@@ -73,6 +73,9 @@ Route::post('/auth/register', 'Auth\RegisterController@saveUser')->name('saveUse
 
 Route::post('/auth/login', 'Auth\RegisterController@create')->name('createUser');
 
+
+
+
 Route::get('/admin-cursos','CursController@index')->name('cursos');
 Route::get('/detaill-curso/{id}', 'CursController@show')->name('detaill');
 Route::get('/new-curso', 'CursController@create')->name('Newcurso');
@@ -101,7 +104,7 @@ Route::middleware('auth:web')->group(function () {
 
 
 	Route::get('/Admin-class', function() {
-		return view('Admin.Class.aulas');
+		return view('Admin.Class.index');
 	})->name('class');
 
 	
@@ -148,3 +151,10 @@ Route::middleware('auth:web')->group(function () {
 // 	return $curso;
 
 // });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

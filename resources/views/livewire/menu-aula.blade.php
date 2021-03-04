@@ -7,7 +7,7 @@
 			<div style=" margin-top: 5%;" align="center" >
 
 			    <div class="text-center" >
-			      <smal class="display-4"> Bienvenidos <br>al</smal> <br><small class="display-3 text-primary">Aula Virtual</small>
+			      <small class="display-4"> Bienvenidos <br>al</small> <br><small class="display-3 text-primary">Aula Virtual</small>
 			    </div>
 
 			     <div align="center" class="text-danger" style="margin-left: 10%; margin-top: 5%;">
@@ -19,8 +19,8 @@
 					</div> -->
 
 					<div align="center" style=" margin-top: 5%;">
-					<button wire:click="ir" class="btn btn-primary btn-lg">Continuar</button>
-				</div>
+						<button wire:click="ir" class="btn btn-primary btn-lg">Continuar</button>
+					</div>
 			</div>
 	@endif
 

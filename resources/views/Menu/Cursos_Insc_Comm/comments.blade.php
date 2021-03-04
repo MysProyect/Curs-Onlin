@@ -3,7 +3,8 @@
         <br><br>
            	<div align="center" class="text-primary"><b>New Comments</b></div>
      
-
+<!--     <form class="" wire:submit.prevent=""></form> -->
+  <form wire:submit.prevent="savecomment">
         <div class="form-group">
            <input type="text" wire:model="nameCom" placeholder="name" class="form-control" autofocus>
               @error('nameCom') <span class="text-danger error">enter name</span>@enderror
@@ -20,13 +21,13 @@
        
 
         <div align="right"> 
-            <button wire:click="savecomment" class="btn btn-primary" >Enviar</button>
+          <button type="submit" class="btn btn-primary" >Enviar</button>
+
+<!--             <button wire:click="savecomment" class="btn btn-primary" >Enviar</button> -->
             <button wire:click="default" class="btn btn-warning">Clear</button>
          </div>         
-    
-
-    </div>
-
+      </div>
+    </form>
 </div>
 
 

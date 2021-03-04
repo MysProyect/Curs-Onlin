@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Aula extends Model
+class UserAula extends Model
 {
     protected $fillable = ['part_id', 'curso_id', 'email', 'usuario', 'password'];  
 

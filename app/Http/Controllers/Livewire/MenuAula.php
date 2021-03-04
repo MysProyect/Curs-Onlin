@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Livewire;
 
 use Livewire\Component;
-use App\Aula;
+use App\UserAula;
 use App\Curso;
 use App\Participant;
 use App\Incription;
@@ -25,15 +25,17 @@ class MenuAula extends Component
     public function render()
     {
     	$cursos = Curso::all();;
-    	$aulas = Aula::all();
+    	$aulas = UserAula::all();
         return view('livewire.menu-aula', compact('aulas','cursos'));
         // return view('livewire.menu-aula', [
         // 	'aulas' =>Aula::orderBy('id','desc')->paginate(5) 
         // ]);
 	}
 
+    
 	public function ir(){
 		$this->continuar = true;
+		return back();
 	}
 
 	public function registro($id){
@@ -69,7 +71,7 @@ class MenuAula extends Component
 			$this->inscExiste=0;
 		}
 
-		$aulaExiste = Aula::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
+		$aulaExiste = UserAula::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
 		if($aulaExiste){
 			$this->aulaExiste=$aulaExiste;
 		}else{
@@ -93,7 +95,7 @@ class MenuAula extends Component
 		// 'usuario' => $this->usuario,
 		// 'password' => $this->password	
 		// ]);
-		$NewAula = new Aula;
+		$NewAula = new UserAula;
         $NewAula->part_id = $this->part_id;
         $NewAula->curso_id = $this->curso_id;
         $NewAula->email = $this->email;
@@ -101,7 +103,7 @@ class MenuAula extends Component
         $NewAula->password = bcrypt($this->password);
 		$NewAula->save();
 		if($NewAula){
-			$ultim = Aula::find($NewAula->id);	
+			$ultim = UserAula::find($NewAula->id);	
 			$visita = AulaVisita::create([
 				'aula_id' => $ultim->id
 			]);
@@ -138,7 +140,7 @@ class MenuAula extends Component
 		
 
 		
-		$auth = Aula::where('usuario',$this->usuario)
+		$auth = UserAula::where('usuario',$this->usuario)
 			->orWhere('email',$this->usuario)
 			->where('password',$this->password)->first();
 		if($auth){

@@ -6,34 +6,49 @@
   <div id="formContent">
  
     <div class="fadeIn first">
-		<h1>Logearse</h1>
+        <h1>Logearse</h1>
       <img src="{{asset('images/loguear.jpeg')}}"  class="icon" id="icon">
     </div>
     <div class="tool"> 
          <!-- Login Form -->
        <form class="" method="POST" action="{{ route('login') }}">
           {{ csrf_field() }} 
-		  <div style="padding:2%;">
-			<input type="login" id="login" class="fadeIn second form-control display-4"  name="login" value="{{ old('login') }}" placeholder="E-Mail o Usuario" style="padding:8%;"  required autofocus>
-			<br> <input type="password" id="password" class="form-control display-4" name="password" placeholder="Password" style="padding:5%;" required>
-		 </div>
-		<DIV>
-			 <button type="submit" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
-		</DIV>
-		  <div align="right"><a style="font-size: 1rem;" href="{{ route('password.request') }}">
-				Olvido su Password? </a>
-		   </div>
+          <div style="padding:2%;">
+            <input type="login" id="login" class="fadeIn second form-control display-4"  name="login" value="{{ old('login') }}" placeholder="E-Mail o Usuario" style="padding:8%;"  required autofocus>
+            <br> <input type="password" id="password" class="form-control display-4" name="password" placeholder="Password" style="padding:5%;" required>
+         </div>
+
+  <div class="form-group row">
+          <div class="col-md-6 offset-md-4">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label class="form-check-label" for="remember">
+                         {{ __('Remember Me') }}
+                </label>
+              </div>
+           </div>
+       </div>
+         
+
+        <DIV>
+             <button type="submit" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
+        </DIV>
+
+      
+       <div align="right"><a style="font-size: 1rem;" href="{{ route('password.request') }}">
+                Olvido su Password? </a>
+      </div>
     </form>
 
     <!-- Remind Passowrd -->
    
-			@if ($errors->has('login')) 
-			<div class="alert alert-danger" role="alert">
-				{{ $errors->first('login') }}
-			@elseif($errors->has('password'))
-				{ $errors->first('password') }}
-			@endif  		
-			</div>
+            @if ($errors->has('login')) 
+            <div class="alert alert-danger" role="alert">
+                {{ $errors->first('login') }}
+            @elseif($errors->has('password'))
+                { $errors->first('password') }}
+            @endif          
+            </div>
 
   </div>
  
@@ -313,8 +328,8 @@ input[type=text]:placeholder {
   width:60%;
 }
 .op{
-		padding-right:10px;
-	}
+        padding-right:10px;
+    }
 
 
   @media screen and (max-width:800px) {
