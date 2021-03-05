@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserAula extends Model
 {
+    protected $table = 'user_aulas';
     protected $fillable = ['part_id', 'curso_id', 'email', 'usuario', 'password'];  
 
 
@@ -22,7 +23,7 @@ class UserAula extends Model
 
     public function visitas()
     {
-          return $this->hasMany(AulaVisita::class);
+          return $this->hasMany(UserVisitAula::class);
     }
 
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAulaVisitasTable extends Migration
+class CreateUserVisitAulasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateAulaVisitasTable extends Migration
      */
     public function up()
     {
-        Schema::create('aula_visitas', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('user_visit_aulas', function (Blueprint $table) {
+          $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('aula_id')->nullable();
-            $table->foreign('aula_id')->references('id')->on('aulas')
+            $table->unsignedBigInteger('user_aula_id')->nullable();
+            $table->foreign('user_aula_id')->references('id')->on('user_aulas')
             ->onUpdate('cascade')
             ->onDelete('set null');
-
-            $table->timestamps();
+            $table->dateTime('visita')->nullable();
+            
         });
     }
 
@@ -32,6 +32,6 @@ class CreateAulaVisitasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aula_visitas');
+        Schema::dropIfExists('user_visit_aulas');
     }
 }

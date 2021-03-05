@@ -74,7 +74,6 @@ class AulaAdminComponent extends Component
 
 		$curso = Curso::find($this->curso_id);
 		$this->curso = $curso;
-
 		$class = Clase::where('curso_id','=',$this->curso_id)->first();
 		
 

@@ -3,26 +3,26 @@
   <div id="formContent">
  
     <div class="fadeIn first">
-		<h1>Entrar al Aula Virtual</h1>
-		<p class="display-6 text-primary"> <b>curso:</b> {{$curso->title}}</p>
-      <img src="{{asset('images/icons/acceder.jpg')}}"  class="icon" id="icon">
+  		<h1>Entrar al Aula Virtual</h1>
+  		<p class="display-6 text-primary"> <b>curso:</b> {{$curso->title}}</p>
+        <img src="{{asset('images/icons/acceder.jpg')}}"  class="icon" id="icon">
     </div>
-    <div class="tool"> 
-  
+
+    <div class="tool">   
 		  <div style="padding:2%;">
         <input type="login" id="login" wire:model="usuario" class="fadeIn second form-control display-4"  name="login" value="{{ old('usuario') }}" placeholder="E-Mail o Usuario" required autofocus>
-			<br> <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>
-     
+			<br> <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>     
 		 </div>
-		<DIV>
+     <DIV>
 			 <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
-		</DIV>
+		  </DIV>
 		  <div align="right"><a style="font-size: 1rem;" href="{{ route('password.request') }}">
 				Olvido su Password? </a>
 		  </div>
       <br>
        <label class="alert-danger text-center">{{$failAuth}}</label>
        <br>
+     </div>
 <!-- 
 {{$usuario}}
 {{$password}}
@@ -36,6 +36,7 @@
 			</div> -->
 
   </div>
+</div>
  
 
 

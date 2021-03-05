@@ -1,4 +1,4 @@
-<h1>Bienvenidos al aula virtual</h1>
-
-
+<div>
 	
+	<h1>BIENVENIDOS</h1>
+</div>

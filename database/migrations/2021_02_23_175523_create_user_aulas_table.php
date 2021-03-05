@@ -13,7 +13,7 @@ class CreateUserAulasTable extends Migration
      */
     public function up()
     {
-        Schema::create('user-aulas', function (Blueprint $table) {
+        Schema::create('user_aulas', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->unsignedBigInteger('part_id')->nullable();
@@ -41,6 +41,6 @@ class CreateUserAulasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user-aulas');
+        Schema::dropIfExists('user_aulas');
     }
 }

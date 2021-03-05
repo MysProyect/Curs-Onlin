@@ -3,93 +3,130 @@
 namespace App\Http\Controllers\Livewire;
 
 use Livewire\Component;
-use App\UserAula;
 use App\Curso;
 use App\Participant;
 use App\Incription;
-use App\AulaVisita;
+use App\UserAula;
+use App\UserVisitAula;
 class MenuAula extends Component
 {
 
+	public $iniciar=true, $cursos, $curso, $part;
+	public $continue, $valid, $logeat, $regist, $verif; //view
+	public $curso_id, $decid; //si curso_id decid si esta o no registrado 
+	public $usuario, $password, $password_confirmation, $email; //view regist
+	public $insc; //view insc inscrito
+	public $UserAula; 
+	public $cedula; //view verif
+	public $part_id; //view insc
+	public $auth, $failAuth; //auhtenticacion
+	public $aula; //view aula bienvenido
+	public function mount(){
+		$cursos = Curso::all();
+		$this->cursos = $cursos;
+	}
 
-	public $continuar='', $reg='', $acceder='', $aula='', $curso_id='',$part_id='', $view='';
-	public $cedula, $name, $last_name, $Notpart;
-	public $usuario, $password, $password_confirmation, $email;
 
-	public $aulaExiste='', $inscExiste='';
 
-	public $auth, $failAuth;
 
 
 
     public function render()
     {
-    	$cursos = Curso::all();;
-    	$aulas = UserAula::all();
-        return view('livewire.menu-aula', compact('aulas','cursos'));
+        return view('livewire.menu-aula');
         // return view('livewire.menu-aula', [
         // 	'aulas' =>Aula::orderBy('id','desc')->paginate(5) 
         // ]);
 	}
 
-    
-	public function ir(){
-		$this->continuar = true;
-		return back();
+	public function continue(){
+		$this->continue = true;
 	}
 
-	public function registro($id){
-			$curso = Curso::find($id);		
-			$this->reg = true;
-			$this->acceder = '';
-			$this->curso = $curso;
-			$this->curso_id = $curso->id;
+	public function decid(){
+		$curso = Curso::find($this->curso_id);
+		$this->curso_id = $this->curso_id;
+		$this->decid = true; //pregunta si esta loguado  o no
+	}
+
+
+
+	public function regist($id){
+		$curso = Curso::find($this->curso_id);
+		$this->curso_id = $this->curso_id;	
+		$this->logeat = '';	
+		$this->verif = true;
+		
+	}
+
+
+
+
+
+
+
+
+	public function verif($id){ 
+		$this->validate(['cedula' => 'required']); 
+		$part = Participant::where('cedula','=',$this->cedula)->first();
+		if ($part)  {
+			$this->part = $part;	
+			$this->part_id = $part->id;
+		}else{
+			$this->regist = '';
+			$this->continue = '';
+			return back()->with('alert', 'Disculpe!, no esta registrado');
+			 		  //return back()->with('alert','Datos ya Registrados');
+		} 
+		$insc = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->where('conf', 1)->first();
+		if($insc){
+		  	
+		  	$UserAula = UserAula::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
+		  	if ($UserAula){
+		  		$this->UserAula = true;
+		  		$this->insc = true;		
+		  	}else{ //registrarse llama a view
+		  		$this->regist = true;
+		  	}
+		  	
+		}else{
+		  	
+			return back()->with('alert', 'disculpe no esta inscrito en el curso, o espere su confirmacion');
+		}
+
 	}
 	
+	
 
-	public function verif(){ 
-		$this->validate(['curso_id'=>'required', 'cedula' => 'required']); 
 
-		$part = Participant::where('cedula','=',$this->cedula)->first();
-		
-		   if ($part)  {
-		   		$this->name = $part->name;
-		   		$this->last_name = $part->last_name;
-		   		$this->email = $part->email;
-			    // return back()->with('mensaje','Datos Registrados');	
-		   		$this->part_id = $part->id;
-			}else{
-				$this->reg = '';
-				$this->curso_id = '';
-				return back()->with('alert', 'Disculpe!, no esta inscrito en este curso');
-				  //return back()->with('alert','Datos ya Registrados');
-			} 
-		$inscExiste = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
-		if($inscExiste){
-			$this->inscExiste = $inscExiste;
-		}else{
-			$this->inscExiste=0;
-		}
 
-		$aulaExiste = UserAula::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
-		if($aulaExiste){
-			$this->aulaExiste=$aulaExiste;
-		}else{
-			$this->aulaExiste=0;
-		}
-				
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 	public function saveregistro(){
 
 		$this->validate([
-        'usuario' => 'required|min:5|max:10|unique:aulas',
+        'usuario' => 'required|min:5|max:10|unique:user_aulas',
         'password' => 'required|min:5|max:10|confirmed',
         ]);
 
-  		// $AuthAula = Aula::create([
+  		// $AuthAula = UserAula::create([
 		// 'part_id' => $part->id,
 		// 'curso_id' => $this->curso_id,	
 		// 'usuario' => $this->usuario,
@@ -103,52 +140,65 @@ class MenuAula extends Component
         $NewAula->password = bcrypt($this->password);
 		$NewAula->save();
 		if($NewAula){
-			$ultim = UserAula::find($NewAula->id);	
-			$visita = AulaVisita::create([
-				'aula_id' => $ultim->id
+			$visita = UserVisitAula::create([
+				'user_aula_id' => $NewAula->id
+
 			]);
+
+			$this->aula = true;
+			$this->default();
+		}else{
+
 		}
-		$this->auth = $auth->id;
-		$this->aulaExiste='';
-		$this->reg='';
-		$this->acceder='';
-		$this->ir='';
-		$this->aula='BIENVENIDO';
-		return back()->with('mensaje','Datos Registrados');
+		// $this->auth = $auth->id;
+		// $this->aulaExiste='';
+		// $this->reg='';
+		// $this->acceder='';
+		// $this->ir='';
+		
+		//return back()->with('mensaje','Datos Registrados');
+    
+
     
 	}
 
-	public function InicSeccion($id){
-		$curso = Curso::find($id);		
-		$this->aulaExiste='';
-		$this->reg='';
-		$this->acceder = true;
+
+
+
+	public function logeat($id){
+		$curso = Curso::find($this->curso_id);	
+		$this->verif = '';	
+		$this->logeat = true;
 		$this->curso = $curso;
-		$this->usuario = $this->usuario;
-		$this->password = $this->password;
+
+		
 		// $this->curso_id = $curso->id;
 	
 
 	}
+
+
+
+
 	public function Acceder(){	
 		$login = $this->usuario;
-		$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'usuario';
-
-		// if($data == 'usuario'){
-		// 	$this->data = $data;
-		// }
-		
-
-		
+		$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'usuario';		
 		$auth = UserAula::where('usuario',$this->usuario)
 			->orWhere('email',$this->usuario)
 			->where('password',$this->password)->first();
 		if($auth){
-			$visita = AulaVisita::create([
+			$visita = UserVisitAula::create([
 				'aula_id' => $auth->id
+				
+				// 'visita' => funcion datatime laravel
 			]);
 
 			$this->auth = $auth;
+			$this->iniciar = false;
+			$this->continue = '';
+			$this->valis = '';
+			$this->regist = '';
+			$this->logeat = '';
 			$this->aula = true;
 		}else{
 
@@ -156,7 +206,7 @@ class MenuAula extends Component
 		}
 		
 		//return [ $field => $login,	'password' => $this->password	];
-
+		//$this->default();
 
 	
 		
@@ -166,14 +216,45 @@ class MenuAula extends Component
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function default(){
-		$this->email = '';
+		$this->iniciar = false;
+		$this->continue = '';
+		$this->valis = '';
+		$this->regist = '';
+		$this->logeat = '';
+		$this->verif = '';
 		$this->usuario = '';
 		$this->password = '';	
 	}
-
-
-
 
 
 
