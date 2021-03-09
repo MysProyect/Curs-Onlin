@@ -1,4 +1,4 @@
-<div  class=" form-gruop display-6" style="margin-top: 2%;">
+<div  class=" form-gruop display-6" align="center" style="margin-top: 2%;">
 		@if (session('mensaje'))
 			<div class="alert alert-success">             
 				{{ session('mensaje') }}

@@ -91,7 +91,7 @@ class MenuAula extends Component
 		  	
 		}else{
 		  	
-			return back()->with('alert', 'disculpe no esta inscrito en el curso, o espere su confirmacion');
+			return back()->with('alert', 'disculpe no esta inscrito en el curso, o debe esperar sea  "validada" su inscripcion');
 		}
 
 	}
@@ -168,6 +168,8 @@ class MenuAula extends Component
 	public function logeat($id){
 		$curso = Curso::find($this->curso_id);	
 		$this->verif = '';	
+		$this->regist = '';
+		$this->cedula = '';
 		$this->logeat = true;
 		$this->curso = $curso;
 
@@ -252,6 +254,12 @@ class MenuAula extends Component
 		$this->regist = '';
 		$this->logeat = '';
 		$this->verif = '';
+		$this->usuario = '';
+		$this->password = '';	
+	}
+
+		public function clear(){
+		$this->email = '';
 		$this->usuario = '';
 		$this->password = '';	
 	}

@@ -8,7 +8,7 @@
         <img src="{{asset('images/icons/acceder.jpg')}}"  class="icon" id="icon">
     </div>
 
-    <div class="tool">   
+    <div class="">   
 		  <div style="padding:2%;">
         <input type="login" id="login" wire:model="usuario" class="fadeIn second form-control display-4"  name="login" value="{{ old('usuario') }}" placeholder="E-Mail o Usuario" required autofocus>
 			<br> <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>     

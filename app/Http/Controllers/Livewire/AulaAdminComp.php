@@ -14,7 +14,7 @@ use Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Atr;
 
-class AulaAdminComponent extends Component
+class AulaAdminComp extends Component
 {
 	use WithFileUploads;
 
@@ -30,7 +30,7 @@ class AulaAdminComponent extends Component
 
     public function render()
     {
-        return view('livewire.aula-admin-component');
+        return view('livewire.aula-admin-comp');
     }
 
     public function mount(){

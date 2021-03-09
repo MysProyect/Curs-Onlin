@@ -464,6 +464,7 @@ h6,
   font-size: 0.7rem;
   font-weight: 300;
   line-height: 1.2;
+  color: red;
 }
 
 hr {
@@ -10751,6 +10752,9 @@ button.bg-dark:focus {
 
 .text-primary {
   color: #3490dc !important;
+}
+.text-primary-2 {
+  color:  #2028c3 !important;
 }
 
 a.text-primary:hover,

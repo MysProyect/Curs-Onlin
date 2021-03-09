@@ -19,7 +19,7 @@ class CreateClassSeccionsTable extends Migration
             $table->unsignedBigInteger('class_id');
             $table->integer('seccion');
             $table->string('file')->nullable();
-            // $table->string('video')->nullable();
+            $table->string('name_file')->nullable();
             // $table->string('audio')->nullable();
             // $table->string('doc')->nullable();
             $table->string('texto')->nullable();

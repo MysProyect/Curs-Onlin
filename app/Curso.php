@@ -38,6 +38,11 @@ class Curso extends Model
         return $query->where('statud', 1);
     }
 
+    public function clase()
+    {
+        return $this->belongsTo(Clase::class);
+    }
+
     // public function resps()
     // {
     //     return $this->hasMany(Responsabls::class);

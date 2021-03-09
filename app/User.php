@@ -66,7 +66,7 @@ class User extends Authenticatable
 
     public function profession()
     {
-          return $this->hasOne(Profession::class);
+          return $this->belongsTo(Profession::class);
     }
 
 

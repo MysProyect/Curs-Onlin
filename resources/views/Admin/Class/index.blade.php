@@ -3,7 +3,7 @@
 @section('content')
 <div>
 	
-     @livewire('aula-admin-component')
+     @livewire('class-admin-comp')
 
 </div>  
 

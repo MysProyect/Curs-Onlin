@@ -23,7 +23,7 @@
 <body>
 <div>
 	<header class="header"> 
-		<video   autoplay loop muted >
+		<video  id="video" autoplay loop muted >
 			<source src="{{ Storage::url("Header.mp4")}}" type="video/mp4">
 		</video>
 	</header> 
@@ -42,7 +42,7 @@
 
     <li class="nav-item {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}}">
       <a class="navbar-brand" href="{{ route('welcome') }}">  
-        <img src="{{asset('images/icons/home.png')}}" width="30" height="30" alt="Inicio" title="Inicio">
+        <img src="{{asset('images/icons/home.png')}}" width="50" alt="Inicio" title="Inicio">
       </a>
     </li>
 

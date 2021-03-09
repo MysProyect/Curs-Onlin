@@ -19,7 +19,7 @@
 <body>
 
 <header class="header"> 
-		<video   autoplay loop muted >
+		<video  id="video" autoplay loop muted >
 			<source src="{{ Storage::url("Header.mp4")}}" type="video/mp4">
 		</video>
 </header>	

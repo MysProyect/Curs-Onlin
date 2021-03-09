@@ -35,7 +35,7 @@
 
 <div>
 	<header class="header"> 
-		<video   autoplay loop muted >
+		<video  id="video" autoplay loop muted >
 			<source src="{{ Storage::url("Header.mp4")}}" type="video/mp4">
 		</video>
 	</header> 
@@ -53,7 +53,7 @@
 
     <li class="nav-item {{ request()->routeIs('welcome') ? 'd-lg-none' : ''}}">
       <a class="navbar-brand" href="{{ route('welcome') }}">  
-        <img src="{{asset('images/icons/home.png')}}" width="30" height="30" alt="Inicio" title="Inicio">
+        <img src="{{asset('images/icons/home.png')}}" width="50" alt="Inicio" title="Inicio">
       </a>
     </li>
 
@@ -190,7 +190,7 @@
 	<div class="container-right" > 
 		<div align="center">
 			<a href="{{ route('aulas')}}"> 
-				<img src="{{ asset('images/av2.jpeg')}}" class="img-left" title="entrar al Aula Virtual">
+				<img src="{{ asset('images/aula-virtual.png')}}" class="img-left" title="entrar al Aula Virtual">
 			</a> 
 		    <br><br>
 			<a href="">  
