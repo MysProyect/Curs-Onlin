@@ -4,7 +4,7 @@
 				{{ session('mensaje') }}
 			</div>
 		@endif
-		<select wire:model="curso_id" class="text-success" wire:change="decid">
+		<select wire:model="curso_id" class="text-success">
 		 	<option value="">Seleccione el curso</option>
 		 		@foreach($cursos as $curso)
 		 			@if($curso->statud == 1)

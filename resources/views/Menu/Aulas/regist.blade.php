@@ -1,11 +1,11 @@
 <div  style="margin-left: 10%; margin-right: 10%; padding: 3%; background: #fff;border: 0.5px solid; border-color: #c1c0c0" class="">
-	
+	<label class="display-5 text-success">{{$part->name}} {{$part->last_name}}</label>
 	<div class="d-lg-none">
 		<input  type="text" wire:model="part_id">
 		<input  type="text" wire:model="curso_id">
  	</div>
  	 <div class="form-group">
- 		<label  class="display-6">Usuario:</label> &nbsp;&nbsp;&nbsp;
+ 		<label  class="display-6">User:</label> &nbsp;&nbsp;&nbsp;
  		<span class="display-8"><i>debe contener: entre 5-10 caractes Alfa-numericos</i></span>	
 	    <input type="text" wire:model="usuario" class="form-control" autofocus><br>	   
 	    @error('usuario')

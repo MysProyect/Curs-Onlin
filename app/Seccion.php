@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ClassSeccion extends Model
+class Seccion extends Model
 {
-    protected $table = 'class_seccions';
-    protected $fillable = ['class_id', 'seccion', 'file', 'name_file', 'texto', 'url', 'user_created', 'user_updated'];
+    protected $table = 'seccions';
+    protected $fillable = ['clase_id', 'seccion', 'file', 'name_file', 'texto', 'url', 'visibility', 'user_created', 'user_updated'];
 
 
     // public function comments()

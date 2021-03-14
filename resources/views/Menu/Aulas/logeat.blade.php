@@ -11,14 +11,23 @@
     <div class="">   
 		  <div style="padding:2%;">
         <input type="login" id="login" wire:model="usuario" class="fadeIn second form-control display-4"  name="login" value="{{ old('usuario') }}" placeholder="E-Mail o Usuario" required autofocus>
-			<br> <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>     
-		 </div>
-     <DIV>
-			 <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
+  			<br> 
+        <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>     
+		  </div>
+        <input type="text" wire:model="curso_id"> 
+
+      <DIV>
+			  <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>
 		  </DIV>
-		  <div align="right"><a style="font-size: 1rem;" href="{{ route('password.request') }}">
+
+
+		  <div align="right">
+        <a style="font-size: 1rem;" href="{{ route('password.request') }}">
 				Olvido su Password? </a>
 		  </div>
+
+
+
       <br>
        <label class="alert-danger text-center">{{$failAuth}}</label>
        <br>

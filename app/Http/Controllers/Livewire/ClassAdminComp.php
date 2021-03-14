@@ -6,7 +6,7 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Clase;
 use App\Curso;
-use App\ClassSeccion;
+use App\Seccion;
 use Auth;
 
 use Illuminate\Http\UploadedFile;
@@ -20,8 +20,8 @@ class ClassAdminComp extends Component
 
 	public $class_select = true, $create, $edit,  $cursos, $curso, $curso_id, $title, $seccion;
 	public $files=[], $url, $texto;
-	public $fields, $Secc_class, $secc, $NroCS;
-	public $mensaj, $list, $exist, $image, $busc, $upload, $delet;
+	public $fields, $save, $secc, $NroCS;
+	public $mensaj, $list, $exist, $image, $busc, $upload, $delet, $visibility;
 
 	public $class, $clases, $name, $file, $clasSec;
 
@@ -41,9 +41,9 @@ class ClassAdminComp extends Component
 
 	public function verif(){
 		$this->validate([ 'curso_id' => 'required' ]);
-		if($this->curso_id){
-			$busc = ClassSeccion::where('class_id','=',$this->curso_id)
-			->where('seccion','=',$this->seccion)->first();
+		if($this->curso_id and $this->seccion){
+			$busc = Seccion::where('clase_id',$this->curso_id)
+			->where('seccion',$this->seccion)->first();
 			if($busc){
 				$this->create = '';
 				$this->edit = '';
@@ -62,7 +62,6 @@ class ClassAdminComp extends Component
 	public function change_curso(){
 		$this->create = '';
 		$this->seccion = '';
-
 	}
 
 
@@ -73,10 +72,11 @@ class ClassAdminComp extends Component
 		$curso = Curso::find($this->curso_id);
 		$this->curso = $curso;
 		$class = Clase::where('curso_id','=',$this->curso_id)->first();
-		$secc = ClassSeccion::where('class_id','=',$class->id)->where('seccion','=',$this->seccion)->get();
+		$secc = Seccion::where('clase_id','=',$class->id)->where('seccion','=',$this->seccion)->get();
 		$this->secc = $secc;
 		
 	}
+
 
 
 
@@ -84,17 +84,17 @@ class ClassAdminComp extends Component
         	//seccMP4 = Str::endsWith($upload,['.mp4','MP4','mpeg-4','.MPEG-4','gif','GIF','ico']);
         	// $Extdoc = Str::endsWith($upload,['.doc','.docx','pptx','.pdf','.txt','.xml','.opt','.zip','rar']);
 			// if($Extimg){
-			// 	$Secc_class->image = $upload;
-			// 	$Secc_class->save();
+			// 	$save->image = $upload;
+			// 	$save->save();
 			// }
 
 			// if($Extvideo){
-			// 	$Secc_class->video = $upload;
-			// 	$Secc_class->save();
+			// 	$save->video = $upload;
+			// 	$save->save();
 			// }
 			// if($Extdoc){
-			// 	$Secc_class->doc = $upload;
-			// 	$Secc_class->save();
+			// 	$save->doc = $upload;
+			// 	$save->save();
 			// }
 
 
@@ -116,10 +116,10 @@ class ClassAdminComp extends Component
 		$this->create = '';
 		$clases = Clase::all();
     	$this->clases = $clases;
-    	$clasSec = ClassSeccion::all();
+    	$clasSec = Seccion::all();
     	$this->clasSec = $clasSec;
     	$this->list = 1;
-  //   	$posts = ClassSeccion::withCount(['comments'])->get();
+  //   	$posts = Seccion::withCount(['comments'])->get();
 		// $this->posts=$posts;
 	}
 
@@ -168,18 +168,20 @@ public function upload_save(){
 			$imgName = $file->getClientOriginalName();
 			//$this->name = $imgName;
 			$upload = $file->store('Files');
-			$Secc_class = ClassSeccion::create([
-				'class_id' => $class->id,
+			$save = Seccion::create([
+				'clase_id' => $class->id,
 				'seccion' => $this->seccion,
 				'file' => $upload,
 				'name_file' => $imgName,
 				'url' => $this->url,
 				'texto' => $this->texto,
-				'user_created' => Auth::user()->id
+				'visibility' => $this->visibility,
+				'user_created' => Auth::user()->id,
+				'user_updated' => Auth::user()->id
 				]);
 		}
 	}	
-	if($Secc_class){
+	if($save){
 		$this->default();
 		   	return back()->with('mensaje','Registro Guardado');
 	}else{
@@ -196,9 +198,10 @@ public function upload_save(){
     }
 
 
+
 public function delet($id){
-	// ClassSeccion::delete(file_path);
-	$file_db = ClassSeccion::find($id);
+	// Seccion::delete(file_path);
+	$file_db = Seccion::find($id);
 	$delet = $file_db->delete();
 
 	return back();

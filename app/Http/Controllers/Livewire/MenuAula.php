@@ -6,12 +6,18 @@ use Livewire\Component;
 use App\Curso;
 use App\Participant;
 use App\Incription;
-use App\UserAula;
-use App\UserVisitAula;
+use App\UserAulas;
+use App\Visit;
+use App\Clase;
+use App\Seccion;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Carbon\Carbon;
+
 class MenuAula extends Component
 {
 
-	public $iniciar=true, $cursos, $curso, $part;
+	public $iniciar=true, $cursos, $curso, $part; //view de inicio
 	public $continue, $valid, $logeat, $regist, $verif; //view
 	public $curso_id, $decid; //si curso_id decid si esta o no registrado 
 	public $usuario, $password, $password_confirmation, $email; //view regist
@@ -20,7 +26,10 @@ class MenuAula extends Component
 	public $cedula; //view verif
 	public $part_id; //view insc
 	public $auth, $failAuth; //auhtenticacion
+	public $seccions, $clas, $sec;
 	public $aula; //view aula bienvenido
+	
+
 	public function mount(){
 		$cursos = Curso::all();
 		$this->cursos = $cursos;
@@ -68,30 +77,31 @@ class MenuAula extends Component
 
 	public function verif($id){ 
 		$this->validate(['cedula' => 'required']); 
-		$part = Participant::where('cedula','=',$this->cedula)->first();
+		$part = Participant::where('cedula',$this->cedula)->first();
 		if ($part)  {
 			$this->part = $part;	
 			$this->part_id = $part->id;
+		 
+			$insc = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->where('conf', 1)->first();
+			if($insc){
+			  	
+			  	$UserAula = UserAulas::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
+			  	if ($UserAula){
+			  		$this->UserAula = true;
+			  		$this->insc = true;		
+			  	}else{ //registrarse llama a view
+			  		$this->regist = true;
+			  	}
+			  	
+			}else{
+			  	
+				return back()->with('alert', 'disculpe no esta inscrito en el curso, o debe esperar sea  "validada" su inscripcion');
+			}
 		}else{
 			$this->regist = '';
 			$this->continue = '';
 			return back()->with('alert', 'Disculpe!, no esta registrado');
 			 		  //return back()->with('alert','Datos ya Registrados');
-		} 
-		$insc = Incription::where('part_id',$part->id)->where('curso_id',$this->curso_id)->where('conf', 1)->first();
-		if($insc){
-		  	
-		  	$UserAula = UserAula::where('part_id',$part->id)->where('curso_id',$this->curso_id)->first();
-		  	if ($UserAula){
-		  		$this->UserAula = true;
-		  		$this->insc = true;		
-		  	}else{ //registrarse llama a view
-		  		$this->regist = true;
-		  	}
-		  	
-		}else{
-		  	
-			return back()->with('alert', 'disculpe no esta inscrito en el curso, o debe esperar sea  "validada" su inscripcion');
 		}
 
 	}
@@ -126,31 +136,55 @@ class MenuAula extends Component
         'password' => 'required|min:5|max:10|confirmed',
         ]);
 
-  		// $AuthAula = UserAula::create([
-		// 'part_id' => $part->id,
-		// 'curso_id' => $this->curso_id,	
-		// 'usuario' => $this->usuario,
-		// 'password' => $this->password	
-		// ]);
-		$NewAula = new UserAula;
-        $NewAula->part_id = $this->part_id;
-        $NewAula->curso_id = $this->curso_id;
-        $NewAula->email = $this->email;
-        $NewAula->usuario = $this->usuario;
-        $NewAula->password = bcrypt($this->password);
-		$NewAula->save();
+  		 $NewAula = UserAulas::create([
+		 // 'part_id' => $part->id,
+		 // 'curso_id' => $this->curso_id,
+		 'clase_id' => $this->curso_id,		
+		 'usuario' => $this->usuario,
+		 'email' => $this->email,
+		 'password' => bcrypt($this->password)	
+		 ]);
+
+	
+		// $NewAula = new UserAulas;
+  //       $NewAula->part_id = $this->part_id;
+  //       $NewAula->curso_id = $this->curso_id;
+  //       $NewAula->curso_id = $this->curso_id;
+  //       $NewAula->email = $this->email;
+  //       $NewAula->usuario = $this->usuario;
+  //       $NewAula->password = bcrypt($this->password);
+		// $NewAula->save();
 		if($NewAula){
-			$visita = UserVisitAula::create([
-				'user_aula_id' => $NewAula->id
-
+			$visita = Visit::create([
+				'usuario_id' => $NewAula->id,
+				'visita' => now()->toDateTimeString()
 			]);
+			$this->curso_id = $curso_id;
+			// $clase = Clase::where('curso_id',$this->curso_id)->first();
 
+
+			$this->auth = $NewAula;
 			$this->aula = true;
+			
+			$clas = Clase::where('curso_id',$this->curso_id)->first();
+			$this->clas = $clas;
+			$seccioClass = Seccion::where('clase_id', $clas->id)->get();
+			$this->sec = $seccioClass;
+
 			$this->default();
 		}else{
-
+			return brack()->with('alert','ocurrio un error verifique!');
 		}
-		// $this->auth = $auth->id;
+}
+
+
+		public function aula($id){
+			$this->aula = true;
+			$clase = Clase::where('curso_id',$this->curso_id)->first();
+			// $part = Participant::where('cedula',$this->cedula)->first();
+			$this->clase = $clase;
+		}
+		
 		// $this->aulaExiste='';
 		// $this->reg='';
 		// $this->acceder='';
@@ -158,10 +192,6 @@ class MenuAula extends Component
 		
 		//return back()->with('mensaje','Datos Registrados');
     
-
-    
-	}
-
 
 
 
@@ -184,18 +214,33 @@ class MenuAula extends Component
 
 	public function Acceder(){	
 		$login = $this->usuario;
-		$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'usuario';		
-		$auth = UserAula::where('usuario',$this->usuario)
-			->orWhere('email',$this->usuario)
-			->where('password',$this->password)->first();
-		if($auth){
-			$visita = UserVisitAula::create([
-				'aula_id' => $auth->id
-				
-				// 'visita' => funcion datatime laravel
-			]);
 
+		$usua= UserAulas::all();
+		$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'usuario';		
+		$auth = UserAulas::where('usuario',$this->usuario)
+		->orWhere('email',$this->usuario)
+		->where('password',$this->password)->first();
 			$this->auth = $auth;
+		if($auth){
+			$visita = Visit::create([
+				'usuario_id' => $auth->id,
+				'visita' => now()->toDateTimeString()
+			]);
+			// select todas las secciones de este curso
+			 $this->auth = $auth;
+			// consultar tabla usuario_clases para traer los useario de dicha clases segun en cursso seleccionado y la 
+			// el
+		
+			$clas = Clase::where('curso_id',$this->curso_id)->first();
+			$this->clas = $clas;
+			$seccioClass = Seccion::where('clase_id', $clas->id)->get();
+			$this->sec = $seccioClass;
+			
+			//$aula = 'SELECT * FROM user_aulas';
+	        $aula = DB::select('SELECT * FROM seccions');
+	        $this->aula = $aula;
+
+
 			$this->iniciar = false;
 			$this->continue = '';
 			$this->valis = '';

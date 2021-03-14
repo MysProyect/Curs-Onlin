@@ -94,10 +94,15 @@
 		    	</label>
 			</div>
 
+			<div class="form-group">
+				<label class="display-6 text-primary">Visible<input type="radio" id="public" wire:model="visibility" value="1"></label>
+				<label class="display-6 text-danger"> No aun<input type="radio" id="public" wire:model="visibility" value="0"> </label>
+			</div>
+
 		</form>
 	</div>
     <div align="center">
-    	<button wire:click="upload_save" class="btn btn-primary btn-block">Subir y Guardar información</button>
+    	<button wire:click="upload_save" class="btn btn-success btn-block">Subir y Guardar información</button>
     </div>
 
      <div align="left" style="margin-left:60%;">

@@ -24,9 +24,9 @@ class Curso extends Model
          return $this->hasMany(Incription::class);
     }
 
-       public function aulas()
+    public function aulas()
     {
-        return $this->hasMany(UserAula::class);
+        return $this->hasMany(UserAulas::class);
     }
 
     public function comments()

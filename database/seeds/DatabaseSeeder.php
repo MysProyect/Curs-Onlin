@@ -17,13 +17,13 @@ class DatabaseSeeder extends Seeder
 	
 	   
     //SET FOREIGN_KEY_CHECKS = 0;
-    DB::table('users')->truncate();
+    //DB::table('users')->truncate();
     
 
     $this->call(ProfessionTableSeeder::class); //ejecutar seeder una sola vez de lo contrario descom linea e ingresar registros manualmente
 
     
-     $this->call(UserSeeder::class);
+    $this->call(UserSeeder::class);
 
     //SET FOREIGN_KEY_CHECKS = 1;
   

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Clase extends Model
 {
-    protected $table = 'classes';
+    protected $table = 'clases';
     protected $fillable = ['curso_id', 'user_created', 'user_updated'];
 
 
@@ -15,9 +15,9 @@ class Clase extends Model
           return $this->belongsTo(Curso::class);
     }
 
-    // public function seccions()
-    // {
-    //       return $this->hasMany(ClassSeccion::class);
-    // }
+    public function seccions()
+    {
+          return $this->hasMany(Seccion::class);
+    }
 
 }

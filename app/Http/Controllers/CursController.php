@@ -51,35 +51,37 @@ class CursController extends Controller
 					if ($pash){  
 		                $NewCurso->img = $pash;
 		               } 
-				}				
-				$NewCurso->cant_resps = $request->cant_resps; 
+				}
 				$NewCurso->user_created = Auth::user()->id;
 				$NewCurso->statud = $request->statud;
 				$NewCurso->save();   
-				
-				
-				$ult = App\Curso::all();
-				$CursoUlt = $ult->last(); 
-			if ($request->cant_resps == 1){
-				$New = new App\CursoResp;  
-				$New->curso_id = $CursoUlt->id;
-				$New->resp_id = $request->resp_id; 				
-				$New->save();
-				//echo "un registro";
-			}
-			if ($request->cant_resps == 2){
-				$resp=$request->resp;
-				$ArrayIdResp = $_POST['resp'];
-				$NumRespM = count($ArrayIdResp); 
-				 //var_dump ($NumResp); 
-				for($j=0; $j<$NumRespM; $j++){
-					 $ArrayResp = App\Responsabl::where('id','=',$ArrayIdResp[$j])->first();
-					  $New = new App\CursoResp;  					 
-					  $New->curso_id = $CursoUlt->id; 
-					  $New->resp_id = $ArrayResp->id;
-					  $New->save();
-				 } 
-			}
+				if($request->cant_resps){
+					$NewCurso->cant_resps = $request->cant_resps;
+					$NewCurso->save(); 
+
+					$ult = App\Curso::all();
+					$CursoUlt = $ult->last(); 				
+					if ($request->cant_resps == 1){
+						$New = new App\CursoResp;  
+						$New->curso_id = $CursoUlt->id;
+						$New->resp_id = $request->resp_id; 				
+						$New->save();
+						//echo "un registro";
+					}
+					if ($request->cant_resps == 2){
+						$resp=$request->resp;
+						$ArrayIdResp = $_POST['resp'];
+						$NumRespM = count($ArrayIdResp); 
+						 //var_dump ($NumResp); 
+						for($j=0; $j<$NumRespM; $j++){
+							 $ArrayResp = App\Responsabl::where('id','=',$ArrayIdResp[$j])->first();
+							  $New = new App\CursoResp;  					 
+							  $New->curso_id = $CursoUlt->id; 
+							  $New->resp_id = $ArrayResp->id;
+							  $New->save();
+						 } 
+					}
+				}
 		}		 	  
 		return redirect()->route('cursos.index')->with('mensaje','New Curso Agregado');
     }

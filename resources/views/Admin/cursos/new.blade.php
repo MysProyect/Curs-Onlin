@@ -41,7 +41,8 @@
 				<div class="display-5" onclick="SelecDinam()" id="Resp">					
 					<label class="title-op">Facilitador(es):</label>&nbsp;&nbsp;
 					<input type="radio" id="Resp" name="cant_resps" value="1" >Uno? &nbsp;
-					<input type="radio" id="Resp" name="cant_resps"  value="2">varios?					
+					<input type="radio" id="Resp" name="cant_resps"  value="2">varios?&nbsp;&nbsp;&nbsp;
+					<span class="display-8"><input type="radio" id="Resp" name="cant_resps"  value="">no estoy seguro</span>
 				</div>	
 				<div  align="right" class="display-6" >
 					Si responsable No esta en la lista de <a href="{{ route('resp-livew')}}" title="Responsibls">click aqui</a>
@@ -55,7 +56,7 @@
 			<select name="resp_id">
 				<option>Seleccione</option>
 					@foreach($resp as $item)
-						<option value="{{$item->id}}" >{{ $item->name }}{{ $item->last_name }}</option>
+						<option value="{{$item->id}}" >{{ $item->name }}  {{ $item->last_name }}</option>
 					@endforeach
 				</select>
 		</div>		

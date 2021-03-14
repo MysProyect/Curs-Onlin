@@ -23,12 +23,8 @@ class CreateIncriptionsTable extends Migration
             $table->integer('user_created')->nullable();
             $table->integer('user_updated')->nullable();
 
-            $table->foreign('curso_id')->references('id')->on('cursos')
-            ->onUpdate('cascade')
-            ->onDelete('set null');
-            $table->foreign('part_id')->references('id')->on('participants')
-            ->onUpdate('cascade')
-            ->onDelete('set null');
+            $table->foreign('curso_id')->references('id')->on('cursos');
+            $table->foreign('part_id')->references('id')->on('participants');
 
             $table->timestamps();
         });

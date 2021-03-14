@@ -63,7 +63,7 @@
         </a>
     </li>
     <li class="nav-item {{ request()->routeIs('cursos') ? 'active' : ''}}" >
-            <a class="nav-link" href="{{ route('cursos.index') }}"><span class="icon-rocket"></span>Cursos</a>
+            <a class="nav-link text-success display-6" href="{{ route('cursos.index') }}"><span class="icon-rocket"></span>Cursos</a>
     </li> 
     <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>

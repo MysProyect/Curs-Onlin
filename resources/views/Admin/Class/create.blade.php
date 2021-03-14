@@ -39,6 +39,10 @@
 		    		<textarea class="nav-link form-control" wire:model="texto" rows="3"  cols="200" placeholder="Escriba informacion que considere importante o de referencia para esta seccion"></textarea>
 		    	</label>
 			</div>
+			<div class="form-group">
+				<label class="display-6 text-primary">Visible<input type="radio" id="public" wire:model="visibility" value="1"></label>
+				<label class="display-8"> No aun<input type="radio" id="public" wire:model="visibility" value="0"> </label>
+			</div>
 		<div>
     		<button type="submit" class="btn btn-primary btn-block">Subir y Guardar información</button>
     		<button wire:click="clear" class="btn btn-warning">Limpiar</button>
