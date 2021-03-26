@@ -38,7 +38,13 @@ class Controller extends BaseController
 		// 	return view('help',compact('cursos'));
 		// }
 
-	
+	public function downloadFile($file){
+	//	$file = $request->file;
+	//	return $file;
+      $pathtoFile = Storage::disk('public').$file; 
+
+      return response()->download($pathtoFile);
+    }
 	
 
 

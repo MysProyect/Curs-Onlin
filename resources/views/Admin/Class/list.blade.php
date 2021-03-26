@@ -1,19 +1,19 @@
- <div align="left" style="margin-left:60%;">
+ <div align="left" style="margin-left:50%;">
 	<a wire:click="back" title="ir atras">
-	   <img src="{{ asset('images/icons/back.png') }}"  class="irAtras"></a> 
-	</div>
+   <img src="{{ asset('images/icons/back.png') }}"  class="irAtras"></a> 
+</div>
 
 	<br>
-	<input type="text" class="search-input"  wire:model="searchPart"  placeholder="Buscar" >    
 	<table class="table">   		
 		<thead class="thead-dark"> 			
 		<tr align="center">        			
-			<th>Curso</th>
-			<th>Class/Sections</th>
+			<th>Courses</th>
+			<th>lections</th>
 			<th>Accion</th>
 		</tr>
 		</thead>
 		<tbody> 
+			<?php $i=0; ?>
 		@foreach($clases as $class)    		
 		<tr>
 			@foreach($cursos as $curso)
@@ -23,20 +23,15 @@
 			@endforeach
 			
 			<td align="center"> 
-			<?php $i=0; ?>
-			@foreach($clasSec as $cs) 				
-				@if($class->id == $cs->class_id)					
+			@foreach($lecs as $cs) 				
+				@if($cs->clase_id == $class->id)
 					<?php $i=$i+1; ?>
-				@endif
+				@endif					
 			@endforeach
 			<?php echo $i; ?>
 			</td>
 			<td align="center">
-
 				<button wire:click="" class="btn btn-info">editar | ver</button>
-                 
-
-
 			</td>
 		</tr>
 
@@ -44,6 +39,6 @@
       </tbody>
       </table>
 
-<br><br>
-	<label>No hay registros</label>
+{{$fil}}
+
 

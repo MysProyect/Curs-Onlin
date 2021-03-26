@@ -14,7 +14,7 @@
   			<br> 
         <input type="password" id="password" wire:model="password"  class="form-control display-4"  name="password" placeholder="Password" style="padding:2%;" required>     
 		  </div>
-        <input type="text" wire:model="curso_id"> 
+        <input type="text" wire:model="curso_id" class="d-lg-none"> 
 
       <DIV>
 			  <button  wire:click="Acceder" class="fadeIn fourth btn btn-primary" style="width:29%;">Acceder</button>

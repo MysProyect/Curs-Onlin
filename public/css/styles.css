@@ -17,12 +17,9 @@ video {
   object-fit: cover;
   object-position: center;	
 }
-#video-curs{
+#video-curs-2{  width: 40%;  height: 30%;}
+#video-curs{  width: 100%;  height: 30%;}
 
-  width: 50%;
-  height: 30%;
-
-}
  @media screen and (max-width:800px) {
  	#video { opacity:0.1; height: 30%;	}
  	.header {height:2rem;}
@@ -74,12 +71,16 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-
 	 display: flex; margin-top: 10%; font-size: 1.5rem;>
 }
 	@media screen and (max-width:800px) {
-		footer, .img-footer{display: none;}
+		footer{ display: none;background-color: #fff;	} 
+		.img-footer{display: none;}
 		}
 .form-2{ margin-top: 2%; border: 1px solid; border-color: #898585; padding: 2%; background: #fff; }
-.img-curs{ width: 50%; height:auto; border-radius: 10%;}
-.img-curs-2{ width: 80%; height:80%; border-radius: 10%;}
-.img-file{ width: 40%; border-radius: 5%;}
+.img-curs img{ width: 60%; height:30%; border-radius: 10%;}
+.img-curs-2{ width: 100%; height:80%; border-radius: 10%;}
+.img-curs-aula{ width: 50%; height:30%; border-radius: 10%;}
+.img-curs-aula-2{width: 100%; height:50%; border-radius: 10%;}
+.img-file{ width: 50%; border-radius: 5%;}
+.img-file-aula{ width: 60%; border-radius: 5%;}
 .img-curs-detaill img{ width: 60%;}
 .img-pago{	background-image: url(../images/Fpagos.png); width: 50%; }
 .img-left{width:100%; height:30%;}
@@ -111,6 +112,10 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-
 		}
 .marg-tool{margin-top:5%; margin-left: 2%; margin-right: 2%}
 .info{ font-size:1.5rem;background:#C1DFE9; padding:2%; border-radius: 20px;}
+
+.two {
+  list-style: square inside;
+}
 
 .salir{ color:red;	font-size:1.3rem; text-align: right; }
 @media screen and (max-width:800px) {

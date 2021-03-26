@@ -28,11 +28,8 @@
 							<?php echo (strtoupper($item->title)) ?>
 						</a> 
 					</label>
-					<div class="img-curs">
-						<small>
-							<img src=" {{ Storage::url("$item->img")}}" alt="Imagen No disponible" align="right" title="imagen del curso" class="img-curs">
-						</small> 
-					</div>
+					<img src=" {{ Storage::url("$item->img")}}" alt="Imagen No disponible" align="right" title="imagen del curso" class="img-curs">
+					
 			
 				@if (!empty($item->description))
 					 <?php $tam = strlen($item->description); ?>
@@ -46,7 +43,7 @@
 				@endif
 			</div>
 		        @if($item->duracion)
-                        <small class="text-primary display-5">{{$item->duracion}} de duration</small>
+                        <small class=" display-6 text-uppercase"><b>Duration {{$item->duracion}}</b></small>
                 @endif
                 <br><br>
 				<div  align="center">
@@ -54,9 +51,9 @@
 					<img src="{{ asset('images/icons/editar.png') }}" class="edit" align="center">Editar</a>
 				</div>  
 				@if($item->statud ==1)
-					<label class="text-success display-4">Published</label>
+					<label class="text-success display-6">Published</label>
 				@else
-					<label class="text-danger display-4">Sin publicard</label>
+					<label class="text-danger display-6">Sin publicard</label>
 				@endif
 				</div>
 

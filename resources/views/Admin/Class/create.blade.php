@@ -7,7 +7,7 @@
 		</p>
 	</div>
 
-	  {{$name}}
+<!-- 	  {{$name}} -->
 
 
 	<form wire:submit.prevent="upload_save" enctype="multipart/form-data">
@@ -18,15 +18,17 @@
 						<label form="downloads">Adjuntar archivo(s)</label>
 						@for($i = 0; $i < $fields; $i++)
 							<input type="file" id="downloads" wire:model="files" class="form-control mb-2" accept=".png, .jpg, .jpej, .mp3, .pdf, .mp4, .MPEG-4, .zip, .rar, .doc, .docx">
+							
 						@endfor
-					
+					@error('files')
+								<label class="alert-danger">¡Nombre de archivo no valido!</label>
+							@enderror
 					</div>
 					<div class="form-group">
 						<a href="#" class="btn btn-primary" wire:click.prevent="AddField"><b>Add +</b></a>
 					</div>
 				</div>
 			</div>
-
 
 
 			<div class="form-group">
@@ -42,6 +44,9 @@
 			<div class="form-group">
 				<label class="display-6 text-primary">Visible<input type="radio" id="public" wire:model="visibility" value="1"></label>
 				<label class="display-8"> No aun<input type="radio" id="public" wire:model="visibility" value="0"> </label>
+				@error('visibility')
+					<label class="alert-danger">¿Inique si estara visible o no?</label>
+				@enderror
 			</div>
 		<div>
     		<button type="submit" class="btn btn-primary btn-block">Subir y Guardar información</button>

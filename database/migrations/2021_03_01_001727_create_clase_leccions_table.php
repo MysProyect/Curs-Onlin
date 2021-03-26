@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClaseSeccionsTable extends Migration
+class CreateClaseLeccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateClaseSeccionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('clase_seccions', function (Blueprint $table) {
+        Schema::create('clase_leccions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('seccion_id');
+            $table->unsignedBigInteger('leccion_id');
             $table->unsignedBigInteger('clase_id');
             $table->integer('alcanzada')->nullable();    
 
-            $table->foreign('seccion_id')->references('id')->on('seccions')
+            $table->foreign('leccion_id')->references('id')->on('leccions')
             ->onUpdate('cascade')
             ->onDelete('cascade');        
             $table->foreign('clase_id')->references('id')->on('clases')
@@ -36,6 +36,6 @@ class CreateClaseSeccionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clase_seccions');
+        Schema::dropIfExists('clase_leccions');
     }
 }

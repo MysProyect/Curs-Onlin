@@ -54,6 +54,10 @@
 		@if($aula)
 	 		@include('Menu.Aulas.aula')
    		@endif
+   		
+   		@if($show_secc)
+			@include('Menu.Aulas.show_secc')
+		@endif
 
 </div>
 

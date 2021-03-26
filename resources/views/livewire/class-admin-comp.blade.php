@@ -2,7 +2,9 @@
 		<div>
 			<label class="display-4 text-primary-2 text-center">Administrar Class Virtuals</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<label align="right" style="cursor: move;" wire:click="list" >
-				<img src="{{asset('images/reg.jpg')}}" width="100" height="150" title="Lista Class" ><br><span  class="nav-link">Lista de clases</span>
+				<div align="center">
+					<img src="{{asset('images/reg.jpg')}}" width="100" height="150" title="Lista Class" ><br><a href="">Lista de clases</a>
+				</div>
 			</label>
 		</div>
 		 	@if (session('mensaje'))

@@ -9,7 +9,8 @@ use App\Incription;
 use App\UserAulas;
 use App\Visit;
 use App\Clase;
-use App\Seccion;
+use App\Leccion;
+use App\FilesLeccion;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon\Carbon;
@@ -18,7 +19,7 @@ class MenuAula extends Component
 {
 
 	public $iniciar=true, $cursos, $curso, $part; //view de inicio
-	public $continue, $valid, $logeat, $regist, $verif; //view
+	public $continue, $valid, $logeat, $regist, $verif, $show_secc; //view
 	public $curso_id, $decid; //si curso_id decid si esta o no registrado 
 	public $usuario, $password, $password_confirmation, $email; //view regist
 	public $insc; //view insc inscrito
@@ -26,8 +27,8 @@ class MenuAula extends Component
 	public $cedula; //view verif
 	public $part_id; //view insc
 	public $auth, $failAuth; //auhtenticacion
-	public $seccions, $clas, $sec;
-	public $aula; //view aula bienvenido
+	public $seccions, $clas, $lec, $show, $cont;
+	public $aula, $files, $lecc; //view aula bienvenido
 	
 
 	public function mount(){
@@ -68,6 +69,12 @@ class MenuAula extends Component
 		
 	}
 
+
+
+public function back(){
+	$this->aula = true;
+	$this->edit='';
+}
 
 
 
@@ -160,30 +167,29 @@ class MenuAula extends Component
 				'visita' => now()->toDateTimeString()
 			]);
 			$this->curso_id = $curso_id;
-			// $clase = Clase::where('curso_id',$this->curso_id)->first();
+			//INSERT EN TABLA usuario_clases usuario_id y clase_id
 
-
+			//ACCEDIENDO ATRAVEZ DEL REGISTRO
 			$this->auth = $NewAula;
-			$this->aula = true;
-			
+			$this->aula = true;			
+													
 			$clas = Clase::where('curso_id',$this->curso_id)->first();
-			$this->clas = $clas;
-			$seccioClass = Seccion::where('clase_id', $clas->id)->get();
-			$this->sec = $seccioClass;
 
+			$lec = Leccion::where('clase_id', $clas->id)->where('visibility','=', 1)->get();
+			$this->lec = $lec;
 			$this->default();
 		}else{
 			return brack()->with('alert','ocurrio un error verifique!');
 		}
-}
+	}
 
 
-		public function aula($id){
-			$this->aula = true;
-			$clase = Clase::where('curso_id',$this->curso_id)->first();
-			// $part = Participant::where('cedula',$this->cedula)->first();
-			$this->clase = $clase;
-		}
+	public function aula($id){
+		$this->aula = true; //ACCEDIENDO atraves del registro
+		$clase = Clase::where('curso_id',$this->curso_id)->first();
+		// $part = Participant::where('cedula',$this->cedula)->first();
+		$this->clase = $clase;
+	}
 		
 		// $this->aulaExiste='';
 		// $this->reg='';
@@ -201,13 +207,19 @@ class MenuAula extends Component
 		$this->regist = '';
 		$this->cedula = '';
 		$this->logeat = true;
-		$this->curso = $curso;
-
-		
+		$this->curso = $curso;		
 		// $this->curso_id = $curso->id;
-	
-
 	}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -215,38 +227,43 @@ class MenuAula extends Component
 	public function Acceder(){	
 		$login = $this->usuario;
 
-		$usua= UserAulas::all();
+		//$usua= UserAulas::all();
 		$field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'usuario';		
 		$auth = UserAulas::where('usuario',$this->usuario)
 		->orWhere('email',$this->usuario)
 		->where('password',$this->password)->first();
-			$this->auth = $auth;
+		//	$this->auth = $auth;
 		if($auth){
 			$visita = Visit::create([
 				'usuario_id' => $auth->id,
 				'visita' => now()->toDateTimeString()
 			]);
+			$this->auth = $auth;
 			// select todas las secciones de este curso
-			 $this->auth = $auth;
-			// consultar tabla usuario_clases para traer los useario de dicha clases segun en cursso seleccionado y la 
-			// el
-		
+			// consultar tabla usuario_clases para traer los usuario de dicha clases segun en curso seleccionado 		
 			$clas = Clase::where('curso_id',$this->curso_id)->first();
-			$this->clas = $clas;
-			$seccioClass = Seccion::where('clase_id', $clas->id)->get();
-			$this->sec = $seccioClass;
-			
-			//$aula = 'SELECT * FROM user_aulas';
-	        $aula = DB::select('SELECT * FROM seccions');
-	        $this->aula = $aula;
 
+			$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','desc')->get();
+			$this->lec = $lec;
+
+			//$cont = collect($lec)->pluck('leccion')->countBy();//CONTAR y AGRUPAR
+			// $frutas= Leccion::select('seccion')->groupBy('seccion')->get();
+			// 	$this->nro = $frutas; //
+
+			// $countSec = Leccion::where('clase_id', $clas->id)->where('visibility','=', 1)->count();
+			// $this->countSec = $countSec;
+
+
+			//$aula = 'SELECT * FROM user_aulas';
+	        // $aula = DB::select('SELECT * FROM seccions');
+	        // $this->aula = $aula;
 
 			$this->iniciar = false;
 			$this->continue = '';
 			$this->valis = '';
 			$this->regist = '';
 			$this->logeat = '';
-			$this->aula = true;
+			$this->aula = true; //accediendo a traves del login
 		}else{
 
 			$this->failAuth='Fallo Autenticación, verifique';
@@ -261,7 +278,18 @@ class MenuAula extends Component
 
 
 
+	public function show_secc($id){
+		$this->aula = '';
+		$this->show_secc = true; 
+		$this->show = $id;
+		$clas = Clase::where('curso_id',$this->curso_id)->first();
+		$lecc = Leccion::where('clase_id', $clas->id)->where('leccion',$id)->where('visibility','=', 1)->first();
+		$this->lecc = $lecc;
+		$files = FilesLeccion::where('leccion_id',$id)->get();
+		$this->files = $files;
+	
 
+		}
 
 
 

@@ -6,7 +6,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Clase;
 use App\Curso;
-use App\Seccion;
+use App\Leccion;
+use App\FilesLeccion;
 use Auth;
 
 use Illuminate\Http\UploadedFile;
@@ -18,12 +19,11 @@ class ClassAdminComp extends Component
 {
 	use WithFileUploads;
 
-	public $class_select = true, $create, $edit,  $cursos, $curso, $curso_id, $title, $seccion;
+	public $class_select = true, $curs, $edit, $create, $cursos, $curso, $curso_id, $title, $seccion;
 	public $files=[], $url, $texto;
 	public $fields, $save, $secc, $NroCS;
 	public $mensaj, $list, $exist, $image, $busc, $upload, $delet, $visibility;
-
-	public $class, $clases, $name, $file, $clasSec;
+	public $class, $clases, $name, $file, $lecs, $fil, $lec;
 
 
 
@@ -39,11 +39,20 @@ class ClassAdminComp extends Component
     	$this->fields = 1;
     }
 
+
+
+	public function change_curso(){
+		$this->create = '';
+		$this->seccion = '';
+		$curso = Curso::find($this->curso_id);
+		$this->curs = $curso;
+	}
+
 	public function verif(){
 		$this->validate([ 'curso_id' => 'required' ]);
 		if($this->curso_id and $this->seccion){
-			$busc = Seccion::where('clase_id',$this->curso_id)
-			->where('seccion',$this->seccion)->first();
+			$busc = Leccion::where('clase_id',$this->curso_id)
+			->where('leccion',$this->seccion)->first();
 			if($busc){
 				$this->create = '';
 				$this->edit = '';
@@ -59,10 +68,8 @@ class ClassAdminComp extends Component
 		}	
 	}
 
-	public function change_curso(){
-		$this->create = '';
-		$this->seccion = '';
-	}
+
+
 
 
 	public function edit(){
@@ -72,9 +79,13 @@ class ClassAdminComp extends Component
 		$curso = Curso::find($this->curso_id);
 		$this->curso = $curso;
 		$class = Clase::where('curso_id','=',$this->curso_id)->first();
-		$secc = Seccion::where('clase_id','=',$class->id)->where('seccion','=',$this->seccion)->get();
-		$this->secc = $secc;
-		
+		$lec = Leccion::where('clase_id','=',$class->id)->where('leccion','=',$this->seccion)->first();
+		$this->lec = $lec;
+		$secc = FilesLeccion::where('leccion_id','=',$lec->id)->get();
+		$this->secc = $secc;	
+
+		$this->texto= $lec->texto;
+		$this->url = $lec->url;  	
 	}
 
 
@@ -116,11 +127,19 @@ class ClassAdminComp extends Component
 		$this->create = '';
 		$clases = Clase::all();
     	$this->clases = $clases;
-    	$clasSec = Seccion::all();
-    	$this->clasSec = $clasSec;
+    	$lecs = Leccion::all();
+    	$this->lecs = $lecs;
     	$this->list = 1;
-  //   	$posts = Seccion::withCount(['comments'])->get();
-		// $this->posts=$posts;
+  //   	$list = Leccion::select('clase_id')->groupBy('clase_id')->get();
+		// $this->le = $list; 
+
+	}
+
+	public function ver_edit_lec(){
+
+		//$cont = collect($lecs)->pluck('leccion')->countBy();//CONTAR y AGRUPAR
+		// $frutas= FilesLeccion::select('leccion_id')->groupBy('leccion_id')->get();
+		// $this->fil = $frutas; 
 	}
 
 
@@ -130,11 +149,10 @@ class ClassAdminComp extends Component
 
 
 public function back(){
-
 	$this->class_select = true;
 	$this->seccion ='';
 	$this->curso_id = '';
-	$this->edit = '';
+	$this->show_edit = '';
 }
 
 
@@ -143,19 +161,27 @@ public function back(){
 public function dejar(){
 	$this->create='';
 	$this->mensaj = '';
-	$this->edit = '';
+	$this->show_edit = '';
 }
 
 
 
 public function AddField(){
 	$this->fields = $this->fields+1;
+//	$this->validate([  'files'=>  'string'  ]);
 }
 
 
 
+
+
+
+
+
+
 public function upload_save(){
-	$this->validate([  'files'=>  'max:4096'   ]);
+	$this->validate(['files'=>  'max:4096' , 'visibility'=>'required'  ]);
+	//validar nombres de files correctos
 	$class = Clase::where('curso_id','=',$this->curso_id)->first();
 	if(empty($class)){
 	   	$class = Clase::create([
@@ -163,48 +189,83 @@ public function upload_save(){
 			'user_created' => Auth::user()->id
 			 ]);
 	}
-	if($this->files){
-		foreach ($this->files as $file) {
-			$imgName = $file->getClientOriginalName();
-			//$this->name = $imgName;
-			$upload = $file->store('Files');
-			$save = Seccion::create([
-				'clase_id' => $class->id,
-				'seccion' => $this->seccion,
-				'file' => $upload,
-				'name_file' => $imgName,
-				'url' => $this->url,
-				'texto' => $this->texto,
-				'visibility' => $this->visibility,
-				'user_created' => Auth::user()->id,
-				'user_updated' => Auth::user()->id
-				]);
+
+	if($this->edit){
+		$secc = Leccion::where('clase_id','=',$class->id)->where('leccion','=',$this->seccion)->first();		
+			$secc->clase_id = $class->id;
+			$secc->leccion = $this->seccion;
+			$secc->url = $this->url;
+			$secc->texto = $this->texto;
+			$secc->visibility = $this->visibility;
+			$secc->user_updated = Auth::user()->id;
+			$save = $secc->save();
+		if($this->files){
+			foreach ($this->files as $file) {
+				$imgName = $file->getClientOriginalName();
+				//$this->name = $imgName;
+				$upload = $file->store('Files');
+				$save = FilesLeccion::create([
+					'leccion_id' => $secc->id,
+					'file' => $upload,
+					'name_file' => $imgName
+					]);
+			}
 		}
-	}	
-	if($save){
-		$this->default();
-		   	return back()->with('mensaje','Registro Guardado');
+		if($save){
+			$this->default();
+			return back()->with('mensaje','Actualizados correctamente');
+		}else{
+		    $this->default();
+		    return back()->with('error','datos no actualizados');
+		}	
 	}else{
-	    $this->default();
-	    return back()->with('error','datos no registrados');
-	}
+			$save = Leccion::create([
+			'clase_id' => $class->id,
+			'leccion' => $this->seccion,
+			'url' => $this->url,
+			'texto' => $this->texto,
+			'visibility' => $this->visibility,
+			'user_created' => Auth::user()->id
+			]);
 
+		if($this->files){
+			foreach ($this->files as $file) {
+				$imgName = $file->getClientOriginalName();
+				//$imgName = str_random(6).'_'.$file->getClientOriginalName();
 
-
-				 // $file = $this->file;
+				//$this->name = $imgName;
+				$upload = $file->store('Files');
+				$save = FilesLeccion::create([
+					'leccion_id' => $save->id,
+					'file' => $upload,
+					'name_file' => $imgName
+					]);
+			}
+		}
+		if($save){
+			$this->default();
+			return back()->with('mensaje','Registro Guardado');
+		}else{
+		    $this->default();
+		    return back()->with('error','datos no registrados');
+		}
+			 // $file = $this->file;
 			  //   // $imgExt = $this->file->getClientOriginalExtension();
 			  //   $imgName = $file->getClientOriginalName();
 			 //    $this->name = $imgName;
-    }
+   	}
+}
+
+
+
 
 
 
 public function delet($id){
-	// Seccion::delete(file_path);
-	$file_db = Seccion::find($id);
+	// Leccion::delete(file_path);
+	$file_db = FilesLeccion::find($id);
 	$delet = $file_db->delete();
-
-	return back();
+	$this->edit();
 
 
 
@@ -221,9 +282,14 @@ public function default(){
 	$this->create = '';
 	$this->mensaj = '';
 	$this->edit = '';
-	$this->curso_id;
+	$this->curso_id ='';
 	$this->seccion = '';
+	$this->texto = '';
+	$this->files = '';
+	$this->url = '';
+	$this->visibility ='';
 	$this->class_select = true;
+	$this->curso = '';
 }
 
 

@@ -58,7 +58,7 @@ Route::get('/cursos/{id?}', function () {
 // });
 
 
-
+Route::get('/storage/{file}' , 'Controller@downloadFile');
 
 
 //---------USER
