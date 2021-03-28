@@ -46,10 +46,11 @@ class ClassAdminComp extends Component
 		$this->seccion = '';
 		$curso = Curso::find($this->curso_id);
 		$this->curs = $curso;
+		$this->mensaj = '';
 	}
 
 	public function verif(){
-		$this->validate([ 'curso_id' => 'required' ]);
+		$this->validate([ 'curso_id' => 'required', 'seccion' => 'required' ]);
 		if($this->curso_id and $this->seccion){
 			$busc = Leccion::where('clase_id',$this->curso_id)
 			->where('leccion',$this->seccion)->first();
@@ -67,7 +68,6 @@ class ClassAdminComp extends Component
 			}
 		}	
 	}
-
 
 
 
@@ -152,7 +152,7 @@ public function back(){
 	$this->class_select = true;
 	$this->seccion ='';
 	$this->curso_id = '';
-	$this->show_edit = '';
+	$this->edit = '';
 }
 
 

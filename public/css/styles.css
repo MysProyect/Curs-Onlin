@@ -64,7 +64,7 @@ video {
 		width:100%;
 	} 
 }
-
+.flex{ display: flex; }
 
 /*FOOTER*/
 footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-top:2%; height: 8rem;
@@ -73,6 +73,7 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-
 	@media screen and (max-width:800px) {
 		footer{ display: none;background-color: #fff;	} 
 		.img-footer{display: none;}
+		.flex{display: block;}
 		}
 .form-2{ margin-top: 2%; border: 1px solid; border-color: #898585; padding: 2%; background: #fff; }
 .img-curs img{ width: 60%; height:30%; border-radius: 10%;}
@@ -92,7 +93,7 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-
  	.img-pago{	 width: 10%;}
  	.img-insc{	width:10%; height:10%; }
 }
-.irAtras{	margin-right:5%; width: 20%;}
+.irAtras{width: 7%; cursor: pointer;}
 .listCurs{  
 	height:auto; 
 	border-top:2px solid;

@@ -74,6 +74,7 @@ class MenuAula extends Component
 public function back(){
 	$this->aula = true;
 	$this->edit='';
+	$this->show_secc='';
 }
 
 

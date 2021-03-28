@@ -1,18 +1,14 @@
 <div  class="form-gruop" align="center" style="margin-top: 2%;">
-	 <div align="left" style="margin-left:50%;">
-		<a wire:click="back" title="ir atras">
-	   <img src="{{ asset('images/icons/back.png') }}"  class="irAtras"></a> 
-	</div>
 	<div align="left" class="text-success display-6">
 		Leccion: {{$show}}	
 	</div>	
-	<div style="margin-top: 2%; display: flex;">
-		<h1 class="text-center display-5 text-primary">{{$curso->title}}</h1>
+	<div style="margin-top: 2%; width: 100%; display: flex;">
+		<h1 class="text-center display-5 text-primary" style="margin-top: 10%;">{{$curso->title}}</h1>
 		@if($curso->img)
 	   		<img src="{{ Storage::url("$curso->img") }}" alt="imagen no disponible" class="img-curs-aula-2"/> 
 		@endif
 	</div>
-	<div align="left" style="margin-left:50%;">
+	<div  align="right">
 		<a wire:click="back" title="ir atras">
 	   <img src="{{ asset('images/icons/back.png') }}"  class="irAtras"></a> 
 	</div>
@@ -34,7 +30,7 @@
 		@foreach($files as $s)
 			<?php if(Str::endsWith($s->file,['.mp4','.MPEG-4', '.mwv', '.avi'])){	?>
 					<div align="center">
-						<video  id="video-curs" controls loop muted >
+						<video  id="video-curs" controls loop>
 							<source src="{{ Storage::url($s->file)}}" type="video/mp4">
 						</video>
 					</div>	
@@ -42,34 +38,32 @@
 		@endforeach
 		</div>
 <br>
-		<div style="display: flex;">
+		<div style="display: flex;" align="center">
 		@foreach($files as $s)
 			<?php if(Str::endsWith($s->file,'.pdf')){	?>
-				<div align="center">
+				<div>
 					<a target="_blank" href="{{ Storage::url($s->file)}}">{{$s->name_file}}
 						<img src="{{ asset('images/icons/PDF.png') }}" style="cursor: pointer; width: 10%;"/>
 					</a>
-					 <br>
-				</div>	
+				</div>	&nbsp;&nbsp;
 			<?php }?>
 		@endforeach
 		</div>
 <br>
-		<div style="display: flex;" align="center">
+		<div style="display: flex;">
 		<?php $i=0; ?>
 		@foreach($files as $s)
 			<?php if(Str::endsWith($s->file,['docx','.doc','.text',])){?>
-				<div align="center">
+				<div>
 					<a target="_blank" href="{{ Storage::url($s->file)}}">{{$s->name_file}}
 						<img src="{{ asset('images/icons/DOC.png') }}" style="cursor: pointer; width: 10%;"/>
 					</a>
-					 <br>
-				</div>	
+				</div>	&nbsp;&nbsp;
 			<?php }?>
 		@endforeach
 		</div>
 <br>		
-		<div style="display: flex;" align="center">
+		<div style="display: flex;">
 		<?php $i=0; ?>
 		@foreach($files as $s)
 			<?php if(Str::endsWith($s->file,['.zip', '.tar'])){?>
@@ -77,15 +71,14 @@
 					<a target="_blank" href="{{ Storage::url($s->file)}}">{{$s->name_file}}
 						<img src="{{ asset('images/icons/zip.png') }}" style="cursor: pointer; width: 10%;"/>
 					</a>
-					 <br>
-				</div>	
+				</div>	&nbsp;&nbsp;
 			<?php }?>
 		@endforeach
 		</div>
-
+<br><br>
 		<div align="center" class="form-gruop">
 			<div  class="">
-				<label >{{$lecc->texto}}</label>
+				<label>{{$lecc->texto}}</label>
 			</div>
 			@if ($lecc->url)
 				<b>Visite:</b> <a target="_blank" href="{{$lecc->url}}">{{$lecc->url}}</a>
