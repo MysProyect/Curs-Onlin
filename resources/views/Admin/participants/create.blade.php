@@ -1,6 +1,6 @@
-<div style="widht:100%;">
+
 	
-	<img src="{{asset('images/icons/AddNew.jpeg')}}" class="img-AddNew">      
+	<img src="{{asset('images/icons/AddNew.jpeg')}}" class="img-AddNew"><br>      
 
 	@include('Admin.participants.form')
 
@@ -9,4 +9,5 @@
 	</button>
 
 
- </div>
+
+

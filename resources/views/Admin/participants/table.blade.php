@@ -7,7 +7,7 @@
 	@endif
 @if($parts->count())
 	<br>
-	<input type="text" class="search-input"  wire:model="searchPart"  placeholder="Buscar" >    
+	<input type="text"   wire:model="searchPart"  placeholder="Buscar" class="form-control">    
 	<table class="table">   		
 		<thead class="thead-dark"> 			
 		<tr align="center">        			

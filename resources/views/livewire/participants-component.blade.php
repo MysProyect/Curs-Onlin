@@ -1,9 +1,10 @@
-<div  style="display:flex; margin-right:2%; margin-left: 3%;">
-    <div style="margin-right:2%; width: 50%;">
+<div  style="display:flex; " class="container">
+    <div style="margin-right:2%; " align="center">
 		@include("Admin.participants.$view") 
 	</div>
 	
-   <div class="tool-table">
+	<div style="width: 70%;">
 		@include('Admin.participants.table')   
-   </div>	
+	</div>
+	
 </div>

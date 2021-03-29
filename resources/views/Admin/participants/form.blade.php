@@ -1,5 +1,4 @@
-<div>
-	 
+
 	<small class="title-op">Información personal</small>
 	<div class="form-gruop">
 		<input type="text" wire:model="cedula"  class="form-control text-bold"  autofocus required placeholder="Cedula" onkeyUp="return ValNumero(this);" wire:change="verif"> 
@@ -17,9 +16,9 @@
 		<input type="text"   wire:model.lazy="name" class="form-control"  autocomplete="on" placeholder="Nombre(s)"  > 
 		<input type="text" wire:model.lazy="last_name"  class="form-control" autocomplete="on"  placeholder="Apellidos(s)">
 	</div>
-	
-	<br>
 
+	
+	<img src="{{asset('images/icons/contac.jpg')}}" class="img-AddNew"><br>   
     <small class="title-op">Información de contacto</small>
     <div class="info form-group">   		 			
 		<DIV>E-mail
@@ -38,8 +37,6 @@
 	            
 	           
 	 </div>
-
- </div>
 
 
 

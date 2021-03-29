@@ -1,4 +1,3 @@
-<div>
 	 
 	 <small class="title-op">Información personal</small>
 		<div class="form-gruop">
@@ -30,7 +29,7 @@
 			 </div>
 		</div>
 
-	 
+	 	<img src="{{asset('images/icons/contac.jpg')}}" class="img-AddNew"><br> 
         <small class="title-op">Información de contacto</small>       
         <div class="info form-gruop">   		 			
 			<DIV>E-mail
@@ -40,7 +39,7 @@
 				@enderror
 			</DIV>
 			<div>Telefono
-				<input type="text"  wire:model="telef"  autocomplete="on"  onkeyUp="return ValNumero(this);" class=form-control"> 	    
+				<input type="text"  wire:model="telef"  autocomplete="on"  onkeyUp="return ValNumero(this);" class="form-control"> 	    
             </div>
             <div>
 				<label>WhatsApp</label> 
@@ -48,7 +47,6 @@
 	        </div>
 	    </div>
 
- </div>
 <script src="{{ asset('js/validar.js') }}"></script>
 
 

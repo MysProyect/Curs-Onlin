@@ -30,7 +30,7 @@
 							<option value="9">9</option>
 							<option value="10">10</option>
 							</select> -->
-								<input type="text" wire:model="seccion" size="5" placeholder="indicar"  wire:change="verif">
+								<input type="text" wire:model="seccion" size="5" placeholder="indicar"  wire:change="verif"><span class="display-8">Intro</span>
 
 						</label>
 						 @error('seccion')

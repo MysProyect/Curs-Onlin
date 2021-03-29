@@ -43,6 +43,12 @@ class Curso extends Model
         return $this->belongsTo(Clase::class);
     }
 
+    public function leccions()
+    {
+        return $this->hasManyThrough(Leccion::class, Clase::class);
+    }
+
+
     // public function resps()
     // {
     //     return $this->hasMany(Responsabls::class);

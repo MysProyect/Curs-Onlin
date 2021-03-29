@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>ASTUDILLO'S GROUP @yield('title')</title>
+    <title>CURS-ONLI @yield('title')</title>
 
     <!-- Styles -->
 <!-- 	<link rel="stylesheet" href="{{asset('css/menu.css')}}"> -->

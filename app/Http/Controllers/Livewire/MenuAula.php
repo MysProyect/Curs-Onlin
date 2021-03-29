@@ -244,7 +244,7 @@ public function back(){
 			// consultar tabla usuario_clases para traer los usuario de dicha clases segun en curso seleccionado 		
 			$clas = Clase::where('curso_id',$this->curso_id)->first();
 
-			$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','desc')->get();
+			$lec = Leccion::where('clase_id', $clas->id)->orderBy('id','asc')->get();
 			$this->lec = $lec;
 
 			//$cont = collect($lec)->pluck('leccion')->countBy();//CONTAR y AGRUPAR

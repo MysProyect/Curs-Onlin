@@ -25,4 +25,7 @@ class Leccion extends Model
 	 {
 	      return $this->hasMany(FilesLeccion::class);
 	 }
+
+
+
 }

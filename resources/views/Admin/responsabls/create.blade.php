@@ -1,4 +1,4 @@
-<img src="{{asset('images/icons/AddNew.jpeg')}}" class="img-AddNew"> 
+<img src="{{asset('images/icons/AddNew.jpeg')}}" class="img-AddNew"> <br>
 
 @include('Admin.responsabls.form')
 

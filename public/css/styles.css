@@ -88,12 +88,14 @@ footer{width: 100%; background-color: RGBA(0, 0, 0, 0.75); color: white; margin-
 .img-left-2{width:60%; height:30%; float: center;}
 .img-tool-admin{  width:95%; height: 100%; }
 .img-icon{ width:15%; }
+.img-AddNew{ width: 30%; }
+.img-AddEdit{width: 50%;}
 
 @media screen and (max-width:800px) {
  	.img-pago{	 width: 10%;}
  	.img-insc{	width:10%; height:10%; }
 }
-.irAtras{width: 7%; cursor: pointer;}
+.irAtras{width: 10%; cursor: pointer;}
 .listCurs{  
 	height:auto; 
 	border-top:2px solid;

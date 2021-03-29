@@ -23,8 +23,7 @@ class ClassAdminComp extends Component
 	public $files=[], $url, $texto;
 	public $fields, $save, $secc, $NroCS;
 	public $mensaj, $list, $exist, $image, $busc, $upload, $delet, $visibility;
-	public $class, $clases, $name, $file, $lecs, $fil, $lec;
-
+	public $class, $clases, $name, $file, $lecs, $clasSec, $show_lec, $lecns, $clase_name, $atras;
 
 
 
@@ -111,29 +110,49 @@ class ClassAdminComp extends Component
 
 
 
-
-
-
-
-
-
-
-
-
-
 	public function list(){
 		$this->class_select = '';
 		$this->edit = '';
 		$this->create = '';
 		$clases = Clase::all();
     	$this->clases = $clases;
-    	$lecs = Leccion::all();
-    	$this->lecs = $lecs;
+    	$clasSec = Leccion::all();
+    	$this->clasSec = $clasSec;
     	$this->list = 1;
-  //   	$list = Leccion::select('clase_id')->groupBy('clase_id')->get();
-		// $this->le = $list; 
-
+    	$this->class_select = '';
+  //   	$posts = Seccion::withCount(['comments'])->get();
+		// $this->posts=$posts;
 	}
+
+	public function show_lec($id){
+
+		$this->show_lec = true;
+		$lecns = Leccion::where('clase_id', $id)->get();
+		$this->lecns = $lecns;
+		$clase_name = Clase::where('id', $id)->first();
+		$this->clase_name =  $clase_name->curso;
+	}
+
+
+
+
+
+
+
+	// public function list(){
+	// 	$this->lis ='aqui';
+	// 	// $this->class_select = '';
+	// 	// $this->edit = '';
+	// 	// $this->create = '';
+	// 	// $clases = Clase::all();
+ //  //   	$this->clases = $clases;
+ //  //   	$lecs = Leccion::all();
+ //  //   	$this->lecs = $lecs;
+	// $this->list = true;
+ //  //   	$list = Leccion::select('clase_id')->groupBy('clase_id')->get();
+	// 	// $this->le = $list; 
+
+	// }
 
 	public function ver_edit_lec(){
 
@@ -149,10 +168,9 @@ class ClassAdminComp extends Component
 
 
 public function back(){
-	$this->class_select = true;
-	$this->seccion ='';
-	$this->curso_id = '';
-	$this->edit = '';
+	$this->default();
+	$this->clear();
+	
 }
 
 
@@ -290,6 +308,7 @@ public function default(){
 	$this->visibility ='';
 	$this->class_select = true;
 	$this->curso = '';
+	$this->list='';
 }
 
 
